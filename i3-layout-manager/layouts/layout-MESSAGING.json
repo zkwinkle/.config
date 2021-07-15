@@ -1,0 +1,63 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"marks": [],
+		"percent": 0.0571428571428571,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splith",
+			"marks": [],
+			"percent": 1,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "normal",
+				"current_border_width": 2,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 1045,
+					"width": 940,
+					"x": 905,
+					"y": 16
+				},
+				"marks": [],
+				"name": "Discord",
+				"percent": 0.8,
+				"swallows": [
+				{
+					"title": "^Discord$"
+				}
+				],
+				"type": "con"
+			},
+			{
+				"border": "none",
+				"current_border_width": 2,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 1063,
+					"width": 384,
+					"x": 1536,
+					"y": 0
+				},
+				"marks": [],
+				"name": "Telegram",
+				"percent": 0.2,
+				"swallows": [
+				{
+					"class": "^TelegramDesktop$"
+				}
+				],
+				"type": "con"
+			}
+			]
+		}
+		]
+}
+]

@@ -1,0 +1,83 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"marks": [],
+		"percent": 0.125,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "normal",
+			"current_border_width": 2,
+			"floating": "auto_off",
+			"geometry": {
+				"height": 600,
+				"width": 800,
+				"x": 0,
+				"y": 0
+			},
+			"marks": [],
+			"name": "~/.config/i3",
+			"percent": 0.5,
+			"swallows": [
+			{
+				"instance": "^Alacritty$"
+			}
+			],
+			"type": "con"
+		},
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"marks": [],
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "normal",
+				"current_border_width": 2,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 600,
+					"width": 800,
+					"x": 0,
+					"y": 0
+				},
+				"marks": [],
+				"name": "i3-layout-manager: ./layout_manager.sh",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"instance": "^Alacritty$"
+				}
+				],
+				"type": "con"
+			},
+			{
+				"border": "normal",
+				"current_border_width": 2,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 600,
+					"width": 800,
+					"x": 0,
+					"y": 0
+				},
+				"marks": [],
+				"name": "~/.config/i3-layout-manager",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"instance": "^Alacritty$"
+				}
+				],
+				"type": "con"
+			}
+			]
+		}
+		]
+}
+]

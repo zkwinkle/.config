@@ -1,4 +1,4 @@
-# It will not be overwritten, so edit it as you like.
+# It well not be overwritten, so edit it as you like.
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
@@ -39,8 +39,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# set default terminal here
+set $default_terminal alacritty
+
 # start a terminal
-bindsym $mod+Return exec alacritty 
+bindsym $mod+Return exec $default_terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -214,15 +217,20 @@ bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotif
 # Execute default apps and workspace assignment
 exec firefox
 exec thunderbird
-exec discord
-exec telegram-desktop
+# exec discord
+# exec telegram-desktop
 exec spotify
 
-assign [class="firefox"] 1
-assign [class="Thunderbird"] 8
-assign [class="discord"] 9
-assign [class="TelegramDesktop"] 9
-for_window [class="Spotify"] move to workspace 10
+assign [class="firefox"] $ws1
+assign [class="Thunderbird"] $ws8
+assign [class="discord"] $ws9
+assign [class="TelegramDesktop"] $ws9
+for_window [class="Spotify"] move to workspace $ws10
+
+# Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
+exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal
+# This script runs discord and telegram, along with 3 default terminals
+# not very elegant but it makes the startup nicer if it's done in order to be done in order and end on the terminals
 
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
