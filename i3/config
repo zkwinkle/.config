@@ -186,7 +186,7 @@ bar {
 }
 
 # Set keyboard language keybind
-bindsym $mod+Control+l exec setxkbmap us altgr-intl
+bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/.Xmodmap
 
 # Brightness controls
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
@@ -201,13 +201,13 @@ bindsym Ctrl+Shift+Print exec $HOME/.config/shotgun/select_save.sh
 bindsym Ctrl+Alt+Print exec $HOME/.config/shotgun/window_save.sh
 bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
-# Screenshot keybinds but using Home key (because of K6)
-bindsym Shift+Home exec $HOME/.config/shotgun/select_clipboard.sh
-bindsym Alt+Home exec $HOME/.config/shotgun/window_clipboard.sh
-bindsym Home exec $HOME/.config/shotgun/screen_clipboard.sh
-bindsym Ctrl+Shift+Home exec $HOME/.config/shotgun/select_save.sh
-bindsym Ctrl+Alt+Home exec $HOME/.config/shotgun/window_save.sh
-bindsym Ctrl+Home exec $HOME/.config/shotgun/screen_save.sh
+## Screenshot keybinds but using Home key (because of K6) #Removed because instead I remapped Home to Print
+#bindsym Shift+Home exec $HOME/.config/shotgun/select_clipboard.sh
+#bindsym Alt+Home exec $HOME/.config/shotgun/window_clipboard.sh
+#bindsym Home exec $HOME/.config/shotgun/screen_clipboard.sh
+#bindsym Ctrl+Shift+Home exec $HOME/.config/shotgun/select_save.sh
+#bindsym Ctrl+Alt+Home exec $HOME/.config/shotgun/window_save.sh
+#bindsym Ctrl+Home exec $HOME/.config/shotgun/screen_save.sh
 
 # Toggle pause/play spotify
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
