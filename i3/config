@@ -2,7 +2,17 @@
 #
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
-#
+
+# i3 gaps stuff
+# Disabling window title bars, you can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 2
+# Change focused border (child border) to pink
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #cc2c87
+gaps inner 10
+ # Gaps only active if more than 1 container
+smart_gaps on
+ # Border only active if more than 1 container
+smart_borders on
 
 # i3 config file (v4)
 #
@@ -173,6 +183,15 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+	# inner gaps resizing keybinds
+	bindsym minus  gaps inner current plus 5
+        bindsym plus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+minus  gaps inner all plus 5
+        bindsym Shift+plus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -213,6 +232,9 @@ bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
 # Toggle pause/play spotify
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+# Reload background
+exec_always $HOME/.fehbg
 
 # Execute default apps and workspace assignment
 exec firefox
