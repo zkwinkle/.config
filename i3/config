@@ -6,8 +6,6 @@
 # i3 gaps stuff
 # Disabling window title bars, you can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 2
-# Change focused border (child border) to pink
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #cc2c87
 gaps inner 10
  # Gaps only active if more than 1 container
 smart_gaps on
@@ -122,16 +120,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
+set $ws1 "1 "
+set $ws2 "2 "
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 "
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -203,7 +201,18 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command polybar
+    font pango:DejaVu Sans Mono, FontAwesome 12
+    position bottom
+    status_command i3status-rs $HOME/.config/i3status-rust/config.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
 }
 
 # Set keyboard language keybind
@@ -230,12 +239,6 @@ bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 #bindsym Ctrl+Alt+Home exec $HOME/.config/shotgun/window_save.sh
 #bindsym Ctrl+Home exec $HOME/.config/shotgun/screen_save.sh
 
-# Toggle pause/play spotify
-bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-
-# Reload background
-exec_always $HOME/.fehbg
-
 # Execute default apps and workspace assignment
 exec firefox
 exec thunderbird
@@ -257,3 +260,16 @@ exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
+
+# Change focused border (child border) to pink
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #cc2c87
+
+#### External programs
+# Toggle pause/play spotify
+bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+
+# Reload background
+exec_always $HOME/.fehbg
+
+# Run python script to update corona sheets
+exec python3 $HOME/Documents/Projects/Python/COVID-19_Tracker/sheets.py
