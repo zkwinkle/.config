@@ -123,7 +123,7 @@ bindsym $mod+a focus parent
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3"
-set $ws4 "4"
+set $ws4 "4 "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -253,7 +253,7 @@ assign [class="TelegramDesktop"] $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 # Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
-exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal
+exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
 # This script runs discord and telegram, along with 3 default terminals
 # not very elegant but it makes the startup nicer if it's done in order to be done in order and end on the terminals
 
