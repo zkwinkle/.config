@@ -5,7 +5,7 @@
 
 # i3 gaps stuff
 # Disabling window title bars, you can also use any non-zero value if you'd like to have a border
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 3
 gaps inner 10
  # Gaps only active if more than 1 container
 smart_gaps on
@@ -17,6 +17,7 @@ smart_borders on
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $Alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -224,11 +225,11 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 
 # Screenshots to clipboard
 bindsym Shift+Print exec $HOME/.config/shotgun/select_clipboard.sh
-bindsym Alt+Print exec $HOME/.config/shotgun/window_clipboard.sh
+bindsym $Alt+Print exec $HOME/.config/shotgun/window_clipboard.sh
 bindsym Print exec $HOME/.config/shotgun/screen_clipboard.sh
 # Screenshots to Pictures/Screenshots/
 bindsym Ctrl+Shift+Print exec $HOME/.config/shotgun/select_save.sh
-bindsym Ctrl+Alt+Print exec $HOME/.config/shotgun/window_save.sh
+bindsym Ctrl+$Alt+Print exec $HOME/.config/shotgun/window_save.sh
 bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
 ## Screenshot keybinds but using Home key (because of K6) #Removed because instead I remapped Home to Print
@@ -262,7 +263,7 @@ bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
 
 # Change focused border (child border) to pink
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #cc2c87
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #ce4e97
 
 #### External programs
 # Toggle pause/play spotify
