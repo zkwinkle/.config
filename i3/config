@@ -49,7 +49,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # set default terminal here
-set $default_terminal alacritty
+set $default_terminal kitty
 
 # start a terminal
 bindsym $mod+Return exec $default_terminal 
