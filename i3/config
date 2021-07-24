@@ -240,23 +240,23 @@ bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 #bindsym Ctrl+Alt+Home exec $HOME/.config/shotgun/window_save.sh
 #bindsym Ctrl+Home exec $HOME/.config/shotgun/screen_save.sh
 
-# Execute default apps and workspace assignment
-exec firefox
-exec thunderbird
-# exec discord
-# exec telegram-desktop
-exec spotify
+# Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
+# This script also runs the default terminal in $ws2 and leaves us there
+exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
 
+# Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
 assign [class="Thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
+
+exec firefox
+exec thunderbird
+exec telegram-desktop
+exec discord
+exec spotify
 for_window [class="Spotify"] move to workspace $ws10
 
-# Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
-exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
-# This script runs discord and telegram, along with 3 default terminals
-# not very elegant but it makes the startup nicer if it's done in order to be done in order and end on the terminals
 
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
