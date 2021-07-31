@@ -123,7 +123,7 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3"
+set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5"
 set $ws6 "6"
@@ -249,6 +249,8 @@ assign [class="firefox"] $ws1
 assign [class="Thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
+assign [class="zoom"] $ws3
+assign [class="Microsoft Teams - Preview"] $ws3
 
 exec firefox
 exec thunderbird
