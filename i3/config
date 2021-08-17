@@ -12,6 +12,9 @@ smart_gaps on
  # Border only active if more than 1 container
 smart_borders on
 
+# Multi-screen
+force_xinerama yes
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -246,16 +249,19 @@ exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
 
 # Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
+assign [class="zoom"] $ws3
+assign [class="Microsoft Teams - Preview"] $ws3
+assign [class="teams-for-linux"] $ws3
+assign [class="obsidian"] $ws4
 assign [class="Thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
-assign [class="zoom"] $ws3
-assign [class="Microsoft Teams - Preview"] $ws3
 
 exec firefox
 exec thunderbird
 exec telegram-desktop
 exec discord
+exec obsidian
 exec spotify
 for_window [class="Spotify"] move to workspace $ws10
 
