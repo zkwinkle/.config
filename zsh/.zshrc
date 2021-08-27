@@ -1,7 +1,4 @@
-# History
-HISTFILE=$ZDOTDIR/.histzsh
-HISTSIZE=1000
-SAVEHIST=10000
+# use vi keybinds
 bindkey -v
 
 # ask for ssh password on prompt (only if logged in as user)
@@ -10,12 +7,14 @@ then
 	eval $(keychain --eval --quiet id_ed25519)
 fi
 
-#PROMPT="%(!.%{%B%F{red}%}.%{%B%F{green}%})→ %n@%m %{%B%F{blue}%}%2~ %(!.Λ.λ)%f%b "
-PROMPT="%{%B%F{white}%}%(!.Λ.λ) %{%B%F{cyan}%}%2~ %(!.%{%B%F{green}%}>%{%B%F{cyan}%}>%{%B%F{green}%}>.%{%B%F{cyan}%}>%{%B%F{magenta}%}>%{%B%F{cyan}%}>)%f%b "
-
 autoload -U compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# History
+HISTFILE=$ZDOTDIR/.histzsh
+HISTSIZE=1000
+SAVEHIST=5000
 
 setopt extended_history
 setopt hist_expire_dups_first
@@ -34,3 +33,36 @@ export EDITOR='nvim'
 
 # Aliases
 alias cls='clear'
+
+# Git info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+
+precmd() {
+	vcs_info
+	#echo "${vcs_info_msg_0_}"
+}
+
+# vi mode config
+export KEYTIMEOUT=1
+vim_ins_mode=">"
+vim_cmd_mode="<"
+vindicator=$vim_ins_mode #variable that holds the vi mode indicator
+
+function zle-keymap-select {
+	vindicator="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+	zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-init {
+	vindicator=$vim_ins_mode
+}
+zle -N zle-line-init
+#
+# Prompt
+#PROMPT="%(!.%{%B%F{red}%}.%{%B%F{green}%})→ %n@%m %{%B%F{blue}%}%2~ %(!.Λ.λ)%f%b "
+setopt prompt_subst
+#PS1='${vcs_info_msg_0_}'
+PROMPT='%{%B%F{white}%}%(!.Λ.λ) %(!.%{%B%F{green}%}${vindicator}%{%B%F{cyan}%}${vindicator}%{%B%F{green}%}${vindicator}.%{%B%F{cyan}%}${vindicator}%{%B%F{magenta}%}${vindicator}%{%B%F{cyan}%}${vindicator})%f%b '
+RPROMPT='%{%B%F{cyan}%}%2~'
