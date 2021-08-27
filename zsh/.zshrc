@@ -1,11 +1,14 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+# History
+HISTFILE=$ZDOTDIR/.histzsh
 HISTSIZE=1000
 SAVEHIST=10000
 bindkey -v
 
-# ask for ssh password on prompt
-eval $(keychain --eval --quiet id_ed25519)
+# ask for ssh password on prompt (only if logged in as user)
+if [[ "$EUID" -ne 0 ]]
+then
+	eval $(keychain --eval --quiet id_ed25519)
+fi
 
 #PROMPT="%(!.%{%B%F{red}%}.%{%B%F{green}%})→ %n@%m %{%B%F{blue}%}%2~ %(!.Λ.λ)%f%b "
 PROMPT="%{%B%F{white}%}%(!.Λ.λ) %{%B%F{cyan}%}%2~ %(!.%{%B%F{green}%}>%{%B%F{cyan}%}>%{%B%F{green}%}>.%{%B%F{cyan}%}>%{%B%F{magenta}%}>%{%B%F{cyan}%}>)%f%b "
@@ -13,11 +16,6 @@ PROMPT="%{%B%F{white}%}%(!.Λ.λ) %{%B%F{cyan}%}%2~ %(!.%{%B%F{green}%}>%{%B%F{c
 autoload -U compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# History
-HISTSIZE=1000
-HISTFILE=~/.histzsh
-SAVEHIST=5000
 
 setopt extended_history
 setopt hist_expire_dups_first

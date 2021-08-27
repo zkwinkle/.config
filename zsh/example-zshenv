@@ -1,3 +1,20 @@
-# Must put this in /etc/zsh/zshenv for the config in this folder to work
+if [[ -z "$XDG_CONFIG_HOME" ]]
+then
+	# If root then set XDG_CONFIG_HOME to my users .config
+	if [ "$EUID" -eq 0 ]
+	then
+		if [[ -d "/home/igna/.config/zsh" ]]
+		then
+			export XDG_CONFIG_HOME="/home/igna/.config"
+		else
+			echo "Can't find dir /home/igna/.config"
+		fi
+	else
+		export XDG_CONFIG_HOME="$HOME/.config"
+	fi
+fi
 
-if [[ -z $XDG_CONFIG_HOME ]] then export XDG_CONFIG_HOME=$HOME/.config/ fi if [[ -d $XDG_CONFIG_HOME/zsh ]] then export ZDOTDIR=$XDG_CONFIG_HOME/zsh/ fi
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+then
+        export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+fi
