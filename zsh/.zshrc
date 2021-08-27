@@ -36,12 +36,11 @@ alias cls='clear'
 
 # Git info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git # enable version control info only for git
+zstyle ':vcs_info:git*' formats "%F{14}[%b] "
+zstyle ':vcs_info:git*' actionformats "%F{14}[%b] (%a) "
 
-precmd() {
-	vcs_info
-	#echo "${vcs_info_msg_0_}"
-}
+precmd() { vcs_info }
 
 # vi mode config
 export KEYTIMEOUT=1
@@ -58,11 +57,19 @@ zle -N zle-keymap-select
 function zle-line-init {
 	vindicator=$vim_ins_mode
 }
+
 zle -N zle-line-init
-#
+
 # Prompt
-#PROMPT="%(!.%{%B%F{red}%}.%{%B%F{green}%})→ %n@%m %{%B%F{blue}%}%2~ %(!.Λ.λ)%f%b "
 setopt prompt_subst
-#PS1='${vcs_info_msg_0_}'
-PROMPT='%{%B%F{white}%}%(!.Λ.λ) %(!.%{%B%F{green}%}${vindicator}%{%B%F{cyan}%}${vindicator}%{%B%F{green}%}${vindicator}.%{%B%F{cyan}%}${vindicator}%{%B%F{magenta}%}${vindicator}%{%B%F{cyan}%}${vindicator})%f%b '
-RPROMPT='%{%B%F{cyan}%}%2~'
+
+# lambda to show privileges
+lambda="%B%F{white}%(!.Λ.λ)"
+# arrows
+arrows="%(!.%B%F{green}${vindicator}%F{cyan}${vindicator}%F{green}${vindicator}.%F{cyan}${vindicator}%F{magenta}${vindicator}%F{cyan}${vindicator})"
+# Arrow colors (depend on privileges)
+ac1="%B%(!.%F{green}.%F{cyan})"
+ac2="%B%(!.%F{cyan}.%F{magenta})"
+
+PROMPT='${lambda} ${vcs_info_msg_0_}${ac1}${vindicator}${ac2}${vindicator}${ac1}${vindicator} %f%b'
+RPROMPT='$($ZDOTDIR/bin/get-dir.sh)'
