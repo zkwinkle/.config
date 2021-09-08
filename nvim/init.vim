@@ -123,6 +123,10 @@ command! MakeTags !ctags -R .
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'fladson/vim-kitty', { 'branch': 'main'}
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
+Plug 'luochen1990/rainbow'
 
 call plug#end()
+
+" rainbow parentheses
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
