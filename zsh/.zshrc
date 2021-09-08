@@ -33,6 +33,7 @@ export EDITOR='nvim'
 
 # Aliases
 alias cls='clear'
+alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
 
 # Git info
 autoload -Uz vcs_info
