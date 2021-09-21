@@ -122,9 +122,10 @@ command! MakeTags !ctags -R .
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'fladson/vim-kitty', { 'branch': 'main'}
+Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 " Plug 'scrooloose/nerdtree'
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow' " rainbow parentheses
+Plug 'chrisbra/csv.vim' " csv data
 
 call plug#end()
 
