@@ -7,6 +7,7 @@ then
 	eval $(keychain --eval --quiet id_ed25519)
 fi
 
+# Completion
 autoload -U compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -35,13 +36,8 @@ export EDITOR='nvim'
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
 
-# Git info
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git # enable version control info only for git
-zstyle ':vcs_info:git*' formats "%F{14}[%b] "
-zstyle ':vcs_info:git*' actionformats "%F{14}[%b] (%a) "
-
-precmd() { vcs_info }
+# Path
+PATH=$ZDOTDIR/bin:$PATH
 
 # vi mode config
 export KEYTIMEOUT=1
@@ -72,5 +68,5 @@ arrows="%(!.%B%F{green}${vindicator}%F{cyan}${vindicator}%F{green}${vindicator}.
 ac1="%B%(!.%F{green}.%F{cyan})"
 ac2="%B%(!.%F{cyan}.%F{magenta})"
 
-PROMPT='${lambda} ${vcs_info_msg_0_}${ac1}${vindicator}${ac2}${vindicator}${ac1}${vindicator} %f%b'
-RPROMPT='$($ZDOTDIR/bin/get-dir.sh)'
+PROMPT='${lambda} $(git-status.sh)${ac1}${vindicator}${ac2}${vindicator}${ac1}${vindicator} %f%b'
+RPROMPT='$(get-dir.sh)'
