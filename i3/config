@@ -126,8 +126,8 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
+set $ws3 "3 "
+set $ws4 "4 "
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
@@ -249,10 +249,10 @@ exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
 
 # Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
-assign [class="zoom"] $ws3
-assign [class="Microsoft Teams - Preview"] $ws3
-assign [class="teams-for-linux"] $ws3
-assign [class="obsidian"] $ws4
+assign [class="zoom"] $ws4
+assign [class="Microsoft Teams - Preview"] $ws4
+assign [class="teams-for-linux"] $ws4
+assign [class="obsidian"] $ws3
 assign [class="Thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
@@ -261,7 +261,7 @@ exec firefox
 exec thunderbird
 exec telegram-desktop
 exec discord
-exec obsidian
+#exec obsidian
 exec spotify
 for_window [class="Spotify"] move to workspace $ws10
 
