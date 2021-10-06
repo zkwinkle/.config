@@ -5,6 +5,13 @@ let mapleader = " "
 " Turn on syntax highlighting.
 syntax on
 
+" These lines make vim load various plugins
+filetype on
+
+filetype indent on
+
+filetype plugin on
+
 " Show line numbers.
 set number
 
@@ -58,10 +65,6 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-" This is so ctrl+j/k takes you down/up 4 lines at a time
-nnoremap <C-k> 4k
-nnoremap <C-j> 4j
-
 " Go to tab by number
 " Go to tab by number
 noremap <leader>1 1gt
@@ -75,9 +78,21 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+" Shortcutting split navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Shortcutting split movement
+noremap <C-w>h <C-w><S-h>
+noremap <C-w>j <C-w><S-j>
+noremap <C-w>k <C-w><S-k>
+noremap <C-w>l <C-w><S-l>
+
 """" FUZZY FILE FINDER CONFIG
- " Search down into subfolders
- " Add to vim path every file in this directory and subdirectories recursively
+" Search down into subfolders
+" Add to vim path every file in this directory and subdirectories recursively
 set path+=**
 
 " Display all matching files when we tab complete
@@ -123,11 +138,64 @@ command! MakeTags !ctags -R .
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
-" Plug 'scrooloose/nerdtree'
-Plug 'luochen1990/rainbow' " rainbow parentheses
+
+" nvim tree related plugins
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+
 Plug 'chrisbra/csv.vim' " csv data
+Plug 'wlangstroth/vim-racket' " racket language support
+Plug 'luochen1990/rainbow' " rainbow parentheses
+Plug 'psliwka/vim-smoothie' " smooth scrolls
 
 call plug#end()
+
+" Nvim-Tree config
+nnoremap <C-f> :NvimTreeToggle<CR>
+nnoremap <leader>f :NvimTreeFind<CR>
+nnoremap <leader>n :NvimTreeRefresh<CR>
+
+" Nvim-tree
+let g:nvim_tree_side = 'left' "left by default
+let g:nvim_tree_width = 24 "30 by default
+let g:nvim_tree_ignore = ['.git', 'node_modules', '.cache' ] "empty by default
+let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
+let g:nvim_tree_hide_dotfiles = 0 "0 by default, this option hides files and folders starting with a dot `.`
+let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ }
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★"
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   }
+    \ }
+
+" lua options
+lua <<
+require'nvim-tree'.setup {
+	-- closes neovim automatically when the tree is the last **WINDOW** in the view
+	auto_close          = true,
+	-- if true the tree will resize itself after opening a file
+	auto_resize = true,
+	}
+.
 
 " rainbow parentheses
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
