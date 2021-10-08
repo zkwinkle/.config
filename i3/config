@@ -204,10 +204,10 @@ bindsym $mod+r mode "resize"
 
 # Set colors from pywal
 # color will be f0f0f0 if anything goes wrong
-set_from_resource $fg i3wm.color1 #f0f0f0
-set_from_resource $secondary_fg i3wm.color3 #f0f0f0
+set_from_resource $fg i3wm.color1 #ffffff
+set_from_resource $secondary_fg i3wm.color3 #2f43a
 
-set_from_resource $bg i3wm.color6 #f0f0f0
+set_from_resource $bg i3wm.color6 #EE64AC
 set_from_resource $secondary_bg i3wm.color5 #f0f0f0
 
 set_from_resource $light i3wm.color7 #f0f0f0
@@ -215,7 +215,7 @@ set_from_resource $less_light i3wm.color8 #f0f0f0
 set_from_resource $dark i3wm.color0 #f0f0f0
 
 bar {
-    font pango:DejaVu Sans $fg, FontAwesome 12
+    font pango:DejaVu Sans Mono, FontAwesome 12
     position bottom
     status_command i3status-rs $HOME/.config/i3status-rust/config.toml
     colors {
@@ -223,7 +223,6 @@ bar {
         background #1C1E26
         statusline #dddddd
         focused_workspace $bg $bg #ffffff
-	#good_bg $fg
         active_workspace #333333 #333333 #ffffff
         inactive_workspace #333333 #333333 #888888
         urgent_workspace $secondary_fg $secondary_fg #ffffff
