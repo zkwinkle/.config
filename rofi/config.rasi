@@ -1,5 +1,6 @@
 configuration {
 	modi: "window,run,ssh,drun";
+	theme: "~/.cache/wal/colors-rofi-light.rasi";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
