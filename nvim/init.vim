@@ -137,7 +137,7 @@ command! MakeTags !ctags -R .
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
+"Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 
 " nvim tree related plugins
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -195,7 +195,12 @@ require'nvim-tree'.setup {
 	-- if true the tree will resize itself after opening a file
 	auto_resize = true,
 	}
+
 .
 
 " rainbow parentheses
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+highlight NvimTreeFolderName guifg=red
+highlight NvimTreeEmptyFolderName guifg=red
+highlight NvimTreeOpenedFolderName guifg=red
