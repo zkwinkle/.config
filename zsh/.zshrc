@@ -36,11 +36,14 @@ bindkey "^[[B" history-beginning-search-forward-end
 export EDITOR='nvim'
 
 # Aliases
+alias dc='cd' #fix typo
+alias sl='ls' #fix typo
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
+PATH=$PATH:$HOME/.local/bin
 
 # vi mode config
 export KEYTIMEOUT=1
