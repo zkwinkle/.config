@@ -38,6 +38,7 @@ export EDITOR='nvim'
 # Aliases
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
+alias wal='wal_(){ wal "$@" && pywal-discord && ~/.telegram-palette-gen/telegram-palette-gen --wal; }; wal_'
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
