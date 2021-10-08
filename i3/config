@@ -6,7 +6,7 @@
 # i3 gaps stuff
 # Disabling window title bars, you can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 3
-gaps inner 10
+gaps inner 25
  # Gaps only active if more than 1 container
 smart_gaps on
  # Border only active if more than 1 container
@@ -247,8 +247,7 @@ bindsym Ctrl+$Alt+Print exec $HOME/.config/shotgun/window_save.sh
 bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
 # Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
-# This script also runs the default terminal in $ws2 and leaves us there
-exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
+exec $HOME/.config/i3-layout-manager/load_layouts.sh $ws9
 
 # Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
@@ -267,6 +266,10 @@ exec discord
 #exec obsidian
 exec spotify
 for_window [class="Spotify"] move to workspace $ws10
+
+# Take us to terminal workspace, cause that's where I like to boot into
+exec i3 workspace $ws2
+exec $default_terminal
 
 
 # Scratchpad controls
