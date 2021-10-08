@@ -19,6 +19,11 @@
 
 Loot at zsh/.example-zshenv and copy it to /etc/zsh/zshenv.
 
+Also give executable permission to all the scripts in /zsh/bin:
+```
+chmod +x ~/.config/zsh/bin
+```
+
 
 ### Cholor schemes
 I have a sane default color scheme, but to use the pretty color schemes that match tbe bg you need to install pywall, along with the following extensions for the differente applications:
