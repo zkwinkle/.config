@@ -1,5 +1,11 @@
-theme = "bad-wolf"
-icons = "awesome"
+[theme]
+name = "bad-wolf"
+[theme.overrides]
+#good_bg = "#EE64AC"
+good_bg = "#AAAAAA"
+
+[icons]
+name = "awesome"
 
 [[block]]
 block = "net"
@@ -20,9 +26,6 @@ format = "{1m}"
 block = "battery"
 interval = 2
 format = " {percentage}"
-[block.theme_overrides]
-#good_bg = "#B57E94"
-good_bg = "#EE64AC"
 
 [[block]]
 block = "backlight"

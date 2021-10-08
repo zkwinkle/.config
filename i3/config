@@ -202,22 +202,34 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Set colors from pywal
+# color will be f0f0f0 if anything goes wrong
+set_from_resource $fg i3wm.color1 #f0f0f0
+set_from_resource $secondary_fg i3wm.color3 #f0f0f0
+
+set_from_resource $bg i3wm.color6 #f0f0f0
+set_from_resource $secondary_bg i3wm.color5 #f0f0f0
+
+set_from_resource $light i3wm.color7 #f0f0f0
+set_from_resource $less_light i3wm.color8 #f0f0f0
+set_from_resource $dark i3wm.color0 #f0f0f0
+
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 12
+    font pango:DejaVu Sans $fg, FontAwesome 12
     position bottom
     status_command i3status-rs $HOME/.config/i3status-rust/config.toml
     colors {
         separator #666666
         background #1C1E26
         statusline #dddddd
-        focused_workspace #EE64AC #EE64AC #ffffff
+        focused_workspace $bg $bg #ffffff
+	#good_bg $fg
         active_workspace #333333 #333333 #ffffff
         inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #2762d8 #ffffff
+        urgent_workspace $secondary_fg $secondary_fg #ffffff
     }
 }
+
 
 # Set keyboard language keybind
 bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/.Xmodmap
@@ -234,14 +246,6 @@ bindsym Print exec $HOME/.config/shotgun/screen_clipboard.sh
 bindsym Ctrl+Shift+Print exec $HOME/.config/shotgun/select_save.sh
 bindsym Ctrl+$Alt+Print exec $HOME/.config/shotgun/window_save.sh
 bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
-
-## Screenshot keybinds but using Home key (because of K6) #Removed because instead I remapped Home to Print
-#bindsym Shift+Home exec $HOME/.config/shotgun/select_clipboard.sh
-#bindsym Alt+Home exec $HOME/.config/shotgun/window_clipboard.sh
-#bindsym Home exec $HOME/.config/shotgun/screen_clipboard.sh
-#bindsym Ctrl+Shift+Home exec $HOME/.config/shotgun/select_save.sh
-#bindsym Ctrl+Alt+Home exec $HOME/.config/shotgun/window_save.sh
-#bindsym Ctrl+Home exec $HOME/.config/shotgun/screen_save.sh
 
 # Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
 # This script also runs the default terminal in $ws2 and leaves us there
@@ -270,15 +274,18 @@ for_window [class="Spotify"] move to workspace $ws10
 bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
 
-# Change focused border (child border) to pink
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #ce4e97
+# Change focused border to match pywall
+client.focused $bg $bg $fg $bg $bg
 
 #### External programs
 # Toggle pause/play spotify
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # Reload background
-exec_always $HOME/.fehbg
+#exec_always $HOME/.fehbg (using feh)
+exec_always wal -R # restores last colorscheme
+
+
 
 # Run python script to update corona sheets
 exec python3 $HOME/Documents/Projects/Python/COVID-19_Tracker/sheets.py
