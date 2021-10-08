@@ -38,7 +38,6 @@ export EDITOR='nvim'
 # Aliases
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
-alias wal='wal -o "${ZDOTDIR}/bin/post-wal.sh"'
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
