@@ -143,11 +143,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
-
+" Language/format supports
 Plug 'chrisbra/csv.vim' " csv data
 Plug 'wlangstroth/vim-racket' " racket language support
+
+" Pretty stuff :3
 Plug 'luochen1990/rainbow' " rainbow parentheses
 Plug 'psliwka/vim-smoothie' " smooth scrolls
+Plug 'dylanaraps/wal.vim' " pywal colors in vim
 
 call plug#end()
 
@@ -201,6 +204,5 @@ require'nvim-tree'.setup {
 " rainbow parentheses
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
-highlight NvimTreeFolderName guifg=red
-highlight NvimTreeEmptyFolderName guifg=red
-highlight NvimTreeOpenedFolderName guifg=red
+" wal.vim
+colorscheme wal
