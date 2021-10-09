@@ -280,7 +280,7 @@ client.focused $bg $bg $fg $bg $bg
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # Reload background
-#exec_always $HOME/.fehbg (using feh)
+exec_always $HOME/.fehbg # reload last wallpaper
 exec_always wal -R # restores last colorscheme
 
 
