@@ -157,7 +157,7 @@ call plug#end()
 " Nvim-Tree config
 nnoremap <C-f> :NvimTreeToggle<CR>
 nnoremap <leader>f :NvimTreeFind<CR>
-nnoremap <leader>n :NvimTreeRefresh<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Nvim-tree
 let g:nvim_tree_side = 'left' "left by default

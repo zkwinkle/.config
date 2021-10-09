@@ -247,7 +247,8 @@ bindsym Ctrl+$Alt+Print exec $HOME/.config/shotgun/window_save.sh
 bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
 # Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
-exec $HOME/.config/i3-layout-manager/load_layouts.sh $ws9
+exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
+# This also leaves you in workspace 2 with a terminal open
 
 # Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
@@ -266,11 +267,6 @@ exec discord
 #exec obsidian
 exec spotify
 for_window [class="Spotify"] move to workspace $ws10
-
-# Take us to terminal workspace, cause that's where I like to boot into
-exec i3 workspace $ws2
-exec $default_terminal
-
 
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
