@@ -1,20 +1,19 @@
 #!/bin/zsh
-
 # Switches the pywal theme
 # parameter is just one of the theme names given in the case statemente like "themeN)"
+
+source pywal-env.sh
 
 function help(){
 	echo "Usage: $0 ["
 }
-
-POSTWAL="${ZDOTDIR}/bin/post-wal.sh"
-WALLPAPERS="${HOME}/Pictures/Wallpapers"
 
 alias wal="wal -o ${POSTWAL} -i"
 
 case $1 in
 
 	-h | --help | -help | --h | help)
+		#TODO add help print and also put it under the default case
 		;;
 	# Dark themes
 
