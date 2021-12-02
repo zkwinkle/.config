@@ -98,7 +98,7 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
 " Language/format supports
-Plug 'neovim/nvim-lspconfig' " LSP server
+" Plug 'neovim/nvim-lspconfig' " LSP server
 Plug 'chrisbra/csv.vim' " csv data
 Plug 'wlangstroth/vim-racket' " racket language support
 
@@ -109,22 +109,22 @@ Plug 'wlangstroth/vim-racket' " racket language support
 " 	- clippy (rustup component add _)
 " 	- rust-analyzer
 " Ref: https://sharksforarms.dev/posts/neovim-rust/
-Plug 'simrat39/rust-tools.nvim'
+" Plug 'simrat39/rust-tools.nvim'
 
 " Autocomplete
-Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
-
-" LSP completion source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
-
-" Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
-" Snippet engine
-Plug 'hrsh7th/vim-vsnip'
-
-" Other usefull completion sources
-Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
-Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
+" Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
+" 
+" " LSP completion source for nvim-cmp
+" Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
+" 
+" " Snippet completion source for nvim-cmp
+" Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
+" " Snippet engine
+" Plug 'hrsh7th/vim-vsnip'
+" 
+" " Other usefull completion sources
+" Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
+" Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 
 " Autoformat
 
@@ -218,104 +218,105 @@ endif
 " autocmd BufWrite *.rs :!rustfmt %
 
 lua <<END
-local nvim_lsp = require'lspconfig'
-
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-	    -- on_attach is a callback called when the language server attachs to the buffer
-	    -- on_attach = on_attach,
-	    cmd = { "rust-analyzer" },
-	    filetypes = { "rust" },
-	    settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy-driver"
-                },
-            }
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
+-- local nvim_lsp = require'lspconfig'
+-- 
+-- local opts = {
+-- 	tools = { -- rust-tools options
+-- 	autoSetHints = true,
+-- 	hover_with_actions = true,
+-- 	inlay_hints = {
+-- 		show_parameter_hints = false,
+-- 		parameter_hints_prefix = "",
+-- 		other_hints_prefix = "",
+-- 		},
+-- 	},
+-- 
+-- -- all the opts to send to nvim-lspconfig
+-- -- these override the defaults set by rust-tools.nvim
+-- -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+-- server = {
+-- 	-- on_attach is a callback called when the language server attachs to the buffer
+-- 	-- on_attach = on_attach,
+-- 	cmd = { "rust-analyzer" },
+-- 	filetypes = { "rust" },
+-- 	--root_dir = root_pattern("Cargo.toml", "rust-project.json", ""),
+-- 	settings = {
+-- 		-- to enable rust-analyzer settings visit:
+-- 		-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+-- 		["rust-analyzer"] = {
+-- 			-- enable clippy on save
+-- 			checkOnSave = {
+-- 				command = "clippy-driver"
+-- 				},
+-- 			}
+-- 		}
+-- 	},
+-- }
+-- 
+-- require('rust-tools').setup(opts)
 END
 
 " Code actions
-nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-
-" Set updatetime for CursorHold
-" 300ms of no cursor movement to trigger CursorHold
-set updatetime=10
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-
-" autocomplete
-set completeopt=menuone,noinsert,noselect
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-
-" Avoid showing extra messages when using completion
-set shortmess+=c
+" nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+" 
+" " Set updatetime for CursorHold
+" " 300ms of no cursor movement to trigger CursorHold
+" set updatetime=10
+" " Show diagnostic popup on cursor hold
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" 
+" " Goto previous/next diagnostic warning/error
+" nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+" nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+" 
+" " autocomplete
+" set completeopt=menuone,noinsert,noselect
+" " :help completeopt
+" " menuone: popup even when there's only one match
+" " noinsert: Do not insert text until a selection is made
+" " noselect: Do not select, force user to select one from the menu
+" 
+" " Avoid showing extra messages when using completion
+" set shortmess+=c
 
 lua << END
-local cmp = require'cmp'
-cmp.setup({
-  -- Enable LSP snippets
-  snippet = {
-    expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
-  },
-
-  -- Installed sources
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-  }),
-})
-
-  -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['rust_analyzer'].setup {
-    capabilities = capabilities
-  }
+-- local cmp = require'cmp'
+-- cmp.setup({
+-- -- Enable LSP snippets
+-- snippet = {
+-- 	expand = function(args)
+-- 	vim.fn["vsnip#anonymous"](args.body)
+-- end,
+-- },
+--   mapping = {
+-- 	  ['<C-p>'] = cmp.mapping.select_prev_item(),
+-- 	  ['<C-n>'] = cmp.mapping.select_next_item(),
+-- 	  -- Add tab support
+-- 	  ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+-- 	  ['<Tab>'] = cmp.mapping.select_next_item(),
+-- 	  ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+-- 	  ['<C-f>'] = cmp.mapping.scroll_docs(4),
+-- 	  ['<C-Space>'] = cmp.mapping.complete(),
+-- 	  ['<C-e>'] = cmp.mapping.close(),
+-- 	  ['<CR>'] = cmp.mapping.confirm({
+-- 	  behavior = cmp.ConfirmBehavior.Insert,
+-- 	  select = true,
+-- 	  })
+--   },
+-- 
+--   -- Installed sources
+--   sources = cmp.config.sources({
+--   { name = 'nvim_lsp' },
+--   { name = 'vsnip' },
+--   { name = 'path' },
+--   { name = 'buffer' },
+--   }),
+-- })
+-- 
+--   -- Setup lspconfig.
+--   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+--   require('lspconfig')['rust_analyzer'].setup {
+-- 	  capabilities = capabilities
+-- 	  }
 END
