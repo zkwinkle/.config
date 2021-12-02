@@ -48,6 +48,14 @@ case $1 in
 
 	# Light themes
 	
+	light1)
+		wal "${WALLPAPERS}/Tiso on a Bench in Forgotten Crossroads.jpeg" -l --saturate 0.7
+		;;
+
+	light2)
+		wal "${WALLPAPERS}/Samurai Doge.png" -l --saturate 0.6 # p colorful
+		;;
+	
 	# Green themes??
 	
 	green1)

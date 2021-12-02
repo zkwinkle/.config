@@ -37,3 +37,10 @@ Make sure to edit the variables in zsh/bin/pywal-env.sh to reflect the directori
 The images which you use for your themes in switch-themes.sh can be backed up with backup-wallpapers.sh, just make sure to configure the right wallpaper dir.
 
 You also need **ffmpeg** in order for the post-wal.sh script to work correctly and automatically set the image used by i3lock to match the wallpaper.
+
+### Symlinks
+```
+ln -s .config/.Xmodmap .Xmodmap
+ln -s .cache/wal/colors.Xresources .Xresources
+
+```

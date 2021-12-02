@@ -203,7 +203,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Set colors from pywal
-# color will be f0f0f0 if anything goes wrong
+# color given is the default if anything goes wrong
 set_from_resource $fg i3wm.color1 #ffffff
 set_from_resource $secondary_fg i3wm.color3 #2f43a
 
@@ -231,6 +231,7 @@ bar {
 
 
 # Set keyboard language keybind
+exec setxkbmap us altgr-intl
 bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/.Xmodmap
 
 # Brightness controls

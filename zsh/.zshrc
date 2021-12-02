@@ -17,8 +17,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:
 
 # History
 HISTFILE=$ZDOTDIR/.histzsh
-HISTSIZE=1000
-SAVEHIST=5000
+HISTSIZE=5000
+SAVEHIST=50000
 
 setopt extended_history
 setopt hist_expire_dups_first
@@ -40,6 +40,7 @@ alias dc='cd' #fix typo
 alias sl='ls' #fix typo
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
+alias dragon='dragon-drag-and-drop'
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
