@@ -4,6 +4,9 @@
 # use vi keybinds
 bindkey -v
 
+# Turn off bells caused by zsh
+unsetopt BEEP
+
 # ask for ssh password on prompt (only if logged in as user)
 if [[ "$EUID" -ne 0 ]]
 then
