@@ -18,6 +18,9 @@ set number
 " Center cursor in the middle of the screen
 set so=999
 
+" Amount of spaces in a tab
+set tabstop=2
+
 " Config line number color
 highlight LineNr term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=NONE guifg=Magenta guibg=NONE
 highlight CursorLineNr term=bold cterm=NONE ctermfg=DarkCyan ctermbg=NONE gui=NONE guifg=DarkCyan guibg=NONE
@@ -96,12 +99,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " nvim tree related plugins
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'lambdalisue/suda.vim' " write files with sudo
 
 " Language/format supports
 " Plug 'neovim/nvim-lspconfig' " LSP server
 Plug 'chrisbra/csv.vim' " csv data
 Plug 'wlangstroth/vim-racket' " racket language support
 Plug 'rust-lang/rust.vim' " Rust support
+
+Plug 'yuezk/vim-js' " js support
+Plug 'maxmellon/vim-jsx-pretty' " react formatter
 
 " Pretty stuff :3
 Plug 'luochen1990/rainbow' " rainbow parentheses
@@ -114,7 +121,7 @@ call plug#end()
 
 " Nvim-Tree config
 nnoremap <C-f> :NvimTreeToggle<CR>
-nnoremap <leader>f :NvimTreeFind<CR>
+nnoremap <leader>f :NvimTreeFindFile<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Nvim-tree

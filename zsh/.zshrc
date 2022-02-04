@@ -46,6 +46,8 @@ alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
 alias dragon='dragon-drag-and-drop'
 alias ll='ls -lht' # ls with extra info ordered by time modified
 alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
+alias diff='diff -u'
+alias dsf='diff-so-fancy'
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
