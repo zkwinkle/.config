@@ -2,6 +2,7 @@
 
 - OS: Arch Linux
 - WM: i3-gaps
+- status bar: i3status-rust
 - Shell: zsh
 - Terminal: kitty
 - Cholor schemes: pywal (read below for reqs)
@@ -11,6 +12,7 @@
 - fetches:
 	- neofetch
 	- bunnyfetch
+- preferred login manager: lightdm-mini-greeter
 
 
 ## Setup

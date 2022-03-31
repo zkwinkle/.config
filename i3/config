@@ -289,4 +289,8 @@ exec_always wal -R # restores last colorscheme
 
 
 # Run python script to update corona sheets
-exec python3 $HOME/Documents/Projects/Python/COVID-19_Tracker/sheets.py
+# exec python3 $HOME/Documents/Projects/Python/COVID-19_Tracker/sheets.py
+
+
+## Hold mouse down
+bindsym $mod+m exec xdotool mousedown 1
