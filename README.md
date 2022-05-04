@@ -9,7 +9,7 @@
 - Text editor: Neovim
 - Screenshots: shotgun
 - rofi:
-  - rofi-emoji
+  - rofimoji
 	- rofi-calc
 - fetches:
 	- neofetch
