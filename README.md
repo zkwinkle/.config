@@ -8,7 +8,9 @@
 - Cholor schemes: pywal (read below for reqs)
 - Text editor: Neovim
 - Screenshots: shotgun
-- rofi: rofi
+- rofi:
+  - rofi-emoji
+	- rofi-calc
 - fetches:
 	- neofetch
 	- bunnyfetch
