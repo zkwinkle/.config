@@ -239,6 +239,8 @@ bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/
 # Brightness controls
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
+bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
 
 # Screenshots to clipboard
 bindsym Shift+Print exec $HOME/.config/shotgun/select_clipboard.sh
