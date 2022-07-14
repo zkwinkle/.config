@@ -66,7 +66,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+space exec rofi -show drun
 bindsym $mod+Control+space exec rofi -show window
 # Rofi calc
-bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort
+bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip" -kb-accept-custom Ctrl+C
 # Rofi emoji
 bindsym $mod+e exec rofimoji -s neutral -a clipboard --keybinding-copy Ctrl+c --max-recent 0
 bindsym $mod+Ctrl+e exec rofimoji -s ask -a clipboard --keybinding-copy Ctrl+c --max-recent 0
