@@ -48,6 +48,7 @@ alias ll='ls -lht' # ls with extra info ordered by time modified
 alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 alias diff='diff -u'
 alias dsf='diff-so-fancy'
+alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
