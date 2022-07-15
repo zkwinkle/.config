@@ -95,8 +95,9 @@ noremap <C-w>l <C-w><S-l>
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-"Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
-Plug 'lambdalisue/suda.vim' " write files with sudo
+" Movement
+Plug 'psliwka/vim-smoothie' " smooth scrolls
+Plug 'yangmillstheory/vim-snipe' " snipe B)
 
 " nvim tree related plugins
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
@@ -105,72 +106,74 @@ Plug 'kyazdani42/nvim-tree.lua'
 " Language/format supports
 " Plug 'neovim/nvim-lspconfig' " LSP server
 Plug 'chrisbra/csv.vim' " csv data
-" Plug 'wlangstroth/vim-racket' " racket language support
 Plug 'rust-lang/rust.vim' " Rust support
 
 Plug 'yuezk/vim-js' " js support
 Plug 'maxmellon/vim-jsx-pretty' " react formatter
 
 " Pretty stuff :3
+"Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 Plug 'luochen1990/rainbow' " rainbow parentheses
-Plug 'psliwka/vim-smoothie' " smooth scrolls
 Plug 'sprockmonty/wal.vim' " pywal colors in vim (branch that lets termguicolors be on)
 Plug 'nvim-lualine/lualine.nvim' " Status line
 Plug 'TaDaa/vimade' " fade inactive panes
+
+" Misc
+Plug 'lambdalisue/suda.vim' " write files with sudo
 
 call plug#end()
 
 " Nvim-Tree config
 nnoremap <C-f> :NvimTreeToggle<CR>
-nnoremap <leader>f :NvimTreeFindFile<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader><leader>f :NvimTreeFindFile<CR>
+nnoremap <leader><leader>r :NvimTreeRefresh<CR>
 
 " Nvim-tree
 let g:nvim_tree_side = 'left' "left by default
 let g:nvim_tree_width = 24 "30 by default
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_show_icons = {
-      \ 'git': 1,
-      \ 'folders': 1,
-      \ 'files': 1,
-      \ }
-let g:nvim_tree_icons = {
-      \ 'default': '',
-      \ 'symlink': '',
-      \ 'git': {
-	\   'unstaged': "✗",
-	\   'staged': "✓",
-	\   'unmerged': "",
-	\   'renamed': "➜",
-	\   'untracked': "★"
-	\   },
-	\ 'folder': {
-	  \   'default': "",
-	  \   'open': "",
-	  \   'empty': "",
-	  \   'empty_open': "",
-	  \   'symlink': "",
-	  \   }
-	  \ }
 
 " lua Nvim-Tree options
 lua << END
 require'nvim-tree'.setup {
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close = true,
-  -- if true the tree will resize itself after opening a file
-  auto_resize = true,
+  sort_by = "case_sensitive",
+  view = {
+		width=24,
+		side = "left",
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+	renderer = {
+		icons = {
+			show = {
+				git = true,
+				folder = true,
+				file = true,
+				folder_arrow  = false
+				},
+			},
+		indent_markers = {
+			enable = true
+			},
+		highlight_git = true,
+		special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+		},
   filters = { -- Files to ignore
-  dotfiles = true,
-  custom = {
-    '.git',
-    'node_modules',
-    '.cache'
-    }
+    dotfiles = true,
+		custom = {
+			'.git',
+			'node_modules',
+			'.cache'
+			}
   },
-mappings = {
-  },
+	actions = {
+		open_file = {
+				quit_on_open = true,
+			}
+		}
 }
 END
 
@@ -191,12 +194,29 @@ END
 " vimade (fade splits)
 let g:vimade = {  "fadelevel": 0.65 }
 
-" racket-vim
-" if has("autocmd")
-"   au BufReadPost *.rkt,*.rktl set filetype=racket
-"   au filetype racket set lisp
-"   au filetype racket set autoindent
-" endif
-
 " rust.vim
 let g:rustfmt_autosave = 1 " Autoformat
+
+" vim-snipe
+map <leader>f <Plug>(snipe-f)
+map <leader>F <Plug>(snipe-F)
+
+"" end of word
+map <leader>ge <Plug>(snipe-ge)
+map <leader>e <Plug>(snipe-e)
+
+"" swap
+nmap <leader>] <Plug>(snipe-f-xp)
+nmap <leader>[ <Plug>(snipe-F-xp)
+
+"" cut
+nmap <leader>x <Plug>(snipe-f-x)
+nmap <leader>X <Plug>(snipe-F-x)
+
+"" replace
+nmap <leader>r <Plug>(snipe-f-r)
+nmap <leader>R <Plug>(snipe-F-r)
+
+"" append
+nmap <leader>a <Plug>(snipe-f-a)
+nmap <leader>A <Plug>(snipe-F-a)
