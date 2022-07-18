@@ -15,6 +15,9 @@
 	- neofetch
 	- bunnyfetch
 - preferred login manager: lightdm-mini-greeter
+- fuzzy search: fzf
+	- For preview: exa, bat
+	- For opening with enter: rifle
 
 
 ## Setup

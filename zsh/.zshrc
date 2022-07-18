@@ -10,7 +10,7 @@ unsetopt BEEP
 # ask for ssh password on prompt (only if logged in as user)
 if [[ "$EUID" -ne 0 ]]
 then
-	eval $(keychain --eval --quiet id_ed25519)
+	eval "$(keychain --eval --quiet id_ed25519)"
 fi
 
 # Completion
@@ -39,8 +39,6 @@ bindkey "^[[B" history-beginning-search-forward-end
 export EDITOR='nvim'
 
 # Aliases
-alias dc='cd' #fix typo
-alias sl='ls' #fix typo
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
 alias dragon='dragon-drag-and-drop'
@@ -48,6 +46,7 @@ alias ll='ls -lht' # ls with extra info ordered by time modified
 alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 alias diff='diff -u'
 alias dsf='diff-so-fancy'
+# Get vid resolution
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 
 # Path
@@ -78,10 +77,70 @@ setopt prompt_subst
 # lambda to show privileges
 lambda="%B%F{white}%(!.Λ.λ)"
 # arrows
-arrows="%(!.%B%F{green}${vindicator}%F{cyan}${vindicator}%F{green}${vindicator}.%F{cyan}${vindicator}%F{magenta}${vindicator}%F{cyan}${vindicator})"
+#arrows="%(!.%B%F{green}${vindicator}%F{cyan}${vindicator}%F{green}${vindicator}.%F{cyan}${vindicator}%F{magenta}${vindicator}%F{cyan}${vindicator})"
 # Arrow colors (depend on privileges)
 ac1="%B%(!.%F{green}.%F{cyan})"
 ac2="%B%(!.%F{cyan}.%F{magenta})"
 
 PROMPT='${lambda} $(git-status.sh)${ac1}${vindicator}${ac2}${vindicator}${ac1}${vindicator} %f%b'
 RPROMPT='$(get-dir.sh)'
+
+# FZF stuff
+export FZF_DIR_PREVIEW='exa --oneline --icons {} | head -100'
+
+
+export FZF_DEFAULT_COMMAND='fd . --hidden -E .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd . --type d --hidden -E .git'
+
+export FZF_CTRL_T_OPTS='--preview="fzf_preview.sh {}"'
+export FZF_ALT_C_OPTS="--preview '${FZF_DIR_PREVIEW}'"
+
+  
+export FZF_DEFAULT_OPTS='--height 60% --min-height 12 --reverse --border --multi --tiebreak="length,end" --info=inline --pointer="->" --marker="<>" --tabstop=2 
+--color bg+:0,hl:2,hl+:2,prompt:6,pointer:6,fg+:6,marker:6,info:3,info:bold,hl+:underline,fg+:underline,hl:italic,spinner:2
+--bind="ctrl-u:half-page-up,ctrl-d:half-page-down,change:first,ctrl-w:backward-kill-word,ctrl-b:backward-word,alt-bs:clear-query,ctrl-l:forward-char,ctrl-h:backward-char,ctrl-f:forward-word,alt-j:preview-down,alt-k:preview-up,alt-u:preview-half-page-up,alt-d:preview-half-page-down,ctrl-y:execute-silent(echo {} | xclip -sel clip)"'
+
+# For ** paths
+_fzf_compgen_path() {
+  fd --hidden --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory ** completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --exclude ".git" . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview "${FZF_DIR_PREVIEW}";;
+    export|unset) fzf "$@" --preview "eval 'echo \$'{}" --preview-window=down;;
+    *)            fzf "$@" ;;
+  esac
+}
+
+alias fzf='fzf --preview="fzf_preview.sh {}" --bind="ctrl-o:execute(rifle {})"'
+
+## completion and keybinds
+
+if [[ -f /usr/share/fzf/key-bindings.zsh && -f /usr/share/fzf/completion.zsh ]]
+then
+	source /usr/share/fzf/key-bindings.zsh
+	source /usr/share/fzf/completion.zsh
+else
+	echo "Couldn't find fzf zsh files"
+fi
+
+# Open selections in nvim tabs
+alias nf='nvim -p `fzf`'
+
+# Install/Remove packages using paru/fzf
+function pain(){
+	paru -Slq | fzf -q "$1" -m --preview "_paru_fzf_preview.sh S {}" --preview-window=wrap | xargs -ro paru -S
+}
+function pare(){
+	paru -Qq | fzf -q "$1" -m --preview "_paru_fzf_preview.sh Q {}" --preview-window=wrap | xargs -ro paru -Rns
+}
