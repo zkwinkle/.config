@@ -1,0 +1,32 @@
+#!/bin/sh
+
+#$1 File
+
+EDITOR=nvim
+IMAGE_VIEWER=firefox
+PDF_VIEWER=firefox
+
+echoerr() { echo "$@" 1>&2; }
+
+if [ ! -e "$1" ]
+then
+	echoerr "copen: cannot access '${1}': No such file or directory"
+	exit 1
+fi
+if [ -d "$1" ]
+then
+	cd "$1" || exit
+elif [ -f "$1" ]
+then
+	#EXT="${1##*.}"
+	MIMETYPE="$(file -b --mime-type - < "$1")"
+
+	case "$MIMETYPE" in
+		text/*) $EDITOR "$1";;
+		image/*) $IMAGE_VIEWER "$1";;
+		application/pdf) $PDF_VIEWER "$1";;
+		*) echoerr "copen: unsupported file mimetype '${1}: ${MIMETYPE}'"
+	esac
+else
+	echoerr "copen: unsupported file type '${1}'"
+fi

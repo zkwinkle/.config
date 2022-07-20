@@ -95,8 +95,8 @@ noremap <C-w>l <C-w><S-l>
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Movement
-Plug 'psliwka/vim-smoothie' " smooth scrolls
+" Speed
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fuzzy search
 Plug 'yangmillstheory/vim-snipe' " snipe B)
 
 " nvim tree related plugins
@@ -113,6 +113,7 @@ Plug 'maxmellon/vim-jsx-pretty' " react formatter
 
 " Pretty stuff :3
 "Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
+Plug 'psliwka/vim-smoothie' " smooth scrolls
 Plug 'luochen1990/rainbow' " rainbow parentheses
 Plug 'sprockmonty/wal.vim' " pywal colors in vim (branch that lets termguicolors be on)
 Plug 'nvim-lualine/lualine.nvim' " Status line

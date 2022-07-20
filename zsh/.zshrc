@@ -38,6 +38,10 @@ bindkey "^[[B" history-beginning-search-forward-end
 
 export EDITOR='nvim'
 
+# Quartus
+export QSYS_ROOTDIR="/home/igna/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
+
+
 # Aliases
 alias cls='clear'
 alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
@@ -48,6 +52,7 @@ alias diff='diff -u'
 alias dsf='diff-so-fancy'
 # Get vid resolution
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
+alias see='kitty +kitten icat' # display image
 
 # Path
 PATH=$ZDOTDIR/bin:$PATH
@@ -86,15 +91,12 @@ PROMPT='${lambda} $(git-status.sh)${ac1}${vindicator}${ac2}${vindicator}${ac1}${
 RPROMPT='$(get-dir.sh)'
 
 # FZF stuff
-export FZF_DIR_PREVIEW='exa --oneline --icons {} | head -100'
-
-
 export FZF_DEFAULT_COMMAND='fd . --hidden -E .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd . --type d --hidden -E .git'
+export FZF_ALT_C_COMMAND='fd . ~ --type d --hidden -E .git'
 
-export FZF_CTRL_T_OPTS='--preview="fzf_preview.sh {}"'
-export FZF_ALT_C_OPTS="--preview '${FZF_DIR_PREVIEW}'"
+export FZF_CTRL_T_OPTS='--preview="_fzf_files_preview.sh {}"'
+export FZF_ALT_C_OPTS='--preview="_fzf_files_preview.sh {}" --preview-window=wrap'
 
   
 export FZF_DEFAULT_OPTS='--height 60% --min-height 12 --reverse --border --multi --tiebreak="length,end" --info=inline --pointer="->" --marker="<>" --tabstop=2 
@@ -116,13 +118,13 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd)           fzf "$@" --preview "${FZF_DIR_PREVIEW}";;
+    cd)           fzf "$@" --preview="_fzf_files_preview.sh {}";;
     export|unset) fzf "$@" --preview "eval 'echo \$'{}" --preview-window=down;;
     *)            fzf "$@" ;;
   esac
 }
 
-alias fzf='fzf --preview="fzf_preview.sh {}" --bind="ctrl-o:execute(rifle {})"'
+alias fzf='fzf --preview="_fzf_files_preview.sh {}" --bind="ctrl-o:abort+execute(copen {})"'
 
 ## completion and keybinds
 
@@ -135,7 +137,18 @@ else
 fi
 
 # Open selections in nvim tabs
-alias nf='nvim -p `fzf`'
+alias nviz='nvim -p "$(fzf)"'
+alias fzh='fd . ~ --hidden -E .git | fzf'
+
+# cd into a git repo
+function fzg(){
+	FIFO=/tmp/fzg_fifo;
+	mkfifo $FIFO;
+	(fd . ~ --type=d -E AUR -x check-for-git.sh > $FIFO &);
+	_GIT_DIR=$(fzf --preview-window=wrap +m < $FIFO);
+	[ -n "$_GIT_DIR" ] && cd "$_GIT_DIR" && nvim .
+	rm $FIFO
+}
 
 # Install/Remove packages using paru/fzf
 function pain(){
