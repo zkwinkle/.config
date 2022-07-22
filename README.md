@@ -16,7 +16,7 @@
 	- bunnyfetch
 - preferred login manager: lightdm-mini-greeter
 - fuzzy search: fzf
-	- For preview: exa, bat, im2a
+	- For preview: exa, bat, timg
 	- For opening with enter: rifle
 
 

@@ -16,9 +16,10 @@ then
 			text/*) bat -n --color=always --wrap never --theme base16 --style=numbers "$1";;
 			#image/*) kitty +kitten icat "$1" 1> /dev/null ;;
 			image/*) 
-				HEIGHT=$(( LINES * 6 ))
-				HEIGHT=$(( HEIGHT / 10))
-				im2a -p --height=$HEIGHT $1;;
+				scale=5
+				HEIGHT=$(( LINES * $scale / 10 ))
+				WIDTH=$(( COLUMNS * $scale / 10 ))
+				timg -E --loops=2 --frames=10 -g${WIDTH}x${HEIGHT} "$1";;
 			#application/pdf) $PDF_VIEWER "$1";;
 			*) echo "Unsupported file type"
 		esac
