@@ -21,21 +21,6 @@ local plugins = {
 	--Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 	['psliwka/vim-smoothie'] = {},
 	
-	-- Went back to wal.vim because comments were white and it made lualine ugly
-	--["oncomouse/lushwal"] = {
-	--	requires = { { "rktjmp/lush.nvim", opt = true }, { "rktjmp/shipwright.nvim", opt = true } },
-	--	config = function() 
-	--		require "plugins.configs.lushwal"
-	--	end
-	--},
-	
-	--Changed to pywal.nvim because it's more consistent with nvim-tree and other plugins
-	--['sprockmonty/wal.vim'] = { -- branch that lets termgui colors be on
-	--	config = function()
-	--		--vim.cmd('colorscheme wal')
-	--		--vim.opt.termguicolors = true
-	--	end
-	--},
 	['AlphaTechnolog/pywal.nvim'] = { as = 'pywal' , 
 	config = function()
 		require('pywal').setup()
@@ -44,13 +29,15 @@ local plugins = {
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
 		config = function()
 			require('lualine').setup {
-				options = {theme = 'pywal-nvim'}
+				options = {theme = 'pywal-nvim'},
+				extensions = {'nvim-tree'}
 			}
 		end
 	},
 	
 	-- fade inactive panes
 	['TaDaa/vimade'] = {
+		opt = true, event = 'BufAdd',
 		config = function()
 			vim.g.vimade = { fadelevel = 0.65 }
 		end
