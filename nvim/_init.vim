@@ -23,8 +23,8 @@ set shiftwidth=2
 set tabstop=2
 
 " Config line number color
-highlight LineNr term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=NONE guifg=Magenta guibg=NONE
-highlight CursorLineNr term=bold cterm=NONE ctermfg=DarkCyan ctermbg=NONE gui=NONE guifg=DarkCyan guibg=NONE
+" highlight LineNr term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=NONE guifg=Magenta guibg=NONE
+" highlight CursorLineNr term=bold cterm=NONE ctermfg=DarkCyan ctermbg=NONE gui=NONE guifg=DarkCyan guibg=NONE
 
 " This enables relative line numbering mode. With both number and relativenumber enabled, the current line shows the true line number
 set relativenumber
@@ -130,15 +130,15 @@ nnoremap <leader><leader>f :NvimTreeFindFile<CR>
 nnoremap <leader><leader>r :NvimTreeRefresh<CR>
 
 " Nvim-tree
-let g:nvim_tree_side = 'left' "left by default
-let g:nvim_tree_width = 24 "30 by default
+"let g:nvim_tree_side = 'left' "left by default
+"let g:nvim_tree_width = 24 "30 by default
 
 " lua Nvim-Tree options
 lua << END
 require'nvim-tree'.setup {
   sort_by = "case_sensitive",
   view = {
-		width=24,
+		--width=24,
 		side = "left",
     adaptive_size = true,
     mappings = {
