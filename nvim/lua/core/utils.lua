@@ -1,16 +1,23 @@
 local M = {}
 
-M.load_mapping = function (mapping)
+M.load_mapping = function(mapping, extra_opts)
 	for mode, mode_values in pairs(mapping) do
 		for keybind, mapping_info in pairs(mode_values) do
 			if mode == "all" then
 				mode = ""
 			end
 
-			vim.api.nvim_set_keymap(mode, keybind, mapping_info.map, mapping_info.opts)
+			local opts = {}
+			if mapping_info.opts then
+				opts = mapping_info.opts
+			end
+			if extra_opts then
+				opts = vim.tbl_deep_extend("keep", opts, extra_opts)
+			end
+
+			vim.keymap.set(mode, keybind, mapping_info.map, opts)
 		end
 	end
 end
 
 return M
-

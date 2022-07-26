@@ -3,6 +3,7 @@ vim.cmd "packadd packer.nvim"
 local plugins = {
 
 	["wbthomason/packer.nvim"] = {},
+	["lewis6991/impatient.nvim"] = {},
 
 	---- nvim tree related plugins
 	["kyazdani42/nvim-web-devicons"] = {},
@@ -14,27 +15,29 @@ local plugins = {
 		end,
 	},
 
-	---- Language/format supports
-	--Plug 'rust-lang/rust.vim' " Rust support
-	
 	-- Pretty stuff :3
 	--Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 	['psliwka/vim-smoothie'] = {},
-	
-	['AlphaTechnolog/pywal.nvim'] = { as = 'pywal' , 
-	config = function()
-		require('pywal').setup()
-	end},
+
+	['AlphaTechnolog/pywal.nvim'] = { as = 'pywal',
+		config = function()
+			require('pywal').setup()
+		end },
+
 	['nvim-lualine/lualine.nvim'] = {
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		opt = true,
+		setup = function()
+			require("core.lazy_load").on_file_open "lualine.nvim"
+		end,
 		config = function()
 			require('lualine').setup {
-				options = {theme = 'pywal-nvim'},
-				extensions = {'nvim-tree'}
+				options = { theme = 'pywal-nvim' },
+				extensions = { 'nvim-tree', 'quickfix', 'fzf' }
 			}
 		end
 	},
-	
+
 	-- fade inactive panes
 	['TaDaa/vimade'] = {
 		opt = true, event = 'BufAdd',
@@ -42,7 +45,7 @@ local plugins = {
 			vim.g.vimade = { fadelevel = 0.65 }
 		end
 	},
-	
+
 	---- Misc
 	['lambdalisue/suda.vim'] = {},
 
@@ -58,15 +61,15 @@ local plugins = {
 	--},
 
 	["nvim-treesitter/nvim-treesitter"] = {
-	  module = "nvim-treesitter",
-	  setup = function()
-	    require("core.lazy_load").on_file_open "nvim-treesitter"
-	  end,
-	  cmd = require("core.lazy_load").treesitter_cmds,
-	  run = ":TSUpdate",
-	  config = function()
-	    require "plugins.configs.treesitter"
-	  end,
+		module = "nvim-treesitter",
+		setup = function()
+			require("core.lazy_load").on_file_open "nvim-treesitter"
+		end,
+		cmd = require("core.lazy_load").treesitter_cmds,
+		run = ":TSUpdate",
+		config = function()
+			require "plugins.configs.treesitter"
+		end,
 	},
 
 	-- git stuff
@@ -82,22 +85,11 @@ local plugins = {
 
 	-- lsp stuff
 
-	--["williamboman/nvim-lsp-installer"] = {
-	--  opt = true,
-	--  cmd = require("core.lazy_load").lsp_cmds,
-	--  setup = function()
-	--    require("core.lazy_load").on_file_open "nvim-lsp-installer"
-	--  end,
-	--},
-
-	--["neovim/nvim-lspconfig"] = {
-	--  after = "nvim-lsp-installer",
-	--  module = "lspconfig",
-	--  config = function()
-	--    require "plugins.configs.lsp_installer"
-	--    require "plugins.configs.lspconfig"
-	--  end,
-	--},
+	["neovim/nvim-lspconfig"] = {
+		config = function()
+			require "plugins.configs.nvim-lspconfig"
+		end,
+	},
 
 	--["numToStr/Comment.nvim"] = {
 	--  module = "Comment",
