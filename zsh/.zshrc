@@ -55,8 +55,15 @@ alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,heigh
 alias see='kitty +kitten icat' # display image
 
 # Path
-PATH=$ZDOTDIR/bin:$PATH
-PATH=$PATH:$HOME/.local/bin
+PATH=${ZDOTDIR}/bin:$PATH
+PATH=${PATH}:${HOME}/.local/bin
+fpath=(${fpath} ${ZDOTDIR}/Completion) # Auto-completion
+
+# Tab names
+chpwd () {
+	DIR=$(print -P "%~")
+	print -n "\e]0;${${DIR%/}##*/}\a"
+}
 
 # vi mode config
 export KEYTIMEOUT=1
