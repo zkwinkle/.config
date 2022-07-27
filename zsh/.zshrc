@@ -53,6 +53,12 @@ alias dsf='diff-so-fancy'
 # Get vid resolution
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 alias see='kitty +kitten icat' # display image
+function wTEC {
+	sudo ip link set wlp6s0 down
+	systemctl stop dhcpcd.service
+	systemctl start netctl.service
+	sudo netctl start wlp6s0-wTEC
+}
 
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
