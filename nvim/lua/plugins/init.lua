@@ -31,10 +31,7 @@ local plugins = {
 			require("core.lazy_load").on_file_open "lualine.nvim"
 		end,
 		config = function()
-			require('lualine').setup {
-				options = { theme = 'pywal-nvim' },
-				extensions = { 'nvim-tree', 'quickfix', 'fzf' }
-			}
+			require("plugins.configs.others").lualine()
 		end
 	},
 
@@ -50,15 +47,15 @@ local plugins = {
 	['lambdalisue/suda.vim'] = {},
 
 
-	--["lukas-reineke/indent-blankline.nvim"] = {
-	--  opt = true,
-	--  setup = function()
-	--    require("core.lazy_load").on_file_open "indent-blankline.nvim"
-	--  end,
-	--  config = function()
-	--    require("plugins.configs.others").blankline()
-	--  end,
-	--},
+	["lukas-reineke/indent-blankline.nvim"] = {
+	  opt = true,
+	  setup = function()
+	    require("core.lazy_load").on_file_open "indent-blankline.nvim"
+	  end,
+	  config = function()
+	    require("plugins.configs.others").blankline()
+	  end,
+	},
 
 	["nvim-treesitter/nvim-treesitter"] = {
 		module = "nvim-treesitter",
@@ -87,7 +84,7 @@ local plugins = {
 
 	["neovim/nvim-lspconfig"] = {
 		config = function()
-			require "plugins.configs.nvim-lspconfig"
+			require "plugins.configs.lspconfig"
 		end,
 	},
 
