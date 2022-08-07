@@ -12,9 +12,6 @@ smart_gaps on
  # Border only active if more than 1 container
 smart_borders on
 
-# Multi-screen
-force_xinerama yes
-
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -36,10 +33,6 @@ font pango:DejaVu Sans Mono 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -137,6 +130,12 @@ set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
 
+# For double monitors
+exec --no-startup-id xrandr --output HDMI-0 --right-of eDP1
+bindsym $mod+m exec	--no-startup-id xrandr --output HDMI-0 --auto --right-of eDP-1-1
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -214,7 +213,7 @@ set_from_resource $secondary_bg i3wm.color5 #f0f0f0
 
 set_from_resource $light i3wm.color7 #f0f0f0
 set_from_resource $less_light i3wm.color8 #f0f0f0
-set_from_resource $dark i3wm.color0 #f0f0f0
+set_from_resource $dark i3wm.color0 #1C1E26
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 12
@@ -222,7 +221,7 @@ bar {
     status_command i3status-rs $HOME/.config/i3status-rust/config.toml
     colors {
         separator #666666
-        background #1C1E26
+        background $dark
         statusline #dddddd
         focused_workspace $bg $bg #ffffff
         active_workspace #333333 #333333 #ffffff
@@ -295,4 +294,4 @@ exec_always wal -R # restores last colorscheme
 
 
 ## Hold mouse down
-bindsym $mod+m exec xdotool mousedown 1
+bindsym $mod+n exec xdotool mousedown 1
