@@ -17,6 +17,7 @@
 - preferred login manager: lightdm-mini-greeter
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
+- i3lock-multimonitor for locking on more than one screen (aliased to `i3lock`)
 
 ## Setup
 

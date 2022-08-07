@@ -44,7 +44,7 @@ export QSYS_ROOTDIR="/home/igna/.cache/paru/clone/quartus-free/pkg/quartus-free-
 
 # Aliases
 alias cls='clear'
-alias i3lock='i3lock -i ${ZDOTDIR}/i3lock.png' #always lock using this img
+alias i3lock='[ 1 -eq $(xrandr --listactivemonitors | head -1 | tail --bytes=2) ] && i3lock -i ${ZDOTDIR}/i3lock.png || i3lock-multimonitor -i ${ZDOTDIR}/i3lock.png' # lock using i3lock-multimonitor if multiple monitors connected
 alias dragon='dragon-drag-and-drop'
 alias ll='ls -lht' # ls with extra info ordered by time modified
 alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
@@ -55,8 +55,8 @@ alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,heigh
 alias see='kitty +kitten icat' # display image
 function wTEC {
 	sudo ip link set wlp6s0 down
-	systemctl stop dhcpcd.service
-	systemctl start netctl.service
+	sudo systemctl stop dhcpcd.service
+	sudo systemctl start netctl.service
 	sudo netctl start wlp6s0-wTEC
 }
 

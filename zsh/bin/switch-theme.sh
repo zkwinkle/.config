@@ -5,7 +5,7 @@
 source pywal-env.sh
 
 function help(){
-	echo "Usage: $0 ["
+	echo "Help not implemented yet"
 }
 
 alias wal="wal -o ${POSTWAL} -i"
@@ -14,9 +14,10 @@ case $1 in
 
 	-h | --help | -help | --h | help)
 		#TODO add help print and also put it under the default case
+		help
 		;;
-	# Dark themes
 
+	# Dark themes
 	dark1)
 		wal "${WALLPAPERS}/Underbelly of the blue evening.jpeg" -b 1C1E26 #pink/blueish
 		;;
@@ -30,30 +31,27 @@ case $1 in
 		;;
 	
 	dark4)
-		wal "${WALLPAPERS}/Palace Grounds.jpeg" #mostly grey
+		wal "${WALLPAPERS}/noellemonade night fair.png" --saturate 0.4 # pinkish
 		;;
 
 	dark5)
-		wal "${WALLPAPERS}/Salubra's Shop.jpeg" -b 110e16 # Purple ish
+		wal "${WALLPAPERS}/SU sunny day.jpg" # colorful childish
 		;;
 
 	dark6)
 		wal "${WALLPAPERS}/Samurai Doge.png" -b 211b1a # p colorful
 		;;
 	
-	dark7)
-		wal "${WALLPAPERS}/Orange Sunset.jpg" -b 21120b # very orange
-		;;
 	
 
 	# Light themes
 	
 	light1)
-		wal "${WALLPAPERS}/Tiso on a Bench in Forgotten Crossroads.jpeg" -l --saturate 0.7
+		wal "${WALLPAPERS}/Underbelly of the blue evening.jpeg" -l
 		;;
 
 	light2)
-		wal "${WALLPAPERS}/Samurai Doge.png" -l --saturate 0.6 # p colorful
+		wal "${WALLPAPERS}/Train Station at City of Tears.jpeg" -l --saturate 0.5 # blue orange
 		;;
 	
 	# Green themes??
