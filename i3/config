@@ -132,7 +132,7 @@ set $ws10 "10 "
 
 # For double monitors
 exec --no-startup-id xrandr --output HDMI-0 --right-of eDP1
-bindsym $mod+m exec	--no-startup-id xrandr --output HDMI-0 --auto --right-of eDP-1-1
+bindsym $mod+m exec	--no-startup-id $HOME/.config/zsh/bin/display_toggle.sh
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
@@ -240,6 +240,12 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
+
+## For secondary monitor
+bindsym $Alt+XF86MonBrightnessDown exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 dec 5
+bindsym $Alt+XF86MonBrightnessUp exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 inc 5
+bindsym Ctrl+$Alt+XF86MonBrightnessDown exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 dec 1
+bindsym Ctrl+$Alt+XF86MonBrightnessUp exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 inc 1
 
 # Screenshots to clipboard
 bindsym Shift+Print exec $HOME/.config/shotgun/select_clipboard.sh
