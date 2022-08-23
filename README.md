@@ -18,6 +18,7 @@
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
 - i3lock-multimonitor for locking on more than one screen (aliased to `i3lock`)
+- optimus-manager to control discrete GPU (and it's conf in order to use nouveau in intel mode and access external monitors)
 
 ## Setup
 
@@ -48,5 +49,5 @@ You also need **ffmpeg** in order for the post-wal.sh script to work correctly a
 ```
 ln -s .config/.Xmodmap .Xmodmap
 ln -s .cache/wal/colors.Xresources .Xresources
-
+ln -s .config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 ```
