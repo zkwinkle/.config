@@ -54,9 +54,9 @@ alias dsf='diff-so-fancy'
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 alias see='kitty +kitten icat' # display image
 function wTEC {
-	sudo ip link set wlp6s0 down
 	sudo systemctl stop dhcpcd.service
 	sudo systemctl start netctl.service
+	sudo ip link set wlp6s0 down
 	sudo netctl start wlp6s0-wTEC
 }
 
