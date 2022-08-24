@@ -1,12 +1,7 @@
 #!/bin/sh
 
-if optimus-manager --print-mode | grep "integrated"; then
-	laptop=eDP-1
-	hdmi=HDMI-1-1
-else
-	laptop=eDP-1-1
-	hdmi=HDMI-0
-fi
+laptop=$(get_display.sh -l)
+hdmi=$(get_display.sh -h)
 
 if xrandr | grep "$hdmi connected"; then
 	if xrandr --listmonitors | grep "$laptop"; then

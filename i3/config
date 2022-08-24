@@ -19,6 +19,9 @@ smart_borders on
 set $mod Mod4
 set $Alt Mod1
 
+# Add scripts dir to path
+set $SCRIPTS $HOME/.config/zsh/bin
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -131,8 +134,8 @@ set $ws9 "9 "
 set $ws10 "10 "
 
 # For double monitors
-exec --no-startup-id xrandr --output HDMI-0 --right-of eDP1
-bindsym $mod+m exec	--no-startup-id $HOME/.config/zsh/bin/display_toggle.sh
+bindsym $mod+m exec	--no-startup-id "PATH=$SCRIPTS:$PATH; display_toggle.sh"
+
 bindsym $mod+greater move workspace to output right
 bindsym $mod+less move workspace to output left
 
@@ -230,7 +233,6 @@ bar {
     }
 }
 
-
 # Set keyboard language keybind
 exec setxkbmap us altgr-intl
 bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/.Xmodmap
@@ -242,10 +244,11 @@ bindsym Ctrl+XF86MonBrightnessDown exec xbacklight -dec 1
 bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
 
 ## For secondary monitor
-bindsym $Alt+XF86MonBrightnessDown exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 dec 5
-bindsym $Alt+XF86MonBrightnessUp exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 inc 5
-bindsym Ctrl+$Alt+XF86MonBrightnessDown exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 dec 1
-bindsym Ctrl+$Alt+XF86MonBrightnessUp exec $HOME/.config/zsh/bin/mbrightness.zsh HDMI-0 inc 1
+
+bindsym $Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) dec 5"
+bindsym $Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) inc 5"
+bindsym Ctrl+$Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) dec 1"
+bindsym Ctrl+$Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) inc 1"
 
 # Screenshots to clipboard
 bindsym Shift+Print exec $HOME/.config/shotgun/select_clipboard.sh
