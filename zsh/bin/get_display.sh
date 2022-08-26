@@ -1,12 +1,8 @@
 #!/bin/sh
 
-if optimus-manager --print-mode | grep "integrated" > /dev/null; then
-	hdmi=HDMI-1-1
-	laptop=eDP-1
-else
-	hdmi=HDMI-0
-	laptop=eDP-1-1
-fi
+
+hdmi=$(xrandr --current | grep HDMI | awk '{print $1;}')
+laptop=$(xrandr --current | grep eDP | awk '{print $1;}')
 
 PROGRAM_NAME=get_display.sh
 
@@ -16,7 +12,7 @@ TEMP=$(getopt -n $PROGRAM_NAME -o lhLH \
 	-- "$@")
 
 # Die if they fat finger arguments, this program will be run as root
-#[ $? = 0 ] || $(echo "Error parsing arguments."; exit 1)
+[ $? = 0 ] || exit 1
 
 eval set -- "$TEMP"
 case $1 in
