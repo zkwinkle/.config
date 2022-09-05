@@ -47,6 +47,15 @@ M.general = {
 		-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 		["p"] = { map = 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
 	},
+
+	t = {
+		["<Esc><Esc>"] = { map = "<C-\\><C-n>" },
+		["<C-h>"] = { map = "<C-\\><C-n><C-w>h" },
+		["<C-j>"] = { map = "<C-\\><C-n><C-w>j" },
+		["<C-k>"] = { map = "<C-\\><C-n><C-w>k" },
+		["<C-l>"] = { map = "<C-\\><C-n><C-w>l" },
+	},
+
 	all = {
 		-- Shortcutting split navigation
 		["<C-h>"] = { map = "<C-w>h" },
