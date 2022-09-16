@@ -5,7 +5,7 @@
 		"fullscreen_mode": 0,
 		"layout": "splith",
 		"marks": [],
-		"percent": 1,
+		"percent": 0.25,
 		"type": "con",
 		"nodes": [
 			{
@@ -25,84 +25,58 @@
 						"type": "con",
 						"nodes": [
 							{
-								"border": "pixel",
-								"current_border_width": 3,
+								"border": "normal",
 								"floating": "auto_off",
-								"geometry": {
-									"height": 1055,
-									"width": 1920,
-									"x": 0,
-									"y": 0
-								},
+								"layout": "splith",
 								"marks": [],
-								"name": "Discord",
-								"percent": 0.714285714285714,
-								"swallows": [
+								"percent": 1,
+								"type": "con",
+								"nodes": [
 									{
-										"instance": "^discord$"
-									}
-								],
-								"type": "con"
-							},
-							{
-								"border": "pixel",
-								"current_border_width": 3,
-								"floating": "auto_off",
-								"geometry": {
-									"height": 1063,
-									"width": 384,
-									"x": 1536,
-									"y": 0
-								},
-								"marks": [],
-								"name": "Telegram (4)",
-								"percent": 0.285714285714286,
-								"swallows": [
+										"border": "pixel",
+										"current_border_width": 3,
+										"floating": "auto_off",
+										"geometry": {
+											"height": 1055,
+											"width": 1920,
+											"x": 0,
+											"y": 0
+										},
+										"marks": [],
+										"name": "#💬general | Study Hall - Discord",
+										"percent": 0.714285714285714,
+										"swallows": [
+											{
+												"instance": "^discord$"
+											}
+										],
+										"type": "con"
+									},
 									{
-										"instance": "^telegram-desktop$"
+										"border": "pixel",
+										"current_border_width": 3,
+										"floating": "auto_off",
+										"geometry": {
+											"height": 1063,
+											"width": 384,
+											"x": 1536,
+											"y": 0
+										},
+										"marks": [],
+										"name": "Telegram (29)",
+										"percent": 0.285714285714286,
+										"swallows": [
+											{
+												"instance": "^telegram-desktop$"
+											}
+										],
+										"type": "con"
 									}
-								],
-								"type": "con"
+								]
 							}
 						]
 					}
 				]
-			}
-		]
-	},
-	{
-		"border": "normal",
-		"floating": "auto_off",
-		"layout": "splith",
-		"marks": [],
-		"percent": null,
-		"rect": {
-			"height": 810,
-			"width": 960,
-			"x": 480,
-			"y": 122
-		},
-		"type": "floating_con",
-		"nodes": [
-			{
-				"border": "pixel",
-				"current_border_width": 3,
-				"floating": "user_on",
-				"geometry": {
-					"height": 1055,
-					"width": 1920,
-					"x": 0,
-					"y": 0
-				},
-				"marks": [],
-				"name": "zsh",
-				"percent": 1,
-				"swallows": [
-					{
-						"instance": "^kitty$"
-					}
-				],
-				"type": "con"
 			}
 		]
 	}

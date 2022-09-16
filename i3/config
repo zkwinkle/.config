@@ -261,6 +261,7 @@ bindsym Ctrl+Print exec $HOME/.config/shotgun/screen_save.sh
 
 # Run scrip to load layouts (you can modify layouts with layout_manager.sh which is in the same directory)
 exec $HOME/.config/i3-layout-manager/load_layouts.sh $default_terminal $ws2 $ws9
+bindsym $mod+$Alt+l exec $HOME/.config/i3-layout-manager/layout_manager.sh
 # This also leaves you in workspace 2 with a terminal open
 
 # Execute default apps and workspace assignment
