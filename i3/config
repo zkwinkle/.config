@@ -270,7 +270,7 @@ assign [class="zoom"] $ws4
 assign [class="Microsoft Teams - Preview"] $ws4
 assign [class="teams-for-linux"] $ws4
 assign [class="obsidian"] $ws3
-assign [class="Thunderbird"] $ws8
+assign [instance="thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
 
