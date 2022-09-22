@@ -43,11 +43,12 @@
 											"y": 0
 										},
 										"marks": [],
-										"name": "#💬general | Study Hall - Discord",
+										"name": "Discord",
 										"percent": 0.714285714285714,
 										"swallows": [
 											{
-												"instance": "^discord$"
+												"instance": "^discord$",
+												"title": "^.+\\ \\-\\ Discord$"
 											}
 										],
 										"type": "con"
