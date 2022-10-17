@@ -1,9 +1,9 @@
 require "core.options"
 
--- comment
 local utils = require "core.utils"
 local mappings = require "core.mappings"
---mappings.lspconfig = nil
-for _, mapping in pairs(mappings) do
+for k, mapping in pairs(mappings) do
+	if k == 'lspconfig' then goto continue end
 	utils.load_mapping(mapping, { noremap = true })
+	::continue::
 end
