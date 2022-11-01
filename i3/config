@@ -64,7 +64,7 @@ bindsym $mod+Control+space exec rofi -show window
 # Rofi calc
 bindsym $mod+c exec rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip" -kb-accept-custom Ctrl+C
 # Rofi emoji
-bindsym $mod+e exec rofimoji -s neutral -a clipboard --keybinding-copy Ctrl+c --max-recent 0
+bindsym $mod+e exec rofimoji -s light -a clipboard --keybinding-copy Ctrl+c --max-recent 0
 bindsym $mod+Ctrl+e exec rofimoji -s ask -a clipboard --keybinding-copy Ctrl+c --max-recent 0
 
 # Disable focus following the mouse
@@ -270,7 +270,7 @@ assign [class="zoom"] $ws4
 assign [class="Microsoft Teams - Preview"] $ws4
 assign [class="teams-for-linux"] $ws4
 assign [class="obsidian"] $ws3
-assign [instance="thunderbird"] $ws8
+assign [class="thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
 
