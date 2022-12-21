@@ -63,6 +63,7 @@ function wTEC {
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
 PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:${HOME}/.cargo/bin
 fpath=(${fpath} ${ZDOTDIR}/Completion) # Auto-completion
 
 # Tab names
