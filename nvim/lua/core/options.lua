@@ -4,7 +4,7 @@ local g = vim.g
 g.mapleader = " "
 
 opt.laststatus = 3 -- global statusline
-opt.fillchars = { eob = " " }
+opt.fillchars = { eob = " ", stl = " " }
 opt.errorbells = false
 opt.visualbell = false
 opt.hidden = true

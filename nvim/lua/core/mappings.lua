@@ -95,7 +95,7 @@ M.lspconfig = {
 		["d]"] = { map = vim.diagnostic.goto_next },
 		["d\\"] = { map = vim.diagnostic.open_float },
 		--["<leader>q"] =  { map = vim.diagnostic.setloclist  },
-		["<leader>=="] = { map = vim.lsp.buf.formatting },
+		["<leader>=="] = { map = function() vim.lsp.buf.format { async = true } end },
 		["<leader>r"] = { map = vim.lsp.buf.rename },
 	},
 }
