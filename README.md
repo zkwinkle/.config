@@ -6,8 +6,8 @@
 - Shell: zsh
 - Terminal: kitty
 - Cholor schemes: pywal (read below for reqs)
-- Text editor: Neovim
-- Screenshots: shotgun
+- Text editor: Neovim (nvim-packer-git for plugins)
+- Screenshots: shotgun + hacksaw
 - rofi:
   - rofimoji
 	- rofi-calc
@@ -22,9 +22,31 @@
 
 ## Setup
 
+### Random stuff
+
+python
+xclip
+xdotool
+xorg-xbacklight
+pulseaudio
+nerd-fonts-jetbrains-mono
+ttf-jetbrains-mono
+alsa-utils (required by i3status-rust)
+nerd-fonts-jetbrains-mono
+jq (layout_manager dependency)
+htop
+
+#### Stuff i3 execs while starting up (remove from config or install)
+firefox
+thunderbird
+telegram-desktop
+discord
+spotify
+feh
+
 ### zsh
 
-Loot at zsh/.example-zshenv and copy it to /etc/zsh/zshenv.
+Loot at zsh/example-zshenv and copy it to /etc/zsh/zshenv.
 
 Also give executable permission to all the scripts in /zsh/bin:
 ```
@@ -38,6 +60,20 @@ I have a sane default color scheme, but to use the pretty color schemes that mat
 - telegram: [telegram-palette-gen](https://github.com/agnipau/telegram-palette-gen) 
 - [Thunderbird](https://addons.thunderbird.net/en-US/thunderbird/addon/pywalfox/) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/): Pywalfox extension
 
+### Disabling pywal
+On `i3/config` comment line:
+```
+exec_always wal -R # restores last colorscheme
+```
+On `zsh/.zshrc` comment line:
+```
+(cat ~/.cache/wal/sequences &)
+```
+On `rofi/config.rasi` comment line:
+```
+@theme "~/.cache/wal/colors-rofi-light.rasi"
+```
+
 #### Considerations
 Make sure to edit the variables in zsh/bin/pywal-env.sh to reflect the directories where you'll store wallpapers in your system, then for the current themes to work you must copy the /wal/wallpapers dir to $HOME/Pictures/Wallpapers (or whichever dir you choose).
 
@@ -47,7 +83,13 @@ You also need **ffmpeg** in order for the post-wal.sh script to work correctly a
 
 ### Symlinks
 ```
-ln -s .config/.Xmodmap .Xmodmap
-ln -s .cache/wal/colors.Xresources .Xresources
-ln -s .config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
+ln -s ~/.config/.Xmodmap ~/.Xmodmap
+ln -s ~/.cache/wal/colors.Xresources ~/.Xresources
+ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
+```
+
+### Hide untracked files
+Beacause this repo isn't being symlinked into .config but is instead the .config itself:
+```
+git config --local status.showUntrackedFiles no
 ```
