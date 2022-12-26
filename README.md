@@ -10,11 +10,11 @@
 - Screenshots: shotgun + hacksaw
 - rofi:
   - rofimoji
-	- rofi-calc
+  - rofi-calc
 - fetches:
-	- neofetch
-	- bunnyfetch
-- preferred login manager: lightdm-mini-greeter
+  - neofetch
+  - bunnyfetch
+- preferred login manager: lightdm-mini-greeter (needs lightdm, accountsservice, and some config)
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
 - i3lock-multimonitor for locking on more than one screen (aliased to `i3lock`)
@@ -24,17 +24,28 @@
 
 ### Random stuff
 
-python
-xclip
-xdotool
-xorg-xbacklight
-pulseaudio
-nerd-fonts-jetbrains-mono
-ttf-jetbrains-mono
-alsa-utils (required by i3status-rust)
-nerd-fonts-jetbrains-mono
-jq (layout_manager dependency)
-htop
+- python
+- rustup (and then run `rustup default stable`)
+- git
+- networkmanager
+- ripgrep
+- fd
+- xclip
+- xdotool
+- openssh
+- keychain
+- usbutils
+- pulseaudio
+- nerd-fonts-jetbrains-mono
+- ttf-jetbrains-mono
+- ttf-font-awesome-4
+- noto-fonts-emoji
+- alsa-utils (required by i3status-rust)
+- jq (layout_manager dependency)
+- htop
+- ungoogled-chromium-bin
+- ffmpeg
+- man-db
 
 #### Stuff i3 execs while starting up (remove from config or install)
 firefox
@@ -59,6 +70,10 @@ I have a sane default color scheme, but to use the pretty color schemes that mat
 - discord: [pywal-discord](https://github.com/FilipLitwora/pywal-discord) (+ betterdiscord and betterdiscordctl) 
 - telegram: [telegram-palette-gen](https://github.com/agnipau/telegram-palette-gen) 
 - [Thunderbird](https://addons.thunderbird.net/en-US/thunderbird/addon/pywalfox/) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/): Pywalfox extension
+
+#### Packages
+- pywal-git
+- python-pywalfox
 
 ### Disabling pywal
 On `i3/config` comment line:
