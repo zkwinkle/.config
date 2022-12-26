@@ -3,7 +3,7 @@
 laptop=$(get_display.sh -l)
 hdmi=$(get_display.sh -h)
 
-if xrandr | grep "$hdmi connected"; then
+if [ -n "$hdmi" ] && xrandr | grep "$hdmi connected"; then
 	if xrandr --listmonitors | grep "$laptop"; then
 		xrandr --output "$laptop" --off --output "$hdmi" --auto
 	else

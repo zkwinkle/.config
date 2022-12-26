@@ -11,16 +11,16 @@ TEMP=$(getopt -n $PROGRAM_NAME -o lhLH \
 	--long laptop,hdmi \
 	-- "$@")
 
-# Die if they fat finger arguments, this program will be run as root
+# Die if they fat finger arguments
 [ $? = 0 ] || exit 1
 
 eval set -- "$TEMP"
 case $1 in
 	-l|-L|--laptop)
-		echo $laptop
+		echo "$laptop"
 		;;
 	-h|-H|--hdmi)
-		echo $hdmi
+		echo "$hdmi"
 		;;
 	*)
 		printf "Unknown option %s\n" "$1"
