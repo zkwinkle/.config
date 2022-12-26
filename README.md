@@ -36,16 +36,21 @@
 - keychain
 - usbutils
 - pulseaudio
+- pulseaudio-bluetooth (for wireless headphones)
 - nerd-fonts-jetbrains-mono
 - ttf-jetbrains-mono
 - ttf-font-awesome-4
-- noto-fonts-emoji
 - alsa-utils (required by i3status-rust)
 - jq (layout_manager dependency)
 - htop
 - ungoogled-chromium-bin
 - ffmpeg
 - man-db
+- xorg-xbacklight
+- bluez
+- bluez-utils
+- noto-fonts-cjk
+- noto-fonts-emoji
 
 #### Stuff i3 execs while starting up (remove from config or install)
 firefox
@@ -102,6 +107,68 @@ ln -s ~/.config/.Xmodmap ~/.Xmodmap
 ln -s ~/.cache/wal/colors.Xresources ~/.Xresources
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 ```
+
+### udev rules
+Copy the necessary udev rules from udev into /etc/udev/rules.d
+```
+sudo cp ~/.config/udev/backlight.rules /etc/udev/rules.d/
+```
+
+### Groups
+Add yourself to the necessary groups (this is for user `igna`):
+```
+sudo usermod -aG video igna
+```
+
+### Framework Config
+Because framework is HiDPI, for stuff not to be tiny, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.
+```
+Section "Monitor"
+		Identifier "eDP-1"
+		Modeline "1920x1280_60.00"  206.25  1920 2056 2256 2592  1280 1283 1293 1327 -hsync +vsync
+		Option "PreferredMode" "1920x1280_60.00"
+EndSection
+```
+
+#### Better sleep
+Add the following kernel parameter in `/boot/loader/entries/XX.conf` in the `options` line:
+- `mem_sleep_default=deep` ( Change suspend mode to suspend 2 RAM which is much more efficient )
+
+#### Fix periodic freezes
+Add the following kernel parameter in `/boot/loader/entries/XX.conf` in the `options` line:
+- `i915.enable_psr=0` ( disable panel self refresh which causes periodic freezes )
+
+Doing this will worsen battery life so only do it if necessary.
+
+
+#### Brightness keys
+Add file `/etc/modprobe.d/framework-als-deactivate.conf` with the following contents:
+```
+blacklist hid_sensor_hub
+```
+for brightness keys to be detected. This disables the light sensor.
+
+#### Better thermals
+[Reduce the fan noise](https://wiki.archlinux.org/title/Framework_Laptop#Lowering_Noise_of_Fans)
+
+#### Touchpad config
+This is my preferred config for the touchpad, write the following to a file in `/usr/share/X11/xorg.conf.d/30-touchpad.conf`:
+```
+Section "InputClass"
+    Identifier "tap touchpad instead of hard regions"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lrm"
+		Option "TappingDrag" "on"
+		Option "TappingDragLock" "on"
+		Option "ClickMethod" "clickfinger"
+		Option "ClickMethod" "buttonareas"
+		Option "ScrollMethod" "twofinger"
+EndSection 
+```
+
+Requires installation of `libinput` ([docs](https://man.archlinux.org/man/libinput)).
 
 ### Hide untracked files
 Beacause this repo isn't being symlinked into .config but is instead the .config itself:
