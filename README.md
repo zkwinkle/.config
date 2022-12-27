@@ -53,12 +53,12 @@
 - noto-fonts-emoji
 
 #### Stuff i3 execs while starting up (remove from config or install)
-firefox
-thunderbird
-telegram-desktop
-discord
-spotify
-feh
+- firefox
+- thunderbird
+- telegram-desktop
+- discord
+- spotify (last I installed the AUR package was broken, check AUR page for how to fix)
+- feh
 
 ### zsh
 
@@ -119,6 +119,16 @@ Add yourself to the necessary groups (this is for user `igna`):
 ```
 sudo usermod -aG video igna
 ```
+
+### Multiple PulseAudio users
+The primary user setup is included in the `pulse/default.pa` file. For other users to access the PulseAudio daemon they must first, be included in the sharepulse group. Secondly, add the following `~/.config/pulse/client.conf` file:
+
+```
+default-server = unix:/tmp/pulse-socket
+```
+
+and lastly, copy the primary user's pulseaudio cookie. [Reference](https://wiki.archlinux.org/title/PulseAudio/Examples#Allowing_multiple_users_to_share_a_PulseAudio_daemon).
+
 
 ### Framework Config
 Because framework is HiDPI, for stuff not to be tiny, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.
