@@ -162,7 +162,7 @@ for brightness keys to be detected. This disables the light sensor.
 [Reduce the fan noise](https://wiki.archlinux.org/title/Framework_Laptop#Lowering_Noise_of_Fans)
 
 #### Touchpad config
-This is my preferred config for the touchpad, write the following to a file in `/usr/share/X11/xorg.conf.d/30-touchpad.conf`:
+This is my preferred config for the touchpad, write the following to a file in `/etc/X11/xorg.conf.d/30-touchpad.conf`:
 ```
 Section "InputClass"
     Identifier "tap touchpad instead of hard regions"
@@ -175,10 +175,11 @@ Section "InputClass"
 		Option "ClickMethod" "clickfinger"
 		Option "ClickMethod" "buttonareas"
 		Option "ScrollMethod" "twofinger"
+		Option "DisableWhileTyping" 1
 EndSection 
 ```
 
-Requires installation of `libinput` ([docs](https://man.archlinux.org/man/libinput)).
+Requires installation of `libinput` ([docs](https://man.archlinux.org/man/libinput.4)).
 
 ### Hide untracked files
 Beacause this repo isn't being symlinked into .config but is instead the .config itself:
