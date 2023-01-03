@@ -37,6 +37,7 @@
 - usbutils
 - pulseaudio
 - pulseaudio-bluetooth (for wireless headphones)
+- inotify-tools (for pulseaudio shared daemon)
 - nerd-fonts-jetbrains-mono
 - ttf-jetbrains-mono
 - ttf-font-awesome-4
@@ -121,14 +122,12 @@ sudo usermod -aG video igna
 ```
 
 ### Multiple PulseAudio users
-The primary user setup is included in the `pulse/default.pa` file. For other users to access the PulseAudio daemon they must first, be included in the sharepulse group. Secondly, add the following `~/.config/pulse/client.conf` file:
-
+By default pulseaudio is set up in a way that multiple users can share a daemon. To disable this behaviour, on i3/config comment out the line
 ```
-default-server = unix:/tmp/pulse-socket
+exec "PATH=$SCRIPTS:$PATH; pulseaudio-shared"
 ```
 
-and lastly, copy the primary user's pulseaudio cookie. [Reference](https://wiki.archlinux.org/title/PulseAudio/Examples#Allowing_multiple_users_to_share_a_PulseAudio_daemon).
-
+And remove the files `pulse/client.conf` and `pulse/default.pa`.
 
 ### Framework Config
 Because framework is HiDPI, for stuff not to be tiny, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.

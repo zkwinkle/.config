@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+set -eu
+
+# The group with access to the shared PulseAudio daemon.
+PA_GROUP=sharepulse
+
+# The shared directory.
+PA_DIR=/tmp/sharepulse
+
+# Restrict access to users outside of the group.
+umask 007
+
+# Create a group-restricted common directory for the socket and cookie if missing.
+if [[ ! -e $PA_DIR ]]
+then
+  /usr/bin/mkdir -p -- "$PA_DIR"
+  /usr/bin/chgrp -- "$PA_GROUP" "$PA_DIR"
+  /usr/bin/chmod -- g+s "$PA_DIR"
+fi
+
+function start_daemon()
+{
+
+  # Only start the daemon if one is not already running.
+  if [[ ! -e $PA_DIR/socket ]]
+  then
+    echo "Attempting to (re)start the PulseAudio daemon."
+
+    # Create a new random common cookie.
+    /usr/bin/dd if=/dev/urandom of="$PA_DIR/cookie" bs=256 count=1
+
+    # Copy it to the configuration directory of the user running the daemon.
+    /usr/bin/cp -- "$PA_DIR/cookie" "${XDG_CONFIG_HOME:-$HOME/.config}/pulse/cookie"
+
+    # Start the daemon.
+    /usr/bin/pulseaudio "$@" || true
+
+    # Kill the daemon if it is not the owner of the socket.
+    if [[ ! -O $PA_DIR/socket ]]
+    then
+      /usr/bin/pulseaudio --check && /usr/bin/pulseaudio -k
+    fi
+  fi
+}
+
+# Restart the daemon when necessary.
+while true
+do
+  # Wait for the socket to be deleted when a running daemon is killed. If the
+  # socket does not exist then this will be skipped.
+  inotifywait -e delete_self "$PA_DIR/socket" || true
+  start_daemon "$@"
+done
