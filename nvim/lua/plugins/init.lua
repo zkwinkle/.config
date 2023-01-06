@@ -48,13 +48,13 @@ local plugins = {
 
 
 	["lukas-reineke/indent-blankline.nvim"] = {
-	  opt = true,
-	  setup = function()
-	    require("core.lazy_load").on_file_open "indent-blankline.nvim"
-	  end,
-	  config = function()
-	    require("plugins.configs.others").blankline()
-	  end,
+		opt = true,
+		setup = function()
+			require("core.lazy_load").on_file_open "indent-blankline.nvim"
+		end,
+		config = function()
+			require("plugins.configs.others").blankline()
+		end,
 	},
 
 	["nvim-treesitter/nvim-treesitter"] = {
@@ -70,15 +70,15 @@ local plugins = {
 	},
 
 	-- git stuff
-	--["lewis6991/gitsigns.nvim"] = {
-	--  ft = "gitcommit",
-	--  setup = function()
-	--    require("core.lazy_load").gitsigns()
-	--  end,
-	--  config = function()
-	--    require("plugins.configs.others").gitsigns()
-	--  end,
-	--},
+	["lewis6991/gitsigns.nvim"] = {
+		ft = "gitcommit",
+		setup = function()
+			require("core.lazy_load").gitsigns()
+		end,
+		config = function()
+			require("plugins.configs.others").gitsigns()
+		end,
+	},
 
 	-- lsp stuff
 

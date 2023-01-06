@@ -101,4 +101,18 @@ M.lspconfig = {
 	},
 }
 
+M.gitsigns = {
+	opt = true,
+
+	n = {
+		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
+		["gu"] = { map = ":Gitsigns undo_stage_hunk<CR>" }
+	},
+
+	v = {
+		["gh"] = { map = ":Gitsigns stage_hunk<CR>" }
+	},
+
+}
+
 return M
