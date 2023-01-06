@@ -35,13 +35,13 @@ local plugins = {
 		end
 	},
 
-	-- fade inactive panes
-	['TaDaa/vimade'] = {
-		opt = true, event = 'BufAdd',
-		config = function()
-			vim.g.vimade = { fadelevel = 0.65 }
-		end
-	},
+	-- fade inactive panes (BROKEN AS OF JAN 6 2023)
+	--['TaDaa/vimade'] = {
+	--	opt = true, event = 'BufAdd',
+	--	config = function()
+	--		vim.g.vimade = { fadelevel = 0.65 }
+	--	end
+	--},
 
 	---- Misc
 	['lambdalisue/suda.vim'] = {},
