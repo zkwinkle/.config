@@ -1,6 +1,6 @@
 local utils = require "core.utils"
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local lsp_mappings = require('core.mappings').lspconfig
 	utils.load_mapping(lsp_mappings, { noremap = true, buffer = bufnr })
 end

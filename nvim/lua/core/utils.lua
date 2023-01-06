@@ -2,6 +2,7 @@ local M = {}
 
 M.load_mapping = function(mapping, extra_opts)
 	for mode, mode_values in pairs(mapping) do
+		if mode == "opt" then goto continue end
 		for keybind, mapping_info in pairs(mode_values) do
 			if mode == "all" then
 				mode = ""
@@ -17,6 +18,7 @@ M.load_mapping = function(mapping, extra_opts)
 
 			vim.keymap.set(mode, keybind, mapping_info.map, opts)
 		end
+		::continue::
 	end
 end
 

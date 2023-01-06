@@ -83,6 +83,7 @@ M.nvimtree = {
 
 M.lspconfig = {
 	-- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+	opt = true,
 
 	n = {
 		["<leader>gD"] = { map = vim.lsp.buf.declaration },
