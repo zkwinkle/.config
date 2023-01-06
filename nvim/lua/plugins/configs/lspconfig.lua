@@ -39,7 +39,7 @@ local language_servers = {
 			},
 		},
 	},
-	--'pylsp',
+	['clangd'] = {}
 }
 
 local lspconfig = require 'lspconfig'
