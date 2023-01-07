@@ -115,4 +115,12 @@ M.gitsigns = {
 
 }
 
+M.fzf_lua = {
+	n = {
+		["<C-p>"] = { map = function() require('fzf-lua').files() end },
+		["<C-b>"] = { map = function() require('fzf-lua').buffers() end },
+		["<C-g>"] = { map = function() require('fzf-lua').grep_project() end }
+	}
+}
+
 return M

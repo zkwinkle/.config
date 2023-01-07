@@ -6,9 +6,9 @@ local plugins = {
 	["lewis6991/impatient.nvim"] = {},
 
 	---- nvim tree related plugins
-	["kyazdani42/nvim-web-devicons"] = {},
+	["nvim-tree/nvim-web-devicons"] = {},
 
-	["kyazdani42/nvim-tree.lua"] = {
+	["nvim-tree/nvim-tree.lua"] = {
 		-- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 		config = function()
 			require "plugins.configs.nvim-tree"
@@ -25,7 +25,7 @@ local plugins = {
 		end },
 
 	['nvim-lualine/lualine.nvim'] = {
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 		opt = true,
 		setup = function()
 			require("core.lazy_load").on_file_open "lualine.nvim"
@@ -95,6 +95,14 @@ local plugins = {
 	--    require("plugins.configs.others").comment()
 	--  end,
 	--},
+
+	-- fzf
+	['ibhagwan/fzf-lua'] = {
+		requires = { 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			require "plugins.configs.fzf-lua"
+		end,
+	}
 
 }
 
