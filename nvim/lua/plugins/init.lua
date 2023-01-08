@@ -37,6 +37,14 @@ local plugins = {
 		end
 	},
 
+
+	['norcalli/nvim-colorizer.lua'] = {
+		requires = { '~/.config/nvim/lua/plugins/nvim-base16' },
+		config = function()
+			require("colorizer").setup()
+		end
+	},
+
 	-- fade inactive panes (BROKEN AS OF JAN 6 2023)
 	--['TaDaa/vimade'] = {
 	--	opt = true, event = 'BufAdd',
