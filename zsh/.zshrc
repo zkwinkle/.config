@@ -42,7 +42,7 @@ export QSYS_ROOTDIR="/home/igna/.cache/paru/clone/quartus-free/pkg/quartus-free-
 # Aliases
 alias cls='clear'
 alias i3lock='[ 1 -eq $(xrandr --listactivemonitors | head -1 | tail --bytes=2) ] && i3lock -i ${ZDOTDIR}/i3lock.png || i3lock-multimonitor -i ${ZDOTDIR}/i3lock.png' # lock using i3lock-multimonitor if multiple monitors connected
-alias dragon='dragon-drag-and-drop'
+alias dragon='dragon-drop'
 alias ll='ls -lht' # ls with extra info ordered by time modified
 alias git-tree='git ls-tree -r --name-only HEAD | tree --fromfile'
 alias diff='diff -u'
