@@ -19,8 +19,8 @@ local plugins = {
 	--Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 	['psliwka/vim-smoothie'] = {},
 
-	-- For proper integration of base16 with other plugins
-	['RRethy/nvim-base16'] = {
+	-- Modified version of RRethy/nvim-base16
+	['~/.config/nvim/lua/plugins/nvim-base16'] = {
 		config = function()
 			require("plugins.configs.base16")
 		end

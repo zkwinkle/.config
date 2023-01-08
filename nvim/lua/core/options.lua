@@ -9,6 +9,7 @@ opt.errorbells = false
 opt.visualbell = false
 opt.hidden = true
 opt.signcolumn = "yes:1"
+opt.termguicolors = true
 
 -- Numbers
 opt.number = true
