@@ -172,3 +172,8 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 ### Base16
 - Add custom schemes for noellemonade pink and for my own base
 - Fix i3 base16 integration
+- Add hooks for reloading everything
+- Make script for my own themes that include wallpapers (underbelly and noellemonade)
+- Spicetify (or alternative spotify client) + spotify integration
+- better discord
+- somehow with firefox?? (thunderbird??? change to neomutt?)

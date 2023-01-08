@@ -207,40 +207,58 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Set colors from base16
-# Start flavours
-set $base00 #1C1E26 
-set $base01 #E57B94
-set $base02 #86DB83
-set $base03 #FAC29A
-set $base04 #26BBD9
-set $base05 #EE64AC
-set $base06 #59E1E3
-set $base07 #CBCED0
-set $base08 #6F6F70
-set $base09 #C13449
-set $base0A #398e4f
-set $base0B #F09383
-set $base0C #2762D8
-set $base0D #d88cc8
-set $base0E #908bf4
-set $base0F #E3E6EE
+# Set colors from base16: Start flavours
+## Base16 Blue Evening
+# Author: zkwinkle (http://github.com/zkwinkle) based on the "Underbelly of the blue evening" by Denis Istomin
+#
+# You can use these variables anywhere in the i3 configuration file.
+
+set $base00 #1C1E26
+set $base01 #2D303D
+set $base02 #3D4253
+set $base03 #4E536A
+set $base04 #B4B8C8
+set $base05 #CBCDD8
+set $base06 #E1E3E9
+set $base07 #F8F8FA
+set $base08 #E57B94
+set $base09 #F4908B
+set $base0A #F9C199
+set $base0B #21A990
+set $base0C #907BF4
+set $base0D #8BBBF4
+set $base0E #C58BF4
+set $base0F #EE64AC
 # End flavours
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 12
     position bottom
     status_command i3status-rs $HOME/.config/i3status-rust/config.toml
+
     colors {
-        separator #666666
         background $base00
-        statusline #dddddd
-        focused_workspace $base05 $base05 #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace $base01 $base01 #ffffff
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base0D $base0D $base00
+        active_workspace    $base03 $base03 $base00
+        inactive_workspace  $base01 $base01 $base04
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
     }
 }
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
 
 # Set keyboard language keybind
 exec setxkbmap us altgr-intl
@@ -294,9 +312,6 @@ for_window [class="Spotify"] move to workspace $ws10
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
-
-# Change focused border to match base16
-client.focused $base06 $base06 $base0f $base06 $base06
 
 #### External programs
 # Toggle pause/play spotify

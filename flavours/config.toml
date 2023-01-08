@@ -3,28 +3,30 @@ shell = "bash -c '{}'"
 [[items]]
 file = "~/.config/kitty/colors.conf"
 template = "kitty"
-subtemplate = "default-256"
+subtemplate = "custom-256"
 rewrite = true
 
-[[item]]
+[[items]]
 file = "~/.config/nvim/lua/plugins/configs/base16.lua"
 template = "nvim"
 rewrite = true
+#hook = "python ~/.config/flavours/hooks/neovim-reload.py"
 #hook = "reloadnvim"
 
-[[item]]
+[[items]]
 file = "~/.config/rofi/config.rasi"
 template = "rofi"
 rewrite = true
 
-[[item]]
+[[items]]
 file = "~/.Xresources"
 template = "xresources"
 subtemplate = "default-256"
 rewrite = true
 
-[[item]]
+[[items]]
 file = "~/.config/i3/config"
 template = "i3"
 subtemplate = "colors"
 rewrite = false
+hook = 'i3-msg reload'
