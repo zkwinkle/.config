@@ -207,7 +207,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Set colors from base16: Start flavours
+# Start flavours
 ## Base16 Blue Evening
 # Author: zkwinkle (http://github.com/zkwinkle) based on the "Underbelly of the blue evening" by Denis Istomin
 #
