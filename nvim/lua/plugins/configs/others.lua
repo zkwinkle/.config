@@ -17,8 +17,6 @@ M.blankline = function()
 			"alpha",
 			"packer",
 			"lspinfo",
-			--"TelescopePrompt",
-			--"TelescopeResults",
 			"lsp-installer",
 			"",
 		},
@@ -31,13 +29,13 @@ M.blankline = function()
 end
 
 M.gitsigns = function()
-  local present, gitsigns = pcall(require, "gitsigns")
+	local present, gitsigns = pcall(require, "gitsigns")
 
-  if not present then
-    return
-  end
+	if not present then
+		return
+	end
 
-  gitsigns.setup()
+	gitsigns.setup()
 
 	local git_mappings = require('core.mappings').gitsigns
 	utils.load_mapping(git_mappings, { noremap = true })

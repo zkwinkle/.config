@@ -106,11 +106,13 @@ M.gitsigns = {
 
 	n = {
 		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
-		["gu"] = { map = ":Gitsigns undo_stage_hunk<CR>" }
+		["gu"] = { map = ":Gitsigns undo_stage_hunk<CR>" },
+		["gn"] = { map = ":Gitsigns next_hunk<CR>" }
 	},
 
 	v = {
-		["gh"] = { map = ":Gitsigns stage_hunk<CR>" }
+		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
+		["gr"] = { map = ":Gitsigns reset_hunk<CR>" }
 	},
 
 }
