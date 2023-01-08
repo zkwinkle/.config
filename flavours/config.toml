@@ -1,0 +1,30 @@
+shell = "bash -c '{}'"
+
+[[items]]
+file = "~/.config/kitty/colors.conf"
+template = "kitty"
+subtemplate = "default-256"
+rewrite = true
+
+[[item]]
+file = "~/.config/nvim/lua/plugins/configs/base16.lua"
+template = "nvim"
+rewrite = true
+#hook = "reloadnvim"
+
+[[item]]
+file = "~/.config/rofi/themes/colors.rasi"
+template = "rofi"
+rewrite = true
+
+[[item]]
+file = "~/.Xresources"
+template = "xresources"
+subtemplate = "default-256"
+rewrite = true
+
+[[item]]
+file = "~/.config/i3/config"
+template = "i3"
+subtemplate = "colors"
+rewrite = false

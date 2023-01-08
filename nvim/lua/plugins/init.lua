@@ -19,10 +19,12 @@ local plugins = {
 	--Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
 	['psliwka/vim-smoothie'] = {},
 
-	['AlphaTechnolog/pywal.nvim'] = { as = 'pywal',
+	-- For proper integration of base16 with other plugins
+	['RRethy/nvim-base16'] = {
 		config = function()
-			require('pywal').setup()
-		end },
+			require("plugins.configs.base16")
+		end
+	},
 
 	['nvim-lualine/lualine.nvim'] = {
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true },

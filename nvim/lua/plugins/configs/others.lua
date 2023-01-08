@@ -4,8 +4,8 @@ local M = {}
 
 M.lualine = function()
 	require('lualine').setup {
-		options = { theme = 'pywal-nvim' },
-		extensions = { 'nvim-tree', 'quickfix', 'fzf' }
+		options = { theme = 'base16' },
+		extensions = { 'nvim-tree', 'fzf' }
 	}
 end
 

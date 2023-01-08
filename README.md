@@ -5,7 +5,7 @@
 - status bar: i3status-rust
 - Shell: zsh
 - Terminal: kitty
-- Cholor schemes: pywal (read below for reqs)
+- Cholor schemes: flavours (read below)
 - Text editor: Neovim (nvim-packer-git for plugins)
 - Screenshots: shotgun + hacksaw
 - rofi:
@@ -71,41 +71,16 @@ chmod +x ~/.config/zsh/bin
 ```
 
 
-### Cholor schemes (pywal)
-I have a sane default color scheme, but to use the pretty color schemes that match tbe bg you need to install [pywall](https://github.com/dylanaraps/pywal) (install direcly from git or the css template won't work), along with the following extensions for the differente applications:
-- discord: [pywal-discord](https://github.com/FilipLitwora/pywal-discord) (+ betterdiscord and betterdiscordctl) 
-- telegram: [telegram-palette-gen](https://github.com/agnipau/telegram-palette-gen) 
-- [Thunderbird](https://addons.thunderbird.net/en-US/thunderbird/addon/pywalfox/) & [Firefox](https://addons.mozilla.org/en-US/firefox/addon/pywalfox/): Pywalfox extension
-
-#### Packages
-- pywal-git
-- python-pywalfox
-
-### Disabling pywal
-On `i3/config` comment line:
+### Cholor schemes (flavours)
+I have a sane default color scheme, but to use the pretty color schemes that match the bg you need to install [flavours](https://github.com/Misterio77/flavours).
+Then run:
 ```
-exec_always wal -R # restores last colorscheme
+flavours update all
 ```
-On `zsh/.zshrc` comment line:
-```
-(cat ~/.cache/wal/sequences &)
-```
-On `rofi/config.rasi` comment line:
-```
-@theme "~/.cache/wal/colors-rofi-light.rasi"
-```
-
-#### Considerations
-Make sure to edit the variables in zsh/bin/pywal-env.sh to reflect the directories where you'll store wallpapers in your system, then for the current themes to work you must copy the /wal/wallpapers dir to $HOME/Pictures/Wallpapers (or whichever dir you choose).
-
-The images which you use for your themes in switch-themes.sh can be backed up with backup-wallpapers.sh, just make sure to configure the right wallpaper dir.
-
-You also need **ffmpeg** in order for the post-wal.sh script to work correctly and automatically set the image used by i3lock to match the wallpaper.
 
 ### Symlinks
 ```
 ln -s ~/.config/.Xmodmap ~/.Xmodmap
-ln -s ~/.cache/wal/colors.Xresources ~/.Xresources
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 ```
 
@@ -185,3 +160,15 @@ Beacause this repo isn't being symlinked into .config but is instead the .config
 ```
 git config --local status.showUntrackedFiles no
 ```
+
+## TODO
+
+Stuff I'd like to add/upgrade but haven't had the time to:
+
+- add cmp to nvim
+- change i3status-rust to polybar
+- Rice Rofi
+
+### Base16
+- Add custom schemes for noellemonade pink and for my own base
+- Fix i3 base16 integration

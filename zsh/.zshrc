@@ -1,6 +1,3 @@
-# Apply pywal color scheme
-(cat ~/.cache/wal/sequences &)
-
 # use vi keybinds
 bindkey -v
 

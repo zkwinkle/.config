@@ -207,17 +207,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Set colors from pywal
-# color given is the default if anything goes wrong
-set_from_resource $fg i3wm.color1 #ffffff
-set_from_resource $secondary_fg i3wm.color3 #2f343a
-
-set_from_resource $bg i3wm.color6 #EE64AC
-set_from_resource $secondary_bg i3wm.color5 #f0f0f0
-
-set_from_resource $light i3wm.color7 #f0f0f0
-set_from_resource $less_light i3wm.color8 #f0f0f0
-set_from_resource $dark i3wm.color0 #1C1E26
+# Set colors from base16
+# Start flavours
+set $base00 #1C1E26 
+set $base01 #E57B94
+set $base02 #86DB83
+set $base03 #FAC29A
+set $base04 #26BBD9
+set $base05 #EE64AC
+set $base06 #59E1E3
+set $base07 #CBCED0
+set $base08 #6F6F70
+set $base09 #C13449
+set $base0A #398e4f
+set $base0B #F09383
+set $base0C #2762D8
+set $base0D #d88cc8
+set $base0E #908bf4
+set $base0F #E3E6EE
+# End flavours
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 12
@@ -225,12 +233,12 @@ bar {
     status_command i3status-rs $HOME/.config/i3status-rust/config.toml
     colors {
         separator #666666
-        background $dark
+        background $base00
         statusline #dddddd
-        focused_workspace $bg $bg #ffffff
+        focused_workspace $base05 $base05 #ffffff
         active_workspace #333333 #333333 #ffffff
         inactive_workspace #333333 #333333 #888888
-        urgent_workspace $secondary_fg $secondary_fg #ffffff
+        urgent_workspace $base01 $base01 #ffffff
     }
 }
 
@@ -287,8 +295,8 @@ for_window [class="Spotify"] move to workspace $ws10
 bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
 
-# Change focused border to match pywall
-client.focused $bg $bg $fg $bg $bg
+# Change focused border to match base16
+client.focused $base06 $base06 $base0f $base06 $base06
 
 #### External programs
 # Toggle pause/play spotify
