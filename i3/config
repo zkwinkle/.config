@@ -304,13 +304,6 @@ bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotif
 
 # Reload background
 exec_always $HOME/.fehbg # reload last wallpaper
-exec_always wal -R # restores last colorscheme
-
-
-
-# Run python script to update corona sheets
-# exec python3 $HOME/Documents/Projects/Python/COVID-19_Tracker/sheets.py
-
 
 ## Hold mouse down
 bindsym $mod+n exec xdotool mousedown 1
