@@ -13,7 +13,7 @@ rewrite = true
 #hook = "reloadnvim"
 
 [[item]]
-file = "~/.config/rofi/themes/colors.rasi"
+file = "~/.config/rofi/config.rasi"
 template = "rofi"
 rewrite = true
 
