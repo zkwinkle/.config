@@ -188,4 +188,4 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 
 ### Polybar
 - Power (on/off/sleep/restart) menu
-- Music?
+- I'd like to maybe fit in music info and a volume _bar_, but it won't fit nicely in my current main bar, would need to think of a different design

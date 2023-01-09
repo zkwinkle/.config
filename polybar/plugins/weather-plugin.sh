@@ -8,7 +8,7 @@
 
 APIKEY=`cat $HOME/.owm-key`
 # if you leave these empty location will be picked based on your ip-adress
-CITY_NAME='Heredia'
+CITY_NAME='Santo Domingo'
 COUNTRY_CODE='CR'
 # Desired output language
 LANG="en"
@@ -39,7 +39,7 @@ TEMP_FONT_CODE=3
 # Wind settings _______________________________________________________________
 
 # Display info about the wind or not. yes/no
-DISPLAY_WIND="yes"
+DISPLAY_WIND="no"
 
 # Show beaufort level in windicon
 BEAUFORTICON="no"
@@ -77,6 +77,8 @@ COLD_TEMP=15
 # Display the weather description. yes/no
 DISPLAY_LABEL="yes"
 
+SEPARATOR="%{F$COLOR_SEPARATOR}|%{F-}"
+
 # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 if [ "$COLOR_TEXT" != "" ]; then
@@ -89,7 +91,6 @@ if [ -z "$CITY_NAME" ]; then
     CITY_NAME=$(echo $IPCURL | jq -r ".city")
     COUNTRY_CODE=$(echo $IPCURL | jq -r ".country")
 fi
-
 RESPONSE=""
 ERROR=0
 ERR_MSG=""
@@ -98,7 +99,7 @@ if [ $UNITS = "kelvin" ]; then
 else
     UNIT_URL="&units=$UNITS"
 fi
-URL="api.openweathermap.org/data/2.5/weather?appid=$APIKEY$UNIT_URL&lang=$LANG&q=$CITY_NAME,$COUNTRY_CODE"
+URL="api.openweathermap.org/data/2.5/weather?appid=$APIKEY$UNIT_URL&lang=$LANG&q=$(echo $CITY_NAME | sed 's/ /%20/g'),${COUNTRY_CODE}"
 
 function getData {
     ERROR=0
@@ -288,7 +289,7 @@ function setIcons {
 }
 
 function outputCompact {
-    OUTPUT="$CITY_NAME $WIND %{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END| $TEMP"
+    OUTPUT="$CITY_NAME $SEPARATOR $WIND%{T$WEATHER_FONT_CODE}%{F$ICON_COLOR}$ICON%{F-}%{T-} $ERR_MSG$COLOR_TEXT_BEGIN$DESCRIPTION$COLOR_TEXT_END$SEPARATOR $TEMP"
     # echo "Output: $OUTPUT" >> "$HOME/.weather.log"
     echo "$OUTPUT"
 }
