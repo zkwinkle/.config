@@ -38,3 +38,8 @@ template = "polybar"
 rewrite = true
 hook = 'reload-polybar.sh'
 light = false
+
+[[items]]
+file = "~/.config/polybar/plugins/weather-colors.sh"
+template = "weather"
+rewrite = true

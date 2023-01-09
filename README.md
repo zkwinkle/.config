@@ -64,14 +64,23 @@
 
 Loot at zsh/example-zshenv and copy it to /etc/zsh/zshenv.
 
-Also give executable permission to all the scripts in /zsh/bin:
+Also give executable permission to all the scripts:
 ```
-chmod +x ~/.config/zsh/bin
+chmod -R +x ~/.config/zsh/bin
+chmod -R +x ~/.config/polybar/plugins
 ```
 
+### Weather
+
+For the polybar weather plugin to work copy and paste the API key from 
+[OpenWeather](https://home.openweathermap.org/api_keys)
+into `$HOME/.owm-key`.
+
+In `weather/weather-plugin.sh` change CITYNAME and COUNTRYCODE if necessary. 
+Or leave empty for it to be based on IP (doesn't seem to work well :/ ).
 
 ### Cholor schemes (flavours)
-I have a sane default color scheme, but to use the pretty color schemes that match the bg you need to install [flavours](https://github.com/Misterio77/flavours).
+I have a sane default color scheme, but to be able to switch to other pretty color schemes you need to install [flavours](https://github.com/Misterio77/flavours).
 Then run:
 ```
 flavours update all
@@ -170,14 +179,13 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 
 ### Base16
 - Add custom scheme for noellemonade pink
-- Add hooks for reloading everything neovim (impossible)
 - Make script for my own themes that include wallpapers (underbelly and noellemonade)
+- bat config
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord
 - somehow with firefox?? (thunderbird??? change to neomutt?)
-- bat config
+- Add hooks for reloading everything neovim (impossible)
 
 ### Polybar
 - Power (on/off/sleep/restart) menu
-- Weather
 - Music?
