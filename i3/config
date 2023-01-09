@@ -229,7 +229,7 @@ set $base0E #C58BF4
 set $base0F #EE64AC
 # End flavours
 
-exec_always --no-startup-id "PATH=$SCRIPTS:$PATH; reload-polybar"
+exec_always --no-startup-id "PATH=$SCRIPTS:$PATH; reload-polybar.sh"
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
