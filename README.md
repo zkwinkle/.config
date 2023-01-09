@@ -1,8 +1,8 @@
 ## Stuff used
 
 - OS: Arch Linux
-- WM: i3-gaps
-- status bar: i3status-rust
+- WM: i3
+- status bar: polybar
 - Shell: zsh
 - Terminal: kitty
 - Cholor schemes: flavours (read below)
@@ -38,10 +38,8 @@
 - pulseaudio
 - pulseaudio-bluetooth (for wireless headphones)
 - inotify-tools (for pulseaudio shared daemon)
-- nerd-fonts-jetbrains-mono
 - ttf-jetbrains-mono
-- ttf-font-awesome-4
-- alsa-utils (required by i3status-rust)
+- nerd-fonts-jetbrains-mono
 - jq (layout_manager dependency)
 - htop
 - ungoogled-chromium-bin
@@ -52,6 +50,7 @@
 - bluez-utils
 - noto-fonts-cjk
 - noto-fonts-emoji
+- ttf-dejavu (polybar emoji)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
@@ -166,14 +165,19 @@ git config --local status.showUntrackedFiles no
 Stuff I'd like to add/upgrade but haven't had the time to:
 
 - add cmp to nvim
-- change i3status-rust to polybar
 - Rice Rofi
+- Fix _the font situation_ (polybar config is a mess, I would like to give it an emoji font that actually has all the emojis but as minimalist svg icons)
 
 ### Base16
-- Add custom schemes for noellemonade pink and for my own base
-- Fix i3 base16 integration
-- Add hooks for reloading everything
+- Add custom scheme for noellemonade pink
+- Add hooks for reloading everything neovim (impossible)
 - Make script for my own themes that include wallpapers (underbelly and noellemonade)
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord
 - somehow with firefox?? (thunderbird??? change to neomutt?)
+- bat config
+
+### Polybar
+- Power (on/off/sleep/restart) menu
+- Weather
+- Music?

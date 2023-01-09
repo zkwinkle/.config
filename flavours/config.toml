@@ -5,13 +5,13 @@ file = "~/.config/kitty/colors.conf"
 template = "kitty"
 subtemplate = "custom-256"
 rewrite = true
+hook = 'kitty @ --password="colors" set-colors ~/.config/kitty/colors.conf'
+light = true
 
 [[items]]
 file = "~/.config/nvim/lua/plugins/configs/base16.lua"
 template = "nvim"
 rewrite = true
-#hook = "python ~/.config/flavours/hooks/neovim-reload.py"
-#hook = "reloadnvim"
 
 [[items]]
 file = "~/.config/rofi/config.rasi"
@@ -30,3 +30,11 @@ template = "i3"
 subtemplate = "colors"
 rewrite = false
 hook = 'i3-msg reload'
+light = false
+
+[[items]]
+file = "~/.config/polybar/base16.ini"
+template = "polybar"
+rewrite = true
+hook = 'reload-polybar.sh'
+light = false
