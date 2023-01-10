@@ -1,0 +1,3 @@
+client-properties:
+    extension: .config
+    output: client-properties

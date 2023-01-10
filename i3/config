@@ -205,41 +205,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start flavours
-## Base16 Blue Evening
-# Author: zkwinkle (http://github.com/zkwinkle) based on the "Underbelly of the blue evening" by Denis Istomin
-#
-# You can use these variables anywhere in the i3 configuration file.
-
-set $base00 #1C1E26
-set $base01 #2D303D
-set $base02 #3D4253
-set $base03 #4E536A
-set $base04 #B4B8C8
-set $base05 #CBCDD8
-set $base06 #E1E3E9
-set $base07 #F8F8FA
-set $base08 #E57B94
-set $base09 #F4908B
-set $base0A #F9C199
-set $base0B #21A990
-set $base0C #907BF4
-set $base0D #8BBBF4
-set $base0E #C58BF4
-set $base0F #EE64AC
-# End flavours
+include client-properties
 
 exec_always --no-startup-id "PATH=$SCRIPTS:$PATH; reload-polybar.sh"
-
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
-
 
 # Set keyboard language keybind
 exec setxkbmap us altgr-intl

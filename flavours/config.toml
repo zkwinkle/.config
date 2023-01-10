@@ -25,10 +25,10 @@ subtemplate = "default-256"
 rewrite = true
 
 [[items]]
-file = "~/.config/i3/config"
+file = "~/.config/i3/client-properties"
 template = "i3"
-subtemplate = "colors"
-rewrite = false
+subtemplate = "client-properties"
+rewrite = true
 hook = 'i3-msg reload'
 light = false
 
