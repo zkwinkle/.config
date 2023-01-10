@@ -1,9 +1,10 @@
 #!/bin/sh
 
 CMD_NAME=theme
+THEMES_FILE="${ZDOTDIR}/.themes"
 
 get_image(){
-	
+
 	IMG_NAME="$1"
 
 	if [ -n "$XDG_CONFIG_HOME" ]; then
@@ -32,8 +33,7 @@ help(){
 	usage
 	echo "Set a predetermined theme (with bg and lock img)."
 	echo "Example: theme blue-evening"
-	echo "Make sure to keep the added options in sync with the" \
-		"autocompletion script located in ${ZDOTDIR}/Completion."
+	echo "To add new options, add them to the $THEMES_FILE file."	
 }
 
 case $1 in
@@ -44,22 +44,22 @@ case $1 in
 		exit 0
 		;;
 
-	# Dark themes
-	blue-evening)
-		get_image 'Underbelly of the blue evening.jpeg'
-		;;
-
-	pink-fair)
-		get_image 'noellemonade night fair.png'
-		;;
-
-	# Light themes
-
 	*)
-		echo "${CMD_NAME}: unrecognized theme '$1'"
-		usage
-		echo "Try '${CMD_NAME} --help' for more information."
-		exit 3
+		IMG=''
+		for THEME in $(cat $THEMES_FILE | sed 's/\([^:]*\):.*/\1/'); do
+			if [ "$1" = "$THEME" ]; then
+				get_image "$(cat $THEMES_FILE | grep "$THEME" \
+					| sed 's/[^:]*:\(.*\)/\1/')"
+								break
+			fi
+		done
+
+		if [ -z "$IMG" ]; then
+			echo "${CMD_NAME}: unrecognized theme '$1'"
+			usage
+			echo "Try '${CMD_NAME} --help' for more information."
+			exit 3
+		fi
 		;;
 
 esac

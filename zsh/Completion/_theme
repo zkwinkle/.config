@@ -1,11 +1,13 @@
 #compdef theme
+
+THEMES_FILE="${ZDOTDIR}/.themes"
+
 _theme() {
 
 	local -a commands
 
 	commands=(
-		"blue-evening"
-		"pink-fair"
+		$(cat $THEMES_FILE | sed 's/\([^:]*\):.*/\1/')
 	)
 
 	_describe -t commands 'commands' commands

@@ -86,6 +86,14 @@ Then run:
 flavours update all
 ```
 
+#### Custom themes
+I created a script called `theme` that lets you switch amongst some custom themes that automatically set the background and i3lock images.
+To add a theme to this script edit `~/.config/zsh/.themes` and add your own themes.
+The format of this file must be `<base16 scheme>:<wallpaper img>`. 
+So the theme must have the same name as a base16 scheme (that must be available
+to `flavours apply <scheme>`) and the name of a wallpaper image that's inside 
+~/.config/wallpapers must be provided.
+
 ### Symlinks
 ```
 ln -s ~/.config/.Xmodmap ~/.Xmodmap
