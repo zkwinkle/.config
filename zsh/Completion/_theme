@@ -1,13 +1,27 @@
 #compdef theme
 
-THEMES_FILE="${ZDOTDIR}/.themes"
+THEMES_CONFIG=".themes"
+
+uncomment(){
+	echo "$(cat "$1" | sed 's/#.*$//g')"
+}
 
 _theme() {
+
+	if [ -e "${XDG_CONFIG_HOME}/${THEMES_CONFIG}" ]; then
+		THEMES_FILE="${XDG_CONFIG_HOME}/${THEMES_CONFIG}"
+	elif [ -e "${HOME}/.config/${THEMES_CONFIG}" ]; then
+		THEMES_FILE="${HOME}/.config/${THEMES_CONFIG}"
+	elif [ -e "${HOME}/${THEMES_CONFIG}" ]; then
+		THEMES_FILE="${HOME}/${THEMES_CONFIG}"
+	else
+		return
+	fi
 
 	local -a commands
 
 	commands=(
-		$(cat $THEMES_FILE | sed 's/\([^:]*\):.*/\1/')
+		$(uncomment "$THEMES_FILE" | sed 's/\([^:]*\):.*/\1/')
 	)
 
 	_describe -t commands 'commands' commands

@@ -1,10 +1,20 @@
 #!/bin/sh
 
 CMD_NAME=theme
-THEMES_FILE="${ZDOTDIR}/.themes"
+THEMES_CONFIG=".themes"
+
+# Search in XDG_CONFIG_HOME, HOME/.config, HOME
+if [ -e "${XDG_CONFIG_HOME}/${THEMES_CONFIG}" ]; then
+	THEMES_FILE="${XDG_CONFIG_HOME}/${THEMES_CONFIG}"
+elif [ -e "${HOME}/.config/${THEMES_CONFIG}" ]; then
+	THEMES_FILE="${HOME}/.config/${THEMES_CONFIG}"
+elif [ -e "${HOME}/${THEMES_CONFIG}" ]; then
+	THEMES_FILE="${HOME}/${THEMES_CONFIG}"
+else
+	return
+fi
 
 get_image(){
-
 	IMG_NAME="$1"
 
 	if [ -n "$XDG_CONFIG_HOME" ]; then
@@ -22,7 +32,10 @@ get_image(){
 		echo "Couldn't locate image at '$IMG'"
 		exit 2
 	fi
+}
 
+uncomment(){
+ echo "$(cat "$1" | sed 's/#.*$//g')"
 }
 
 usage(){
@@ -39,18 +52,19 @@ help(){
 case $1 in
 
 	-h | --help | -help | --h | help)
-		#TODO add help print
 		help
 		exit 0
 		;;
 
 	*)
 		IMG=''
-		for THEME in $(cat $THEMES_FILE | sed 's/\([^:]*\):.*/\1/'); do
+		
+		for THEME in $(uncomment "$THEMES_FILE" | sed 's/\([^:]*\):.*/\1/')
+		do
 			if [ "$1" = "$THEME" ]; then
 				get_image "$(cat $THEMES_FILE | grep "$THEME" \
 					| sed 's/[^:]*:\(.*\)/\1/')"
-								break
+				break
 			fi
 		done
 
