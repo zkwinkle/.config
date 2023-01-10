@@ -183,7 +183,6 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Rice Rofi
 
 ### Base16
-- Make script for my own themes that include wallpapers (underbelly and noellemonade)
 - bat config
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord

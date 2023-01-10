@@ -1,0 +1,13 @@
+#compdef theme
+_theme() {
+
+	local -a commands
+
+	commands=(
+		"blue-evening"
+		"pink-fair"
+	)
+
+	_describe -t commands 'commands' commands
+}
+_theme

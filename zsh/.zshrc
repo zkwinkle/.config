@@ -11,6 +11,7 @@ then
 fi
 
 # Completion
+fpath=(${fpath} ${ZDOTDIR}/Completion) # Auto-completion
 autoload -U compinit
 compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -61,7 +62,6 @@ function wTEC {
 PATH=${ZDOTDIR}/bin:$PATH
 PATH=${PATH}:${HOME}/.local/bin
 PATH=${PATH}:${HOME}/.cargo/bin
-fpath=(${fpath} ${ZDOTDIR}/Completion) # Auto-completion
 
 # Tab names
 chpwd () {

@@ -1,0 +1,70 @@
+#!/bin/sh
+
+CMD_NAME=theme
+
+get_image(){
+	
+	IMG_NAME="$1"
+
+	if [ -n "$XDG_CONFIG_HOME" ]; then
+		WALLPAPERS="${XDG_CONFIG_HOME}/wallpapers"
+	elif [ -n "$HOME" ]; then
+		WALLPAPERS="${HOME}/.config/wallpapers"
+	else
+		echo Missing definitions for XDG_CONFIG_HOME and HOME env variables
+		exit 1
+	fi
+
+	IMG="${WALLPAPERS}/${IMG_NAME}" 
+
+	if [ ! -e "$IMG" ]; then
+		echo "Couldn't locate image at '$IMG'"
+		exit 2
+	fi
+
+}
+
+usage(){
+	echo "Usage: ${CMD_NAME} [THEME]"
+}
+
+help(){
+	usage
+	echo "Set a predetermined theme (with bg and lock img)."
+	echo "Example: theme blue-evening"
+	echo "Make sure to keep the added options in sync with the" \
+		"autocompletion script located in ${ZDOTDIR}/Completion."
+}
+
+case $1 in
+
+	-h | --help | -help | --h | help)
+		#TODO add help print
+		help
+		exit 0
+		;;
+
+	# Dark themes
+	blue-evening)
+		get_image 'Underbelly of the blue evening.jpeg'
+		;;
+
+	pink-fair)
+		get_image 'noellemonade night fair.png'
+		;;
+
+	# Light themes
+
+	*)
+		echo "${CMD_NAME}: unrecognized theme '$1'"
+		usage
+		echo "Try '${CMD_NAME} --help' for more information."
+		exit 3
+		;;
+
+esac
+
+flavours apply "$1"
+
+# Script to set bg + i3lock
+"${ZDOTDIR}/bin/post-theme.sh" "$IMG"
