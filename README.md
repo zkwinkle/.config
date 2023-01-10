@@ -191,6 +191,8 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Rice Rofi
 
 ### Base16
+- Add palettes for remaining wallpapers in .config/wallpapers
+- Maybe add light themes??
 - bat config
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord
