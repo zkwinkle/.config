@@ -1,0 +1,8 @@
+#!/bin/sh
+
+CITY="$(echo $@)"
+if [ -n "$XDG_CONFIG_HOME" ]; then
+	sed -i '0,/CITY_NAME/{s/CITY_NAME=.*/CITY_NAME='"'${CITY}'"'/}' "${XDG_CONFIG_HOME}/polybar/plugins/weather-plugin.sh"
+elif [ -n "$HOME" ]; then
+	sed -i '0,/CITY_NAME/{s/CITY_NAME=.*/CITY_NAME='"'${CITY}'"'/}' "${HOME}/.config/polybar/plugins/weather-plugin.sh"
+fi
