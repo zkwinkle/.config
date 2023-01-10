@@ -192,7 +192,7 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 
 ### Base16
 - Add palettes for remaining wallpapers in .config/wallpapers
-- Maybe add light themes??
+- Add light themes
 - bat config
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord
