@@ -1,0 +1,19 @@
+scheme: "Pink Fair"
+author: "zkwinkle (http://github.com/zkwinkle) based on \"Merry-go-round\" by Yoshida Noeru (noellemonade)"
+base00: "241F25" #background
+base01: "39313A"
+base02: "4E4350"
+base03: "625565"
+base04: "B0A4B3"
+base05: "CCC4CE" #foreground
+base06: "DED9DF"
+base07: "F1EFF1"
+#colors
+base08: "B75963"
+base09: "B76859"
+base0A: "D4A79D"
+base0B: "B6A5A1"
+base0C: "B75979"
+base0D: "C57980"
+base0E: "C87E99"
+base0F: "9A4361"

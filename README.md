@@ -175,10 +175,8 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 
 - add cmp to nvim
 - Rice Rofi
-- Fix _the font situation_ (polybar config is a mess, I would like to give it an emoji font that actually has all the emojis but as minimalist svg icons)
 
 ### Base16
-- Add custom scheme for noellemonade pink
 - Make script for my own themes that include wallpapers (underbelly and noellemonade)
 - bat config
 - Spicetify (or alternative spotify client) + spotify integration
@@ -187,5 +185,6 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Add hooks for reloading everything neovim (impossible)
 
 ### Polybar
+- Fix _the font situation_ (config is a mess, I would like to give it an emoji font that actually has all the emojis but as minimalist svg icons)
 - Power (on/off/sleep/restart) menu
 - I'd like to maybe fit in music info and a volume _bar_, but it won't fit nicely in my current main bar, would need to think of a different design
