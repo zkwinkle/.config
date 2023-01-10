@@ -6,25 +6,32 @@ local plugins = {
 	["lewis6991/impatient.nvim"] = {},
 
 	---- nvim tree related plugins
-	["nvim-tree/nvim-web-devicons"] = {},
+	["nvim-tree/nvim-web-devicons"] = {
+		requires = { 'nvim-base16' },
+		after = { 'nvim-base16' },
+		config = function()
+			require "plugins.configs.nvim-web-devicons"
+		end,
+	},
 
 	["nvim-tree/nvim-tree.lua"] = {
-		-- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		--cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		requires = "nvim-tree/nvim-web-devicons",
+		after = { "nvim-web-devicons" },
 		config = function()
 			require "plugins.configs.nvim-tree"
 		end,
 	},
 
 	-- Pretty stuff :3
-	--Plug 'fladson/vim-kitty', { 'branch': 'main'} " Syntax highlighting based on kitty terminal's config
-	['psliwka/vim-smoothie'] = {},
-
 	-- Modified version of RRethy/nvim-base16
 	['~/.config/nvim/lua/plugins/nvim-base16'] = {
 		config = function()
 			require("plugins.configs.base16")
 		end
 	},
+
+	['psliwka/vim-smoothie'] = {},
 
 	['nvim-lualine/lualine.nvim'] = {
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
@@ -39,19 +46,11 @@ local plugins = {
 
 
 	['norcalli/nvim-colorizer.lua'] = {
-		requires = { '~/.config/nvim/lua/plugins/nvim-base16' },
+		requires = { 'nvim-base16' },
 		config = function()
 			require("colorizer").setup()
 		end
 	},
-
-	-- fade inactive panes (BROKEN AS OF JAN 6 2023)
-	--['TaDaa/vimade'] = {
-	--	opt = true, event = 'BufAdd',
-	--	config = function()
-	--		vim.g.vimade = { fadelevel = 0.65 }
-	--	end
-	--},
 
 	---- Misc
 	['lambdalisue/suda.vim'] = {},
