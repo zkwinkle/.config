@@ -5,7 +5,7 @@
 - status bar: polybar
 - Shell: zsh
 - Terminal: kitty
-- Cholor schemes: flavours (read below)
+- Cholor schemes: (flavours)[https://github.com/Misterio77/flavours] (read below)
 - Text editor: Neovim (nvim-packer-git for plugins)
 - Screenshots: shotgun + hacksaw
 - rofi:
@@ -14,7 +14,7 @@
 - fetches:
   - neofetch
   - bunnyfetch
-- preferred login manager: lightdm-mini-greeter (needs lightdm, accountsservice, and some config)
+- preferred login manager: (lightdm-mini-greeter](https://github.com/prikhi/lightdm-mini-greeter] (needs lightdm, accountsservice, and some config)
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
 - i3lock-multimonitor for locking on more than one screen (aliased to `i3lock`)
@@ -32,6 +32,7 @@
 - fd
 - xclip
 - xdotool
+- xsettingsd
 - openssh
 - keychain
 - usbutils
@@ -98,6 +99,10 @@ to `flavours apply <scheme>`) and the name of a wallpaper image that's inside
 ```
 ln -s ~/.config/.Xmodmap ~/.Xmodmap
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
+mkdir -p ~/.themes
+ln -s ~/.config/FlatColor ~/.themes/FlatColor
+ln -s ~/.config/FlatColor ~/.themes/dummy
+ln -s ~/.config/.gtkrc-2.0 ~/.gtkrc-2.0
 ```
 
 ### udev rules
@@ -180,7 +185,7 @@ git config --local status.showUntrackedFiles no
 ### Hide base16 edited files
 Because you'll constantly have the colorscheme config files for each program show up in `git status` unless you tell git to ignore changes on these:
 ```
-git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/configs/base16.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc
+git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/configs/base16.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3
 ```
 
 ## TODO

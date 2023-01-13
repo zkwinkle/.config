@@ -1,0 +1,16 @@
+/*
+Base16 Blue Evening
+Scheme author: zkwinkle (http://github.com/zkwinkle) based on the "Underbelly of the blue evening" by Denis Istomin
+Template author: Tinted Theming (https://github.com/tinted-theming)
+In files gtk-3.0/gtk.css and gtk-3.20/gtk.css, delete section "Default color scheme" and inject this
+*/
+
+@define-color bg_color #1C1E26;
+@define-color fg_color #CBCDD8;
+@define-color base_color #2D303D;
+@define-color text_color #CBCDD8;
+@define-color text_color_disabled #4E536A;
+@define-color selected_bg_color #3D4253;
+@define-color selected_fg_color #CBCDD8;
+@define-color tooltip_bg_color #1C1E26;
+@define-color tooltip_fg_color #CBCDD8;

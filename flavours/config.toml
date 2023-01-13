@@ -48,3 +48,16 @@ rewrite = true
 file= "~/.config/zathura/zathurarc"
 template = "zathura"
 rewrite = true
+
+[[item]]
+file = "~/.config/FlatColor/colors3"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = true
+hook = "killall xsettingsd 2>/dev/null; xsettingsd &"
+
+[[item]]
+file = "~/.config/FlatColor/colors2"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+rewrite = true

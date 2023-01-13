@@ -1,0 +1,16 @@
+## Base16 Blue Evening
+# Scheme author: zkwinkle (http://github.com/zkwinkle) based on the "Underbelly of the blue evening" by Denis Istomin
+# Template author: Tinted Theming (https://github.com/tinted-theming)
+# In file gtk-2.0/gtkrc, delete "gtk-color-scheme" including everything between quotes (don't delete gtk-auto-mnemonics) and inject this.
+gtk-color-scheme = "bg_color:#1C1E26
+color0:#1C1E26
+text_color:#CBCDD8
+selected_bg_color:#3D4253
+selected_fg_color:#CBCDD8
+tooltip_bg_color:#1C1E26
+tooltip_fg_color:#CBCDD8
+titlebar_bg_color:#1C1E26
+titlebar_fg_color:#CBCDD8
+menu_bg_color:#1C1E26
+menu_fg_color:#CBCDD8
+link_color:#3D4253"
