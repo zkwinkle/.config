@@ -101,7 +101,6 @@ ln -s ~/.config/.Xmodmap ~/.Xmodmap
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 mkdir -p ~/.themes
 ln -s ~/.config/FlatColor ~/.themes/FlatColor
-ln -s ~/.config/FlatColor ~/.themes/dummy
 ln -s ~/.config/.gtkrc-2.0 ~/.gtkrc-2.0
 ```
 
