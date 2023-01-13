@@ -43,3 +43,8 @@ light = false
 file = "~/.config/polybar/plugins/weather-colors.sh"
 template = "weather"
 rewrite = true
+
+[[item]]
+file= "~/.config/zathura/zathurarc"
+template = "zathura"
+rewrite = true
