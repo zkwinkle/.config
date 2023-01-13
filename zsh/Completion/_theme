@@ -1,6 +1,6 @@
 #compdef theme
 
-THEMES_CONFIG=".themes"
+THEMES_CONFIG=".themerc"
 
 uncomment(){
 	echo "$(cat "$1" | sed 's/#.*$//g')"
