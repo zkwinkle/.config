@@ -87,6 +87,9 @@ Then run:
 flavours update all
 ```
 
+#### Discord
+Requires `discocss`.
+
 #### Custom themes
 I created a script called `theme` that lets you switch amongst some custom themes that automatically set the background and i3lock images.
 To add a theme to this script edit `~/.config/zsh/.themes` and add your own themes.
@@ -201,6 +204,7 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Spicetify (or alternative spotify client) + spotify integration
 - better discord
 - somehow with firefox?? (thunderbird??? change to neomutt?)
+- Edit [wal-telegram](https://github.com/guillaumeboehm/wal-telegram) to integrate reduced version into system
 - Add hooks for reloading everything neovim (impossible)
 
 ### Polybar

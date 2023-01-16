@@ -61,3 +61,12 @@ file = "~/.config/FlatColor/colors2"
 template = "gtk-flatcolor"
 subtemplate = "gtk-2"
 rewrite = true
+
+[[item]]
+file = "~/.config/discocss/custom.css"
+template = "discord"
+subtemplate = "css-variables"
+rewrite = false
+start= "/* Start flavours */"
+end = "/* End flavours */"
+hook = "discocss"
