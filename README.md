@@ -90,6 +90,10 @@ flavours update all
 #### Discord
 Requires `discocss`.
 
+#### Telegram
+Requires `zip` and `convert` (ImageMagick).
+To activate the theme, inside Telegram go to Settings > Chat Settings > Choose from file > ~/.config/telegram/base16.tdesktop-theme
+
 #### Custom themes
 I created a script called `theme` that lets you switch amongst some custom themes that automatically set the background and i3lock images.
 To add a theme to this script edit `~/.config/zsh/.themes` and add your own themes.
@@ -187,7 +191,7 @@ git config --local status.showUntrackedFiles no
 ### Hide base16 edited files
 Because you'll constantly have the colorscheme config files for each program show up in `git status` unless you tell git to ignore changes on these:
 ```
-git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/configs/base16.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3
+git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/configs/base16.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 discocss/custom.css flavours/common/colors.sh
 ```
 
 ## TODO

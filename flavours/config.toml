@@ -44,25 +44,25 @@ file = "~/.config/polybar/plugins/weather-colors.sh"
 template = "weather"
 rewrite = true
 
-[[item]]
+[[items]]
 file= "~/.config/zathura/zathurarc"
 template = "zathura"
 rewrite = true
 
-[[item]]
+[[items]]
 file = "~/.config/FlatColor/colors3"
 template = "gtk-flatcolor"
 subtemplate = "gtk-3"
 rewrite = true
 hook = "killall xsettingsd 2>/dev/null; xsettingsd &"
 
-[[item]]
+[[items]]
 file = "~/.config/FlatColor/colors2"
 template = "gtk-flatcolor"
 subtemplate = "gtk-2"
 rewrite = true
 
-[[item]]
+[[items]]
 file = "~/.config/discocss/custom.css"
 template = "discord"
 subtemplate = "css-variables"
@@ -70,3 +70,9 @@ rewrite = false
 start= "/* Start flavours */"
 end = "/* End flavours */"
 hook = "discocss"
+
+[[items]]
+file = "~/.config/flavours/common/colors.sh"
+template = "shell"
+subtemplate = "variables"
+rewrite = true
