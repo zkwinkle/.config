@@ -250,7 +250,7 @@ assign [class="TelegramDesktop"] $ws9
 exec firefox
 exec thunderbird
 exec telegram-desktop
-exec discord
+exec discocss || discord
 #exec obsidian
 exec spotify
 for_window [class="Spotify"] move to workspace $ws10
