@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Build telegram theme
-bash ${XDG_CONFIG_HOME}/telegram/base16-telegram.sh 1>/dev/null
-
 # change i3lock img
 IMG="$1"
 

@@ -76,3 +76,5 @@ file = "~/.config/flavours/common/colors.sh"
 template = "shell"
 subtemplate = "variables"
 rewrite = true
+hook = "bash ~/.config/telegram/base16-telegram.sh"
+light = true
