@@ -94,6 +94,28 @@ Requires `discocss`.
 Requires `zip` and `convert` (ImageMagick).
 To activate the theme, inside Telegram go to Settings > Chat Settings > Choose from file > ~/.config/telegram/base16.tdesktop-theme
 
+#### Spotify
+Requires installation of [spicetify](https://spicetify.app/). After installing run:
+```
+spicetify backup apply enable-devtools
+```
+
+Then run:
+```
+spicetify config current_theme Ziro
+spicetify config color_scheme base16
+spicetify apply
+```
+
+In case spicetify theme breaks install the [community themes](https://github.com/spicetify/spicetify-themes) (`spicetify-themes-git` in the AUR). Then copy:
+```
+cp /usr/share/spicetify-cli/Themes/Ziro/user.css Themes/Ziro
+cp /usr/share/spicetify-cli/Themes/Ziro/color.ini Themes/Ziro
+```
+
+and fix any incongruencies between `Themes/Ziro/color.ini` and `flavours/templates/spicetify/templates/Ziro.mustache`
+
+
 #### Custom themes
 I created a script called `theme` that lets you switch amongst some custom themes that automatically set the background and i3lock images.
 To add a theme to this script edit `~/.config/zsh/.themes` and add your own themes.

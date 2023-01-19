@@ -78,3 +78,11 @@ subtemplate = "variables"
 rewrite = true
 hook = "bash ~/.config/telegram/base16-telegram.sh"
 light = true
+
+[[items]]
+file = "~/.config/spicetify/Themes/Ziro/color.ini"
+template = "spicetify"
+subtemplate = "Ziro"
+rewrite = true
+hook = "spicetify apply"
+light = false
