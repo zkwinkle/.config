@@ -97,7 +97,9 @@ To activate the theme, inside Telegram go to Settings > Chat Settings > Choose f
 #### Spotify
 Requires installation of [spicetify](https://spicetify.app/). After installing run:
 ```
-spicetify backup apply enable-devtools
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wrx /opt/spotify/Apps -R
+spicetify backup apply
 ```
 
 Then run:
