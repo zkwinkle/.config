@@ -252,7 +252,7 @@ exec thunderbird
 exec telegram-desktop
 exec discocss || discord
 #exec obsidian
-exec spicetify apply; spotify
+exec spicetify apply --no-restart; spotify
 for_window [class="Spotify"] move to workspace $ws10
 
 # Scratchpad controls
