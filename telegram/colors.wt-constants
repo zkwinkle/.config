@@ -550,7 +550,7 @@ callHangupRipple: colorDarker1_30;
 callCancelBg: colorLighter7_40;
 callCancelFg: colorDarker7_40;
 callCancelRipple: colorLighter7_40;
-callMuteRipple: #ffffff12;
+callMuteRipple: colorAlpha7_12;
 callBarBg: dialogsBgActive;
 callBarMuteRipple: dialogsRippleBgActive;
 callBarBgMuted: colorLighter0_40;

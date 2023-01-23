@@ -273,6 +273,7 @@ colorAlpha2_7f: ${color2}7f;
 colorAlpha2_00: ${color2}00;
 colorAlpha2_87: ${color2}87;
 colorAlpha3_64: ${color3}64;
+colorAlpha7_12: ${color7}12;
 colorAlpha7_53: ${color7}53;
 colorAlpha7_7a: ${color7}7a;
 colorAlpha7_1a: ${color7}1a;

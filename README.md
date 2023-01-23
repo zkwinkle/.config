@@ -226,16 +226,12 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Rice Rofi
 
 ### Base16
-- Add palettes for remaining wallpapers in .config/wallpapers
-- Add light themes
+- Make telegram scheme more light-theme friendly
 - bat config
-- Spicetify (or alternative spotify client) + spotify integration
-- better discord
 - somehow with firefox?? (thunderbird??? change to neomutt?)
-- Edit [wal-telegram](https://github.com/guillaumeboehm/wal-telegram) to integrate reduced version into system
 - Add hooks for reloading everything neovim (impossible)
 
 ### Polybar
 - Fix _the font situation_ (config is a mess, I would like to give it an emoji font that actually has all the emojis but as minimalist svg icons)
 - Power (on/off/sleep/restart) menu
-- I'd like to maybe fit in music info and a volume _bar_, but it won't fit nicely in my current main bar, would need to think of a different design
+- I'd like to maybe fit in music info and a volume _bar_, but it won't fit nicely in my current main bar, would need to think of a different design ( widgets? )
