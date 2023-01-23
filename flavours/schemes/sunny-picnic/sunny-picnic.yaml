@@ -1,0 +1,19 @@
+scheme: "Sunny Picnic"
+author: "zkwinkle (http://github.com/zkwinkle) based on art by Yoshida Noeru (noellemonade)"
+base00: "EEEEE4" #background
+base01: "DEDECC"
+base02: "CFCFB4"
+base03: "C0C09C"
+base04: "515134"
+base05: "45452C" #foreground
+base06: "212115"
+base07: "090906"
+#colors
+base08: "C23C3C"
+base09: "E28C87"
+base0A: "E6AD80"
+base0B: "C9C4A7"
+base0C: "B9B9EF"
+base0D: "93BAE1"
+base0E: "A39B8E"
+base0F: "E0456A"
