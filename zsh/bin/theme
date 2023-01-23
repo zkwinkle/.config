@@ -35,7 +35,7 @@ get_image(){
 }
 
 uncomment(){
- echo "$(cat "$1" | sed 's/#.*$//g')"
+ sed 's/#.*$//g' < "$1"
 }
 
 usage(){
@@ -62,7 +62,7 @@ case $1 in
 		for THEME in $(uncomment "$THEMES_FILE" | sed 's/\([^:]*\):.*/\1/')
 		do
 			if [ "$1" = "$THEME" ]; then
-				get_image "$(cat $THEMES_FILE | grep "$THEME" \
+				get_image "$(grep "$THEME" "$THEMES_FILE" \
 					| sed 's/[^:]*:\(.*\)/\1/')"
 				break
 			fi
