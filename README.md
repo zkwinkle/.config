@@ -226,6 +226,7 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - Rice Rofi
 
 ### Base16
+- Fix discord theme a little for light-theme (white text inside little "Public" tag, possibly change text inside mentions)
 - Make telegram scheme more light-theme friendly
 - bat config
 - somehow with firefox?? (thunderbird??? change to neomutt?)
