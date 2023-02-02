@@ -5,7 +5,7 @@ file = "~/.config/kitty/colors.conf"
 template = "kitty"
 subtemplate = "custom-256"
 rewrite = true
-hook = 'for SOCKET in $(ls /tmp/kitty-*); do kitty @ --to "unix:${SOCKET}" set-colors ~/.config/kitty/colors.conf; done'
+hook = 'for SOCKET in $(ls /tmp/kitty-*); do kitty @ --to "unix:${SOCKET}" set-colors --all --configured ~/.config/kitty/colors.conf; done'
 light = true
 
 [[items]]
