@@ -1,4 +1,5 @@
 require "core.options"
+require "core.commands"
 
 local utils = require "core.utils"
 local mappings = require "core.mappings"
