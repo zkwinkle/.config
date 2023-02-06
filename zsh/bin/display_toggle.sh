@@ -1,11 +1,10 @@
-#!/bin/sh -x
+#!/bin/sh
 
 laptop=$(get_display.sh -l)
 external=$(get_display.sh -e)
 disconnected=$(get_display.sh -d)
 
 if [ -n "$external" ]; then
-	echo mik
 	if xrandr --listmonitors | grep "$laptop"; then
 		xrandr --output "$laptop" --off --output "$external" --auto
 	else
@@ -18,3 +17,5 @@ else
 		xrandr --output "$MONITOR" --off
 	done
 fi
+sleep 2
+reload-polybar.sh
