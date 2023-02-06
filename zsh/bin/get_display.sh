@@ -1,26 +1,25 @@
 #!/bin/sh
 
-
-hdmi=$(xrandr --current | grep HDMI | awk '{print $1;}')
+# Gives either the laptop or the first external connected monitor
 laptop=$(xrandr --current | grep eDP | awk '{print $1;}')
+disconnected=$(xrandr --current | grep disconnected | awk '{print $1;}')
 
-PROGRAM_NAME=get_display.sh
+# Try HDMI
+external=$(xrandr --current | grep "HDMI[^ ]* connected" | head -1 | awk '{print $1;}')
+if [ -n $external ]; then
+	# Try Display Port
+	external=$(xrandr --current | grep "^DP[^ ]* connected" | head -1 | awk '{print $1;}')
+fi
 
-# Parse arguments
-TEMP=$(getopt -n $PROGRAM_NAME -o lhLH \
-	--long laptop,hdmi \
-	-- "$@")
-
-# Die if they fat finger arguments
-[ $? = 0 ] || exit 1
-
-eval set -- "$TEMP"
 case $1 in
 	-l|-L|--laptop)
 		echo "$laptop"
 		;;
-	-h|-H|--hdmi)
-		echo "$hdmi"
+	-e|-E|--external)
+		echo "$external"
+		;;
+	-d|-D|--disconnected)
+		echo "$disconnected"
 		;;
 	*)
 		printf "Unknown option %s\n" "$1"

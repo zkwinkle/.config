@@ -1,14 +1,20 @@
-#!/bin/sh
+#!/bin/sh -x
 
 laptop=$(get_display.sh -l)
-hdmi=$(get_display.sh -h)
+external=$(get_display.sh -e)
+disconnected=$(get_display.sh -d)
 
-if [ -n "$hdmi" ] && xrandr | grep "$hdmi connected"; then
+if [ -n "$external" ]; then
+	echo mik
 	if xrandr --listmonitors | grep "$laptop"; then
-		xrandr --output "$laptop" --off --output "$hdmi" --auto
+		xrandr --output "$laptop" --off --output "$external" --auto
 	else
-		xrandr --output "$laptop" --auto --output "$hdmi" --auto --right-of "$laptop"
+		xrandr --output "$laptop" --auto --output "$external" --auto --right-of "$laptop"
 	fi
 else
-	xrandr --output "$laptop" --auto --output "$hdmi" --off
+	xrandr --output "$laptop" --auto
+	for MONITOR in $disconnected
+	do
+		xrandr --output "$MONITOR" --off
+	done
 fi

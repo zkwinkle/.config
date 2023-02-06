@@ -218,10 +218,10 @@ bindsym Ctrl+XF86MonBrightnessUp exec xbacklight -inc 1
 
 ## For secondary monitor
 
-bindsym $Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) dec 5"
-bindsym $Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) inc 5"
-bindsym Ctrl+$Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) dec 1"
-bindsym Ctrl+$Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --hdmi) inc 1"
+bindsym $Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --external) dec 5"
+bindsym $Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --external) inc 5"
+bindsym Ctrl+$Alt+XF86MonBrightnessDown exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --external) dec 1"
+bindsym Ctrl+$Alt+XF86MonBrightnessUp exec "PATH=$SCRIPTS:$PATH; mbrightness.zsh $(get_display.sh --external) inc 1"
 
 # Screenshots to clipboard
 bindsym Shift+Print exec $HOME/.config/shotgun/select_clipboard.sh
