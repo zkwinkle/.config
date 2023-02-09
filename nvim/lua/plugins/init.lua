@@ -111,8 +111,9 @@ local plugins = {
 		config = function()
 			require "plugins.configs.fzf-lua"
 		end,
-	}
+	},
 
+	['McSinyx/vim-octave'] = {}
 }
 
 require("core.packer").run(plugins)
