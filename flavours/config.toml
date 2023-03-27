@@ -69,7 +69,7 @@ subtemplate = "css-variables"
 rewrite = false
 start= "/* Start flavours */"
 end = "/* End flavours */"
-hook = "discocss"
+hook = "discocss &"
 
 [[items]]
 file = "~/.config/flavours/common/colors.sh"

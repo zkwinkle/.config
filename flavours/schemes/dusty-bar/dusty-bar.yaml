@@ -1,0 +1,20 @@
+scheme: "Dusty Bar"
+author: "zkwinkle (http://github.com/zkwinkle)"
+
+base00: "F6F5F3" #background
+base01: "E5E2DC"
+base02: "D4D0C6"
+base03: "C3BEB0"
+base04: "635D4C"
+base05: "4D483B" #foreground
+base06: "36332A"
+base07: "201E19"
+#colors
+base08: "BA7148"
+base09: "AF5A49"
+base0A: "E5C18F"
+base0B: "ABC2A6"
+base0C: "948798"
+base0D: "83B2B9"
+base0E: "BEA594"
+base0F: "5F6750"
