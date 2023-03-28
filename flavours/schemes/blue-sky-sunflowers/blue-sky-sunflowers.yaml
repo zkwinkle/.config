@@ -1,0 +1,20 @@
+scheme: "Blue Sky with Sunflowers"
+author: "zkwinkle (http://github.com/zkwinkle)"
+
+base00: "F0F1F6" #background
+base01: "D7DBE8"
+base02: "BEC5DA"
+base03: "A5AECB"
+base04: "4D483B"
+base05: "37332A" #foreground
+base06: "2C2921"
+base07: "151410"
+#colors
+base08: "206291"
+base09: "6A4E3C"
+base0A: "D3A952"
+base0B: "559056"
+base0C: "4181C2"
+base0D: "196A7C"
+base0E: "6095AA"
+base0F: "99B174"
