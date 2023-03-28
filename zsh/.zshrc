@@ -168,3 +168,9 @@ function pain(){
 function pare(){
 	paru -Qq | fzf -q "$1" -m --preview "_paru_fzf_preview.sh Q {}" --preview-window=wrap | xargs -ro paru -Rns
 }
+
+# Source conda.sh
+[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
+
+# OpenAI API key
+export OPENAI_KEY=
