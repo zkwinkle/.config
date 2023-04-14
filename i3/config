@@ -256,6 +256,10 @@ exec discocss || discord
 exec spicetify apply --no-restart; spotify
 for_window [class="Spotify"] move to workspace $ws10
 
+# Floating windows
+for_window [class="Thunar"] floating enable
+for_window [class="Pavucontrol"] floating enable
+
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
 bindsym $mod+Control+a scratchpad show
