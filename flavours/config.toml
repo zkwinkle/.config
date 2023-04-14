@@ -69,7 +69,7 @@ subtemplate = "css-variables"
 rewrite = false
 start= "/* Start flavours */"
 end = "/* End flavours */"
-hook = "discocss &"
+hook = "ps -x | grep -i discord | grep -v grep >/dev/null && discocss &"
 
 [[items]]
 file = "~/.config/flavours/common/colors.sh"
@@ -84,5 +84,5 @@ file = "~/.config/spicetify/Themes/Ziro/color.ini"
 template = "spicetify"
 subtemplate = "Ziro"
 rewrite = true
-hook = "spicetify apply"
+hook = "spicetify apply --quiet $(ps -x | grep -i discord | grep -v grep >/dev/null && echo '--no-restart')"
 light = false
