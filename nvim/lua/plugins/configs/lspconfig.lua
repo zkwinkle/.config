@@ -1,53 +1,73 @@
 local utils = require "core.utils"
+local lspconfig = require 'lspconfig'
 
-local on_attach = function(_, bufnr)
+local language_servers = {
+	['tsserver'] = {},
+	['rust_analyzer'] = {
+		settings = {
+			['rust-analyzer'] = {
+				check = {
+					invocationLocation = "root",
+					overrideCommand = { "cargo", "check", "--message-format=json", "--all-targets" }
+				},
+				cargo = {
+					features = {},
+					buildScripts = {
+						invocationLocation = "root",
+						overrideCommand = { "cargo", "check", "--quiet", "--message-format=json", "--all-targets" }
+					}
+				}
+			}
+		},
+		root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+	},
+	['lua_ls'] = {
+		settings = {
+			Lua = {
+				runtime = {
+					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+					version = 'LuaJIT',
+				},
+				diagnostics = {
+					-- Get the language server to recognize the `vim` global
+					globals = { 'vim' },
+				},
+				workspace = {
+					library = {
+						[vim.fn.expand "$VIMRUNTIME/lua"] = true,
+						[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+					},
+					maxPreload = 500,
+					preloadFileSize = 10000,
+				},
+				-- Do not send telemetry data containing a randomized but unique identifier
+				telemetry = {
+					enable = false,
+				},
+			},
+		}
+	},
+	['clangd'] = {}
+}
+
+local default_on_attach = function(_, bufnr)
 	local lsp_mappings = require('core.mappings').lspconfig
 	utils.load_mapping(lsp_mappings, { noremap = true, buffer = bufnr })
 end
 
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.textDocument.completion.completionItem = {
+default_capabilities.textDocument.completion.completionItem = {
 	documentationFormat = { "markdown", "plaintext" },
 }
 
-local language_servers = {
-	['tsserver'] = {},
-	['rust_analyzer'] = {},
-	['lua_ls'] = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT',
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = { 'vim' },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-				},
-				maxPreload = 500,
-				preloadFileSize = 10000,
-			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
-	['clangd'] = {}
-}
-
-local lspconfig = require 'lspconfig'
-
 for s, settings in pairs(language_servers) do
-	lspconfig[s].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = settings,
-	}
+	-- Get on_attach
+	settings['on_attach'] = settings['on_attach'] or default_on_attach
+
+	-- Get capabilities
+	settings['capabilities'] = settings['capabilities'] or default_capabilities
+
+	lspconfig[s].setup(settings)
 end
