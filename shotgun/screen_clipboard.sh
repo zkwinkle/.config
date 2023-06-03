@@ -1,4 +1,4 @@
 #!/bin/sh -e
 
-shotgun - | xclip -t image/png -selection clipboard
+shotgun -s - | xclip -t image/png -selection clipboard
 
