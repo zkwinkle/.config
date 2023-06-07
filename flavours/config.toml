@@ -12,6 +12,7 @@ light = true
 file = "~/.config/nvim/lua/plugins/configs/base16.lua"
 template = "nvim"
 rewrite = true
+hook = 'fd -t s nvim /run/user | xargs -n1 nvim --remote-send "<C-\><C-N>:Recolor<CR>" --server'
 
 [[items]]
 file = "~/.config/rofi/config.rasi"
