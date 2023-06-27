@@ -172,5 +172,3 @@ function pare(){
 # Source conda.sh
 [ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
 
-# OpenAI API key
-export OPENAI_KEY=
