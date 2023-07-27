@@ -89,6 +89,13 @@ local plugins = {
 		end,
 	},
 
+	['knsh14/vim-github-link'] = {
+		after = 'gitsigns.nvim',
+		config = function()
+			require("plugins.configs.others").github_link()
+		end,
+	},
+
 	-- lsp stuff
 
 	["neovim/nvim-lspconfig"] = {
@@ -111,9 +118,7 @@ local plugins = {
 		config = function()
 			require "plugins.configs.fzf-lua"
 		end,
-	},
-
-	['McSinyx/vim-octave'] = {}
+	}
 }
 
 require("core.packer").run(plugins)

@@ -117,6 +117,19 @@ M.gitsigns = {
 
 }
 
+M.github_link = {
+	opt = true,
+
+	n = {
+		["gl"] = { map = ":GetCurrentCommitLink<CR>" },
+	},
+
+	v = {
+		["gl"] = { map = ":GetCurrentCommitLink<CR>" },
+	},
+
+}
+
 M.fzf_lua = {
 	n = {
 		["<C-p>"] = { map = function() require('fzf-lua').files() end },

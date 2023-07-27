@@ -41,4 +41,9 @@ M.gitsigns = function()
 	utils.load_mapping(git_mappings, { noremap = true })
 end
 
+M.github_link = function()
+	local gh_link_mappings = require('core.mappings').github_link
+	utils.load_mapping(gh_link_mappings, { noremap = true })
+end
+
 return M
