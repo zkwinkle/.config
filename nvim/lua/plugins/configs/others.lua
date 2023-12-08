@@ -5,7 +5,7 @@ local M = {}
 M.lualine = function()
 	require('lualine').setup {
 		options = { theme = 'base16' },
-		extensions = { 'nvim-tree', 'fzf', 'quickfix', 'man'}
+		extensions = { 'nvim-tree', 'fzf', 'quickfix', 'man' }
 	}
 end
 

@@ -2,6 +2,15 @@ local utils = require "core.utils"
 local lspconfig = require 'lspconfig'
 
 local language_servers = {
+	['nil_ls'] = {
+		settings = {
+			['nil'] = {
+				formatting = {
+					command = { "nixpkgs-fmt" },
+				}
+			},
+		}
+	},
 	['tsserver'] = {},
 	['rust_analyzer'] = {
 		settings = {
