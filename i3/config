@@ -257,6 +257,8 @@ for_window [class="Spotify"] move to workspace $ws10
 # Floating windows
 for_window [class="Thunar"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="airshipper"] floating enable
+for_window [class="Lutris"] floating enable
 
 # Scratchpad controls
 bindsym $mod+Control+m move scratchpad
