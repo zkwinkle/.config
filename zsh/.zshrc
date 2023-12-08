@@ -22,6 +22,7 @@ HISTSIZE=5000
 SAVEHIST=50000
 
 setopt extended_history
+setopt extended_glob
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -38,7 +39,7 @@ export EDITOR='nvim'
 
 # Quartus
 export QSYS_ROOTDIR="/home/igna/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
-
+alias quartus="sudo killall -9 jtagd; sudo jtagd;LD_PRELOAD=/lib64/libfreetype.so quartus"
 
 # Aliases
 alias cls='clear'
@@ -51,12 +52,7 @@ alias dsf='diff-so-fancy'
 # Get vid resolution
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 alias see='kitty +kitten icat' # display image
-function wTEC {
-	sudo systemctl stop dhcpcd.service
-	sudo systemctl start netctl.service
-	sudo ip link set wlp6s0 down
-	sudo netctl start wlp6s0-wTEC
-}
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' # Part of fix tlmgr
 
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
@@ -171,4 +167,3 @@ function pare(){
 
 # Source conda.sh
 [ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
-

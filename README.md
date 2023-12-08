@@ -52,6 +52,7 @@
 - noto-fonts-cjk
 - noto-fonts-emoji
 - ttf-dejavu (polybar emoji)
+- conda
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
