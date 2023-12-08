@@ -1,5 +1,7 @@
 -- n, v, i, t = mode names
 
+local utils = require "core.utils"
+
 local M = {}
 
 M.general = {
@@ -39,13 +41,20 @@ M.general = {
 
 		-- Format
 		["<leader>=="] = { map = "gg<S-v>G=<C-o>" },
+
+		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
+		["gx"] = { map = function() utils.open(vim.fn.expand('<cfile>')) end },
 	},
+
 	v = {
 		["j"] = { map = 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 		["k"] = { map = 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
 		-- Don't copy the replaced text after pasting in visual mode
 		-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 		["p"] = { map = 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
+
+		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
+		["gx"] = { map = function() utils.open(utils.get_visual_selection()) end },
 	},
 
 	t = {
