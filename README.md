@@ -6,7 +6,7 @@
 - Shell: zsh
 - Terminal: kitty
 - Cholor schemes: (flavours)[https://github.com/Misterio77/flavours] (read below)
-- Text editor: Neovim (nvim-packer-git for plugins)
+- Text editor: Neovim
 - Screenshots: shotgun + hacksaw
 - rofi:
   - rofimoji
