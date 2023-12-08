@@ -231,6 +231,8 @@ Stuff I'd like to add/upgrade but haven't had the time to:
 - bat config
 - somehow with firefox?? (thunderbird??? change to neomutt?)
 - Add hooks for reloading everything neovim (impossible)
+- Fix Spotify light theme (some icons don't change color)
+- Fix discocss (fork that merges PRs?)
 
 ### Polybar
 - Make it different for external monitors
