@@ -1,124 +1,26 @@
-vim.cmd "packadd packer.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-
-	["wbthomason/packer.nvim"] = {},
-	["lewis6991/impatient.nvim"] = {},
-
-	---- nvim tree related plugins
-	["nvim-tree/nvim-web-devicons"] = {
-		requires = { 'nvim-base16' },
-		after = { 'nvim-base16' },
-		config = function()
-			require "plugins.configs.nvim-web-devicons"
-		end,
+local opts = {
+	defaults = {
+		lazy = true -- lazy-load all plugins by default
 	},
-
-	["nvim-tree/nvim-tree.lua"] = {
-		--cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-		requires = "nvim-tree/nvim-web-devicons",
-		after = { "nvim-web-devicons" },
-		config = function()
-			require "plugins.configs.nvim-tree"
-		end,
+	browser = "firefox",
+	checker = {
+		enabled = true, -- automatically check for plugin updates
 	},
-
-	-- Pretty stuff :3
-	-- Modified version of RRethy/nvim-base16
-	['~/.config/nvim/lua/plugins/nvim-base16'] = {
-		config = function()
-			require("plugins.configs.base16")
-		end
-	},
-
-	['psliwka/vim-smoothie'] = {},
-
-	['nvim-lualine/lualine.nvim'] = {
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-		opt = true,
-		setup = function()
-			require("core.lazy_load").on_file_open "lualine.nvim"
-		end,
-		config = function()
-			require("plugins.configs.others").lualine()
-		end
-	},
-
-
-	['norcalli/nvim-colorizer.lua'] = {
-		requires = { 'nvim-base16' },
-		config = function()
-			require("colorizer").setup()
-		end
-	},
-
-	---- Misc
-	['lambdalisue/suda.vim'] = {},
-
-
-	["lukas-reineke/indent-blankline.nvim"] = {
-		opt = true,
-		setup = function()
-			require("core.lazy_load").on_file_open "indent-blankline.nvim"
-		end,
-		config = function()
-			require("plugins.configs.others").blankline()
-		end,
-	},
-
-	["nvim-treesitter/nvim-treesitter"] = {
-		module = "nvim-treesitter",
-		setup = function()
-			require("core.lazy_load").on_file_open "nvim-treesitter"
-		end,
-		cmd = require("core.lazy_load").treesitter_cmds,
-		run = ":TSUpdate",
-		config = function()
-			require "plugins.configs.treesitter"
-		end,
-	},
-
-	-- git stuff
-	["lewis6991/gitsigns.nvim"] = {
-		ft = "gitcommit",
-		setup = function()
-			require("core.lazy_load").gitsigns()
-		end,
-		config = function()
-			require("plugins.configs.others").gitsigns()
-		end,
-	},
-
-	['knsh14/vim-github-link'] = {
-		after = 'gitsigns.nvim',
-		config = function()
-			require("plugins.configs.others").github_link()
-		end,
-	},
-
-	-- lsp stuff
-
-	["neovim/nvim-lspconfig"] = {
-		config = function()
-			require "plugins.configs.lspconfig"
-		end,
-	},
-
-	--["numToStr/Comment.nvim"] = {
-	--  module = "Comment",
-	--  keys = { "gc", "gb" },
-	--  config = function()
-	--    require("plugins.configs.others").comment()
-	--  end,
-	--},
-
-	-- fzf
-	['ibhagwan/fzf-lua'] = {
-		requires = { 'nvim-tree/nvim-web-devicons' },
-		config = function()
-			require "plugins.configs.fzf-lua"
-		end,
-	}
+	-- lockfile generated after running update.
+	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
 }
 
-require("core.packer").run(plugins)
+require("lazy").setup("plugins.plugins", opts)
