@@ -38,7 +38,6 @@
 - usbutils
 - pulseaudio
 - pulseaudio-bluetooth (for wireless headphones)
-- inotify-tools (for pulseaudio shared daemon)
 - ttf-jetbrains-mono
 - nerd-fonts-jetbrains-mono
 - jq (layout_manager dependency)
@@ -147,14 +146,6 @@ Add yourself to the necessary groups (this is for user `igna`):
 ```
 sudo usermod -aG video igna
 ```
-
-### Multiple PulseAudio users
-By default pulseaudio is set up in a way that multiple users can share a daemon. To disable this behaviour, on i3/config comment out the line
-```
-exec "PATH=$SCRIPTS:$PATH; pulseaudio-shared"
-```
-
-And remove the files `pulse/client.conf` and `pulse/default.pa`.
 
 ### Framework Config
 Because framework is HiDPI, for stuff not to be tiny, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.

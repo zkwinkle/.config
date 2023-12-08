@@ -1,2 +1,0 @@
-.include /etc/pulse/default.pa
-load-module module-native-protocol-unix auth-group=sharepulse socket=/tmp/sharepulse/socket
