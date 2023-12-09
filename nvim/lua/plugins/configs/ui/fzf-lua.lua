@@ -1,6 +1,10 @@
+local utils = require "core.utils"
+local mappings = require('core.mappings').fzf_lua
+
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	keys = utils.mapping_to_lazy_keys(mappings),
 	config = function()
 		local actions = require "fzf-lua.actions"
 		require("fzf-lua").setup {

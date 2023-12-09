@@ -1,9 +1,12 @@
+local utils = require "core.utils"
+local mappings = require('core.mappings').nvimtree
+
 return {
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile"},
+	keys = utils.mapping_to_lazy_keys(mappings),
 	opts = {
 		sort_by = "case_sensitive",
 		view = {

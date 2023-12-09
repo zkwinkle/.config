@@ -23,4 +23,12 @@ local opts = {
 	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
 }
 
-require("lazy").setup("plugins.plugins", opts)
+local modules = {
+  {import = "plugins.configs"},
+  {import = "plugins.configs.code"},
+  {import = "plugins.configs.editor"},
+  {import = "plugins.configs.git"},
+  {import = "plugins.configs.ui"},
+}
+
+require("lazy").setup(modules, opts)

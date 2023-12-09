@@ -4,7 +4,7 @@ local utils = require "core.utils"
 
 local M = {}
 
-M.general = {
+M.base = {
 	i = {
 		["<Left>"]  = { map = '<ESC>:echoe "Use h"<CR>' },
 		["<Right>"] = { map = '<ESC>:echoe "Use l"<CR>' },
@@ -92,8 +92,6 @@ M.nvimtree = {
 
 M.lspconfig = {
 	-- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-	opt = true,
-
 	n = {
 		["<leader>gD"] = { map = vim.lsp.buf.declaration },
 		["<leader>gd"] = { map = vim.lsp.buf.definition },
@@ -111,7 +109,6 @@ M.lspconfig = {
 }
 
 M.gitsigns = {
-	opt = true,
 
 	n = {
 		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
@@ -127,7 +124,6 @@ M.gitsigns = {
 }
 
 M.github_link = {
-	opt = true,
 
 	n = {
 		["gl"] = { map = ":GetCurrentCommitLink<CR>" },

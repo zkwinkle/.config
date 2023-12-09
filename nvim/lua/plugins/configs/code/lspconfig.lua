@@ -30,7 +30,7 @@ local setup = function()
 					}
 				}
 			},
-			root_dir = lspconfig().util.root_pattern("Cargo.toml"),
+			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
 		},
 		['lua_ls'] = {
 			settings = {
@@ -80,11 +80,12 @@ local setup = function()
 		-- Get capabilities
 		settings['capabilities'] = settings['capabilities'] or default_capabilities
 
-		lspconfig()[s].setup(settings)
+		lspconfig[s].setup(settings)
 	end
 end
 
 return {
 	"neovim/nvim-lspconfig",
-	config = setup
+	event = "VeryLazy",
+	config = setup,
 }
