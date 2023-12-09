@@ -465,6 +465,8 @@ function M.setup(colors)
 
 	if M.config.cmp then
 		hi.CmpDocumentationBorder   = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil }
+		hi.CmpDocBorder             = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil }
+		hi.CmpBorder                = { guifg = M.colors.base05, guibg = M.colors.base01, gui = nil, guisp = nil }
 		hi.CmpDocumentation         = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil }
 		hi.CmpItemAbbr              = { guifg = M.colors.base05, guibg = M.colors.base01, gui = nil, guisp = nil }
 		hi.CmpItemAbbrDeprecated    = { guifg = M.colors.base03, guibg = nil, gui = 'strikethrough', guisp = nil }
