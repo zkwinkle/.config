@@ -13,37 +13,37 @@ M.base = {
 	},
 
 	n = {
-		["<SPACE>"] = { map = '<Nop>' },
+		["<SPACE>"]    = { map = '<Nop>' },
 
-		["<Left>"]  = { map = '<ESC>:echoe "Use h"<CR>' },
-		["<Right>"] = { map = '<ESC>:echoe "Use l"<CR>' },
-		["<Up>"]    = { map = '<ESC>:echoe "Use k"<CR>' },
-		["<Down>"]  = { map = '<ESC>:echoe "Use j"<CR>' },
+		["<Left>"]     = { map = '<ESC>:echoe "Use h"<CR>' },
+		["<Right>"]    = { map = '<ESC>:echoe "Use l"<CR>' },
+		["<Up>"]       = { map = '<ESC>:echoe "Use k"<CR>' },
+		["<Down>"]     = { map = '<ESC>:echoe "Use j"<CR>' },
 
 		-- Allow moving the cursor through wrapped lines with j, k
 		-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 		-- empty mode is same as using <cmd> :map
 		-- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-		["j"] = { map = 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
-		["k"] = { map = 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
-		["Q"] = { map = '<Nop>' },
+		["j"]          = { map = 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+		["k"]          = { map = 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
+		["Q"]          = { map = '<Nop>' },
 
-		["<leader>1"] = { map = "1gt" },
-		["<leader>2"] = { map = "2gt" },
-		["<leader>3"] = { map = "3gt" },
-		["<leader>4"] = { map = "4gt" },
-		["<leader>5"] = { map = "5gt" },
-		["<leader>6"] = { map = "6gt" },
-		["<leader>7"] = { map = "7gt" },
-		["<leader>8"] = { map = "8gt" },
-		["<leader>9"] = { map = "9gt" },
-		["<leader>0"] = { map = ":tablast<cr>" },
+		["<leader>1"]  = { map = "1gt" },
+		["<leader>2"]  = { map = "2gt" },
+		["<leader>3"]  = { map = "3gt" },
+		["<leader>4"]  = { map = "4gt" },
+		["<leader>5"]  = { map = "5gt" },
+		["<leader>6"]  = { map = "6gt" },
+		["<leader>7"]  = { map = "7gt" },
+		["<leader>8"]  = { map = "8gt" },
+		["<leader>9"]  = { map = "9gt" },
+		["<leader>0"]  = { map = ":tablast<cr>" },
 
 		-- Format
 		["<leader>=="] = { map = "gg<S-v>G=<C-o>" },
 
 		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
-		["gx"] = { map = function() utils.open(vim.fn.expand('<cfile>')) end },
+		["gx"]         = { map = function() utils.open(vim.fn.expand('<cfile>')) end },
 	},
 
 	v = {

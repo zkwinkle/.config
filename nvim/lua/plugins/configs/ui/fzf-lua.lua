@@ -103,7 +103,7 @@ return {
 					cmd    = "bat",
 					args   = "--style=numbers,changes --color always",
 					theme  = 'Coldark-Dark', -- bat preview theme (bat --list-themes)
-					config = nil,      -- nil uses $BAT_CONFIG_PATH
+					config = nil,       -- nil uses $BAT_CONFIG_PATH
 				},
 				head = {
 					cmd  = "head",
@@ -122,8 +122,8 @@ return {
 					cmd = "man -c %s | col -bx",
 				},
 				builtin = {
-					syntax          = true,       -- preview syntax highlight?
-					syntax_limit_l  = 0,          -- syntax limit (lines), 0=nolimit
+					syntax          = true,        -- preview syntax highlight?
+					syntax_limit_l  = 0,           -- syntax limit (lines), 0=nolimit
 					syntax_limit_b  = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
 					limit_b         = 1024 * 1024 * 10, -- preview limit (bytes), 0=nolimit
 					-- preview extensions using a custom shell command:
@@ -346,7 +346,7 @@ return {
 				previewer       = "builtin", -- set to 'false' to disable
 				prompt          = 'Lines❯ ',
 				show_unlisted   = false, -- exclude 'help' buffers
-				no_term_buffers = true, -- exclude 'term' buffers
+				no_term_buffers = true,  -- exclude 'term' buffers
 				fzf_opts        = {
 					-- do not include bufnr in fuzzy matching
 					-- tiebreak by line no.
@@ -364,7 +364,7 @@ return {
 			blines = {
 				previewer       = "builtin", -- set to 'false' to disable
 				prompt          = 'BLines❯ ',
-				show_unlisted   = true, -- include 'help' buffers
+				show_unlisted   = true,  -- include 'help' buffers
 				no_term_buffers = false, -- include 'term' buffers
 				fzf_opts        = {
 					-- hide filename, tiebreak by line no.

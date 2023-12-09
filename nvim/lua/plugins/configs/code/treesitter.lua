@@ -2,13 +2,13 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	event = "VeryLazy",
 	cmd = {
-	"TSInstall",
-	"TSBufEnable",
-	"TSBufDisable",
-	"TSEnable",
-	"TSDisable",
-	"TSModuleInfo",
-},
+		"TSInstall",
+		"TSBufEnable",
+		"TSBufDisable",
+		"TSEnable",
+		"TSDisable",
+		"TSModuleInfo",
+	},
 	build = ":TSUpdate",
 	opts = {
 		ensure_installed = {
