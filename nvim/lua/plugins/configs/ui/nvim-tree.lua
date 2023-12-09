@@ -43,8 +43,8 @@ local function my_on_attach(bufnr)
 	-- remap
 	vim.keymap.del('n', ']c', { buffer = bufnr })
 	vim.keymap.del('n', '[c', { buffer = bufnr })
-	vim.keymap.set('n', '[g', api.node.navigate.git.prev, opts('Prev Git'))
-	vim.keymap.set('n', ']g', api.node.navigate.git.next, opts('Next Git'))
+	vim.keymap.set('n', 'cp', api.node.navigate.git.prev, opts('Prev Git'))
+	vim.keymap.set('n', 'cn', api.node.navigate.git.next, opts('Next Git'))
 
 	-- custom mappings
 	vim.keymap.set('n', 'gh', git_toggle, opts('Git Toggle'))
