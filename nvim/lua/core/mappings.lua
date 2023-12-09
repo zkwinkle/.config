@@ -160,4 +160,12 @@ M.luasnip = {
 		["<s-tab>"] = { map = function() require("luasnip").jump(-1) end },
 	}
 }
+
+M.duck = {
+	n = {
+		["<leader>dd"] = { map = function() require("duck").hatch() end },
+		["<leader>dc"] = { map = function() require("duck").cook() end },
+	}
+}
+
 return M
