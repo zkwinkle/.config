@@ -32,3 +32,4 @@ local modules = {
 }
 
 require("lazy").setup(modules, opts)
+require "core.utils".load_mapping(require "core.mappings".Lazy, { noremap = true })

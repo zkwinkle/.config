@@ -80,6 +80,9 @@ M.base = {
 	},
 }
 
+M.Lazy = {
+	n = { ["<leader>L"] = { map = ":Lazy<CR>" } }
+}
 
 M.nvimtree = {
 	n = {
