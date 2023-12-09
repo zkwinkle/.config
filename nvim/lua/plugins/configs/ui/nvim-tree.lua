@@ -129,10 +129,23 @@ local setup = function()
 	})
 end
 return {
-	"nvim-tree/nvim-tree.lua",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		keys = utils.mapping_to_lazy_keys(mappings),
+		config = setup,
 	},
-	keys = utils.mapping_to_lazy_keys(mappings),
-	config = setup,
+	{
+		"antosha417/nvim-lsp-file-operations",
+		event = "VeryLazy",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-tree.lua",
+		},
+		config = function()
+			require("lsp-file-operations").setup()
+		end,
+	},
 }
