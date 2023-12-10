@@ -73,11 +73,11 @@ chmod -R +x ~/.config/polybar/plugins
 
 ### Weather
 
-For the polybar weather plugin to work copy and paste the API key from 
+For the polybar weather plugin to work copy and paste the API key from
 [OpenWeather](https://home.openweathermap.org/api_keys)
 into `$HOME/.owm-key`.
 
-In `weather/weather-plugin.sh` change CITYNAME and COUNTRYCODE if necessary. 
+In `weather/weather-plugin.sh` change CITYNAME and COUNTRYCODE if necessary.
 Or leave empty for it to be based on IP (doesn't seem to work well :/ ).
 
 ### Cholor schemes (flavours)
@@ -121,9 +121,9 @@ and fix any incongruencies between `Themes/Ziro/color.ini` and `flavours/templat
 #### Custom themes
 I created a script called `theme` that lets you switch amongst some custom themes that automatically set the background and i3lock images.
 To add a theme to this script edit `~/.config/zsh/.themes` and add your own themes.
-The format of this file must be `<base16 scheme>:<wallpaper img>`. 
+The format of this file must be `<base16 scheme>:<wallpaper img>`.
 So the theme must have the same name as a base16 scheme (that must be available
-to `flavours apply <scheme>`) and the name of a wallpaper image that's inside 
+to `flavours apply <scheme>`) and the name of a wallpaper image that's inside
 ~/.config/wallpapers must be provided.
 
 ### Symlinks
@@ -193,7 +193,7 @@ Section "InputClass"
 		Option "ClickMethod" "buttonareas"
 		Option "ScrollMethod" "twofinger"
 		Option "DisableWhileTyping" 1
-EndSection 
+EndSection
 ```
 
 Requires installation of `libinput` ([docs](https://man.archlinux.org/man/libinput.4)).
@@ -207,7 +207,7 @@ git config --local status.showUntrackedFiles no
 ### Hide base16 edited files
 Because you'll constantly have the colorscheme config files for each program show up in `git status` unless you tell git to ignore changes on these:
 ```
-git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/configs/base16.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 discocss/custom.css flavours/common/colors.sh spicetify/Themes/Ziro/color.ini
+git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/nvim-base16/colors.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 discocss/custom.css flavours/common/colors.sh spicetify/Themes/Ziro/color.ini
 ```
 
 ## TODO
