@@ -3,34 +3,13 @@ local utils = require "core.utils"
 local setup = function()
 	local lspconfig = require 'lspconfig'
 
+	local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+	html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 	local language_servers = {
-		['nil_ls'] = {
-			settings = {
-				['nil'] = {
-					formatting = {
-						command = { "nixpkgs-fmt" },
-					}
-				},
-			}
-		},
-		['tsserver'] = {},
-		['rust_analyzer'] = {
-			settings = {
-				['rust-analyzer'] = {
-					check = {
-						invocationLocation = "root",
-						overrideCommand = { "cargo", "check", "--message-format=json", "--all-targets" }
-					},
-					cargo = {
-						features = {},
-						buildScripts = {
-							invocationLocation = "root",
-							overrideCommand = { "cargo", "check", "--quiet", "--message-format=json", "--all-targets" }
-						}
-					}
-				}
-			},
-			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+		['clangd'] = {},
+		['html'] = {
+			capabilities = html_capabilities
 		},
 		['lua_ls'] = {
 			settings = {
@@ -58,7 +37,35 @@ local setup = function()
 				},
 			}
 		},
-		['clangd'] = {}
+		['nil_ls'] = {
+			settings = {
+				['nil'] = {
+					formatting = {
+						command = { "nixpkgs-fmt" },
+					}
+				},
+			}
+		},
+		['marksman'] = {},
+		['rust_analyzer'] = {
+			settings = {
+				['rust-analyzer'] = {
+					check = {
+						invocationLocation = "root",
+						overrideCommand = { "cargo", "check", "--message-format=json", "--all-targets" }
+					},
+					cargo = {
+						features = {},
+						buildScripts = {
+							invocationLocation = "root",
+							overrideCommand = { "cargo", "check", "--quiet", "--message-format=json", "--all-targets" }
+						}
+					}
+				}
+			},
+			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+		},
+		['tsserver'] = {},
 	}
 
 	local default_on_attach = function(_, bufnr)
