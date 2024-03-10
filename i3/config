@@ -49,7 +49,7 @@ floating_modifier $mod
 set $default_terminal kitty
 
 # start a terminal
-bindsym $mod+Return exec $default_terminal 
+bindsym $mod+Return exec $default_terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill

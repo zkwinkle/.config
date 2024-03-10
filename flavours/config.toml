@@ -15,15 +15,17 @@ rewrite = true
 hook = 'fd -t s nvim /run/user | xargs -n1 nvim --remote-send "<C-\><C-N>:Recolor<CR>" --server'
 
 [[items]]
-file = "~/.config/rofi/config.rasi"
+file = "~/.config/rofi/theme.rasi"
 template = "rofi"
 rewrite = true
 
 [[items]]
-file = "~/.Xresources"
+file = "~/.config/.Xresources"
 template = "xresources"
 subtemplate = "default-256"
-rewrite = true
+rewrite = false
+start = "! Start flavours"
+end = "! End flavours"
 
 [[items]]
 file = "~/.config/i3/client-properties"

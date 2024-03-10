@@ -1,0 +1,28 @@
+#!/bin/bash
+
+DPI="$1"
+
+if [[ -n ${DPI//[0-9]/} ]]; then
+	echo "Usage: dpi [DPI]. DPI must be an integer."
+fi
+
+# Modify .Xresources
+if [ -f ~/.Xresources ]
+then
+	if grep -q Xft.dpi: ~/.Xresources
+	then
+		sed -i --follow-symlinks "s/Xft.dpi:.*/Xft.dpi: $DPI/" ~/.Xresources
+	else
+		echo Xft.dpi: $DPI >> ~/.Xresources
+	fi
+else
+	echo Xft.dpi: $DPI > ~/.Xresources
+fi
+
+# Modify polybar
+sed -i "s/\(dpi\s*=\).*/\1 $DPI/" ~/.config/polybar/config.ini
+
+# Modify rofi
+sed -i "s/dpi:.*/dpi: $DPI;/" ~/.config/rofi/config.rasi
+
+xrdb -merge ~/.Xresources

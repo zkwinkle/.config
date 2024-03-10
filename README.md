@@ -128,6 +128,7 @@ to `flavours apply <scheme>`) and the name of a wallpaper image that's inside
 
 ### Symlinks
 ```
+ln -s ~/.config/.Xresources ~/.Xresources
 ln -s ~/.config/.Xmodmap ~/.Xmodmap
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 mkdir -p ~/.themes
@@ -147,8 +148,18 @@ Add yourself to the necessary groups (this is for user `igna`):
 sudo usermod -aG video igna
 ```
 
+### DPI / Resolution / Scaling
+In order for this system to work with displays with different resolutions and
+DPIs, the following is done:
+
+- Normally DPI is set to the default of 96
+- If connecting an external display that has a larger resolution that 1920 then the DPI is set accordingly inside `display_toggle.sh`
+- The screens that are a different res get xrandr scaling to look normal.
+- You should restart apps to get them to adjust to new DPI.
+
 ### Framework Config
-Because framework is HiDPI, for stuff not to be tiny, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.
+Because framework is HiDPI with a weird resolution, for simplicity to keep the
+screen at 1920, add the following resolution mode inside `/etc/X11/xorg.conf.d/10-display.conf` for example.
 ```
 Section "Monitor"
 		Identifier "eDP-1"
