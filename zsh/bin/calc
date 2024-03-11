@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# This extremely simple script let's you do arithmetic with integeres and floats
+awk "BEGIN { print $* }"
