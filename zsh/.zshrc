@@ -53,6 +53,10 @@ alias dsf='diff-so-fancy'
 alias res='ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0'
 alias see='kitty +kitten icat' # display image
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' # Part of fix tlmgr
+# Deploy to website's server
+alias deploy='ssh website-server -t update-website'
+alias test='cargo nextest run -p'
+alias wtec='nmcli connection down wTEC && nmcli connection up wTEC'
 
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
@@ -105,8 +109,8 @@ export FZF_ALT_C_COMMAND='fd . ~ --type d --hidden -E .git'
 export FZF_CTRL_T_OPTS='--preview="_fzf_files_preview.sh {}"'
 export FZF_ALT_C_OPTS='--preview="_fzf_files_preview.sh {}" --preview-window=wrap'
 
-  
-export FZF_DEFAULT_OPTS='--height 60% --min-height 12 --reverse --border --multi --tiebreak="length,end" --info=inline --pointer="->" --marker="<>" --tabstop=2 
+
+export FZF_DEFAULT_OPTS='--height 60% --min-height 12 --reverse --border --multi --tiebreak="length,end" --info=inline --pointer="->" --marker="<>" --tabstop=2
 --color bg+:0,hl:2,hl+:2,prompt:6,pointer:6,fg+:6,marker:6,info:3,info:bold,hl+:underline,fg+:underline,hl:italic,spinner:2
 --bind="ctrl-u:half-page-up,ctrl-d:half-page-down,change:first,ctrl-w:backward-kill-word,ctrl-b:backward-word,alt-bs:clear-query,ctrl-l:forward-char,ctrl-h:backward-char,ctrl-f:forward-word,alt-j:preview-down,alt-k:preview-up,alt-u:preview-half-page-up,alt-d:preview-half-page-down,ctrl-y:execute-silent(echo {} | xclip -sel clip)"'
 
