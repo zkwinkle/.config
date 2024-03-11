@@ -20,9 +20,9 @@ else
 fi
 
 # Modify polybar
-sed -i "s/\(dpi\s*=\).*/\1 $DPI/" ~/.config/polybar/config.ini
+sed -i "s/\(DPI\s*=\).*/\1 $DPI/" ~/.config/polybar/dpi.ini
 
 # Modify rofi
-sed -i "s/dpi:.*/dpi: $DPI;/" ~/.config/rofi/config.rasi
+sed -i "s/dpi:.*/dpi: $DPI;/" ~/.config/rofi/dpi.rasi
 
 xrdb -merge ~/.Xresources
