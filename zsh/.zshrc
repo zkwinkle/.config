@@ -19,7 +19,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:
 # History
 HISTFILE=$ZDOTDIR/.histzsh
 HISTSIZE=5000
-SAVEHIST=50000
+SAVEHIST=1000000
 
 setopt extended_history
 setopt extended_glob
