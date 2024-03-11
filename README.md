@@ -218,7 +218,7 @@ git config --local status.showUntrackedFiles no
 ### Hide base16 edited files
 Because you'll constantly have the colorscheme config files for each program show up in `git status` unless you tell git to ignore changes on these:
 ```
-git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/nvim-base16/colors.lua polybar/base16.ini polybar/plugins/weather-colors.sh rofi/config.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 discocss/custom.css flavours/common/colors.sh spicetify/Themes/Ziro/color.ini
+git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/nvim-base16/colors.lua polybar/base16.ini polybar/dpi.ini polybar/plugins/weather-colors.sh rofi/theme.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 discocss/custom.css flavours/common/colors.sh spicetify/Themes/Ziro/color.ini .Xresources
 ```
 
 ## TODO

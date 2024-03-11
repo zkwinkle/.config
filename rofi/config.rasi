@@ -1,4 +1,2 @@
-configuration {
-	dpi: 96;
-}
+@import "dpi"
 @import "theme"
