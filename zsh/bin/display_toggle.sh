@@ -7,7 +7,7 @@ disconnected=$(get_display.sh -d)
 # First, get the monitors and their horizontal resolutions
 MONITORS=$(xrandr --current | grep '\bconnected' -A1 | awk '{printf "%s ", $1}' | sed 's/-- /\n/g' | sed 's/ \([0-9]\+\).*/ \1/')
 
-HIGHEST_DIM=$(echo $MONITORS | sed 's/.*\s//' | sort -nr)
+HIGHEST_DIM=$(echo $MONITORS | sed 's/.*\s//' | sort -nr | head -1)
 
 DPI=$(calc "96*$HIGHEST_DIM / 1920")
 echo "dpi: $DPI"
