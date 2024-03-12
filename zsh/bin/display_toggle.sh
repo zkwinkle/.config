@@ -30,7 +30,7 @@ get_scaling() {
 
 if [ -n "$external" ]; then
 	if xrandr --listmonitors | grep -q "$laptop"; then
-		xrandr --output "$laptop" --off --output "$external" --auto
+		xrandr --output "$laptop" --off --output "$external" --scale 1x1 --auto
 	else
 		laptop_res=$(get_res $laptop)
 		laptop_scaling_factor=$(get_scaling $laptop)
@@ -42,7 +42,7 @@ if [ -n "$external" ]; then
 		xrandr --output "$laptop" --scale "$laptop_scaling_factor"x"$laptop_scaling_factor" --auto --output "$external" --scale "$external_scaling_factor"x"$external_scaling_factor" --auto --pos $(calc "$laptop_res * $laptop_scaling_factor")x0
 	fi
 else
-	xrandr --output "$laptop" --auto
+	xrandr --output "$laptop" --scale 1x1 --auto
 	for MONITOR in $disconnected
 	do
 		xrandr --output "$MONITOR" --off
