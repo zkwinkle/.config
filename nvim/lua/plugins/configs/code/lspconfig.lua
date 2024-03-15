@@ -51,19 +51,10 @@ local setup = function()
 			settings = {
 				['rust-analyzer'] = {
 					check = {
-						invocationLocation = "root",
-						overrideCommand = { "cargo", "check", "--message-format=json", "--all-targets" }
+						workspace = false,
 					},
-					cargo = {
-						features = {},
-						buildScripts = {
-							invocationLocation = "root",
-							overrideCommand = { "cargo", "check", "--quiet", "--message-format=json", "--all-targets" }
-						}
-					}
 				}
 			},
-			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
 		},
 		['tsserver'] = {},
 	}
