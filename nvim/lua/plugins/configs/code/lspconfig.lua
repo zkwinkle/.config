@@ -3,13 +3,16 @@ local utils = require "core.utils"
 local setup = function()
 	local lspconfig = require 'lspconfig'
 
-	local html_capabilities = vim.lsp.protocol.make_client_capabilities()
-	html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+	local snippet_support_capabilities = vim.lsp.protocol.make_client_capabilities()
+	snippet_support_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 	local language_servers = {
 		['clangd'] = {},
+		['cssls'] = {
+			capabilities = snippet_support_capabilities
+		},
 		['html'] = {
-			capabilities = html_capabilities
+			capabilities = snippet_support_capabilities
 		},
 		['lua_ls'] = {
 			settings = {
