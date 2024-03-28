@@ -237,7 +237,7 @@ function setIcons {
     fi
     if [ $KNOTS = "yes" ]; then
         case $UNITS in
-            "imperial") 
+            "imperial")
                 # The division by one is necessary because scale works only for divisions. bc is stupid.
                 WINDFORCE=`echo "scale=$DECIMALS;$WINDFORCE * 0.8689762419 / 1" | bc`
                 ;;
@@ -276,9 +276,9 @@ function setIcons {
     else
         TEMP_ICON="洞"
     fi
-    
+
     TEMP=`echo "$TEMP" | cut -d "." -f 1`
-    
+
     if [ "$TEMP" -le $COLD_TEMP ]; then
         TEMP="%{F$COLOR_COLD}%{T$TEMP_FONT_CODE}%{T-}%{F-} $COLOR_TEXT_BEGIN$TEMP%{T$TEMP_FONT_CODE}$TEMP_ICON%{T-}$COLOR_TEXT_END"
     elif [ `echo "$TEMP >= $HOT_TEMP" | bc` -eq 1 ]; then
