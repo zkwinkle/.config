@@ -57,6 +57,7 @@ alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' # Part o
 alias deploy='ssh website-server -t update-website'
 alias test='cargo nextest run -p'
 alias wtec='nmcli connection down wTEC && nmcli connection up wTEC'
+alias timer='timer_func() { termdown $1 && dunstify -u critical "Timer over" $2 || dunstify "Timer aborted" $2; }; timer_func'
 
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
