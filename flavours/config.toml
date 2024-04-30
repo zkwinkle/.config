@@ -89,3 +89,11 @@ subtemplate = "Ziro"
 rewrite = true
 hook = "spicetify apply --quiet $(ps -x | grep -i spotify | grep -v grep >/dev/null || echo '--no-restart')"
 light = false
+
+[[items]]
+file = "~/.config/dunst/dunstrc"
+template = "dunst"
+rewrite = false
+start= "## Start flavours ##"
+end = "## End flavours ##"
+hook = "pkill -x dunst && dunst &"
