@@ -114,15 +114,15 @@ M.lspconfig = {
 M.gitsigns = {
 
 	n = {
-		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
-		["gu"] = { map = ":Gitsigns undo_stage_hunk<CR>" },
+		["ch"] = { map = ":Gitsigns stage_hunk<CR>" },
+		["cu"] = { map = ":Gitsigns undo_stage_hunk<CR>" },
 		["cn"] = { map = ":Gitsigns next_hunk<CR>" },
 		["cp"] = { map = ":Gitsigns prev_hunk<CR>" }
 	},
 
 	v = {
-		["gh"] = { map = ":Gitsigns stage_hunk<CR>" },
-		["gr"] = { map = ":Gitsigns reset_hunk<CR>" }
+		["ch"] = { map = ":Gitsigns stage_hunk<CR>" },
+		["cr"] = { map = ":Gitsigns reset_hunk<CR>" }
 	},
 
 }

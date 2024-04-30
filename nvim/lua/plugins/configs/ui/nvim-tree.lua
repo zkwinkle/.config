@@ -47,7 +47,7 @@ local function my_on_attach(bufnr)
 	vim.keymap.set('n', 'cn', api.node.navigate.git.next, opts('Next Git'))
 
 	-- custom mappings
-	vim.keymap.set('n', 'gh', git_toggle, opts('Git Toggle'))
+	vim.keymap.set('n', 'ch', git_toggle, opts('Git Toggle'))
 end
 
 local setup = function()
