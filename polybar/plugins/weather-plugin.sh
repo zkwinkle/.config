@@ -34,7 +34,7 @@ COLOR_TEXT=""
 WEATHER_FONT_CODE=2
 
 # Font for the thermometer icon
-TEMP_FONT_CODE=3
+TEMP_FONT_CODE=4
 
 # Wind settings _______________________________________________________________
 
