@@ -15,6 +15,7 @@
   - neofetch
   - bunnyfetch
 - preferred login manager: (lightdm-mini-greeter](https://github.com/prikhi/lightdm-mini-greeter] (needs lightdm, accountsservice, and some config)
+- notifications: dunst
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
 - i3lock-multimonitor for locking on more than one screen (aliased to `i3lock`)
