@@ -259,7 +259,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -346,10 +346,10 @@
 
 
 [urgency_low]
-    timeout = 5
+    timeout = 10
 
 [urgency_normal]
-    timeout = 5
+    timeout = 10
     override_pause_level = 30
 
 [urgency_critical]
