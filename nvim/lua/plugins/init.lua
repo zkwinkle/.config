@@ -17,7 +17,7 @@ local opts = {
 	},
 	browser = "firefox",
 	checker = {
-		enabled = true, -- automatically check for plugin updates
+		enabled = false, -- automatically check for plugin updates
 	},
 	-- lockfile generated after running update.
 	lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
