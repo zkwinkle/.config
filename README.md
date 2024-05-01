@@ -70,6 +70,7 @@ Also give executable permission to all the scripts:
 ```
 chmod -R +x ~/.config/zsh/bin
 chmod -R +x ~/.config/polybar/plugins
+chmod -R +x ~/.config/dunst
 ```
 
 ### Weather
