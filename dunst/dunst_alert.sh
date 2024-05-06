@@ -8,6 +8,10 @@ play_sound() {
 		return
 	fi
 
+	if [ "$DUNST_APP_NAME" = "Spotify" ]; then
+		return
+	fi
+
 	if [ "$DUNST_URGENCY" = "CRITICAL" ]; then
 		mpv "$SOUNDS"/portal_button_positive.m4a --volume=80 &
 	else
