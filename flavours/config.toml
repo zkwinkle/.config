@@ -66,13 +66,12 @@ subtemplate = "gtk-2"
 rewrite = true
 
 [[items]]
-file = "~/.config/discocss/custom.css"
+file = "~/.config/Vencord/themes/DiscordRecolor.theme.css"
 template = "discord"
 subtemplate = "css-variables"
 rewrite = false
 start= "/* Start flavours */"
 end = "/* End flavours */"
-hook = "ps -x | grep -i discord | grep -v grep >/dev/null && discocss &"
 
 [[items]]
 file = "~/.config/flavours/common/colors.sh"

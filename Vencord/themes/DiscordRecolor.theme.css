@@ -1,0 +1,73 @@
+/**
+ * @name DiscordRecolor
+ * @description Allows you to customize Discord's native Color Scheme
+ * @author DevilBro
+ * @version 1.0.0
+ * @authorId 278543574059057154
+ * @invite Jx3TjNS
+ * @donate https://www.paypal.me/MircoWittrien
+ * @patreon https://www.patreon.com/MircoWittrien
+ * @website https://mwittrien.github.io/
+ * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Themes/DiscordRecolor/
+ * @updateUrl https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.theme.css
+ *
+ * @var checkbox			settingsicons_s			"User Settings Icons"					1
+ * @var text				font_s				"General Font"						"gg sans", "Noto Sans"
+ * @var text				accentcolor_s			"Blurple Color: [default] = 88, 101, 242"		88, 101, 242
+ * @var text				accentcolor2_s			"Boost Pink Color: [default] = 255, 115, 250"		255, 115, 250
+ * @var text				linkcolor_s			"Link Color: [default] = 0, 176, 244"			0, 176, 244
+ * @var text				mentioncolor_s			"Mentioned Color: [default] = 250, 166, 26"		250, 166, 26
+ * @var text				successcolor_s			"Success Color: [default] = 59, 165, 92"		59, 165, 92
+ * @var text				warningcolor_s			"Warning Color: [default] = 250, 166, 26"		250, 166, 26
+ * @var text				dangercolor_s			"Danger Color: [default] = 237, 66, 69"			237, 66, 69
+ * @var text				textbrightest_s			"Text Color 1: [default] = 255, 255, 255"		255, 255, 255
+ * @var text				textbrighter_s			"Text Color 2: [default] = 220, 221, 222"		222, 222, 222
+ * @var text				textbright_s			"Text Color 3: [default] = 185, 187, 190"		185, 185, 185
+ * @var text				textdark_s			"Text Color 4: [default] = 142, 146, 151"		140, 140, 140
+ * @var text				textdarker_s			"Text Color 5: [default] = 114, 118, 125"		115, 115, 115
+ * @var text				textdarkest_s			"Text Color 6: [default] = 79, 84, 92"			80, 80, 80
+ * @var text				backgroundaccent_s		"Background Accent: [default] = 64, 68, 75"		50, 50, 50
+ * @var text				backgroundprimary_s		"Background 1: [default] = 54, 57, 63"			30, 30, 30
+ * @var text				backgroundsecondary_s		"Background 2: [default] = 47, 49, 54"			20, 20, 20
+ * @var text				backgroundsecondaryalt_s	"Background 3: [default] = 41, 43, 47"			15, 15, 15
+ * @var text				backgroundtertiary_s		"Background 4: [default] = 32, 34, 37"			10, 10, 10
+ * @var text				backgroundfloating_s		"Background Elevated: [default] = 24, 25, 28"		0, 0, 0
+ */
+
+/* To change the colors, change the variables inside the root {}, do NOT change the @import url() */
+
+@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css);
+
+/* All colors are in RGB format (red, green, blue) use: https://www.google.com/search?q=colorpicker	*/
+
+:root {
+	--settingsicons:		1;				/*	Use Settings Icons in User Settings: 1 = yes, 0 = no							*/
+	--font:				"gg sans", "Noto Sans";		/*	General Font												*/
+
+/* Start flavours */
+/* Base16 Blue Evening - Discord Recolor color variables */
+/* Scheme by zkwinkle (http://github.com/zkwinkle) based on the &quot;Underbelly of the blue evening&quot; by Denis Istomin */
+	--accentcolor:					238,100,172;
+	--accentcolor2:					197,139,244;
+	--linkcolor:					  144,123,244;
+
+	--mentioncolor: 				229,123,148;
+	--successcolor: 				33,169,144;
+	--warningcolor: 				249,193,153;
+	--dangercolor: 					244,144,139;
+
+	--textbrightest: 				248,248,250;
+	--textbrighter: 				225,227,233;
+	--textbright: 					203,205,216;
+	--textdark: 					  180,184,200;
+	--textdarker: 			    calc( (2*180 + 78) / 3 ),calc( (2*184 + 83) / 3 ),calc( (2*200 + 106) / 3 );
+	--textdarkest: 					78,83,106;
+
+	--backgroundaccent: 			  61,66,83;
+	--backgroundprimary: 			  calc( (2*45 + 61) / 3 ),calc( (2*48 + 66) / 3 ),calc( (2*61 + 83) / 3 );
+	--backgroundsecondary: 	    calc( (5*45 + 28) / 6 ),calc( (5*48 + 30) / 6 ),calc( (5*61 + 38) / 6 );
+	--backgroundsecondaryalt: 	calc( (45 + 28) / 2 ),calc( (48 + 30) / 2 ),calc( (61 + 38) / 2 );
+	--backgroundtertiary: 	    calc( (45 + 3*28) / 4 ),calc( (48 + 3*30) / 4 ),calc( (61 + 3*38) / 4 );
+	--backgroundfloating: 			28,30,38;
+/* End flavours */
+}
