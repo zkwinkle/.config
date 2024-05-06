@@ -223,24 +223,20 @@ Because you'll constantly have the colorscheme config files for each program sho
 git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua/plugins/nvim-base16/colors.lua polybar/base16.ini polybar/dpi.ini polybar/plugins/weather-colors.sh rofi/theme.rasi rofi/dpi.rasi zathura/zathurarc FlatColor/colors2 FlatColor/colors3 Vencord/themes/DiscordRecolor.theme.css flavours/common/colors.sh spicetify/Themes/Ziro/color.ini .Xresources dunst/dunstrc
 ```
 
+## TF2 workaround
+
+TF2 is borked on Arch Linux, to get it working correctly do 2 things:
+
+1. Install `lib32-gperftools` from AUR and set `LD_PRELOAD=/usr/lib32/libtcmalloc_minimal.so:$LD_PRELOAD %command% -novid -windowed` in the TF2 launch options.
+2. Check the `Force the use of a specific Steam Play compatibility tool` option and set it to `Steam Linux Runtime 1.0 (scout)`.
+
 ## TODO
 
 Stuff I'd like to add/upgrade but haven't had the time to:
 
-- add cmp to nvim
 - Rice Rofi
+- Use `eww` for a nicer status bar, power menu, timer
 
 ### Base16
-- Fix discord theme a little for light-theme (white text inside little "Public" tag, possibly change text inside mentions)
 - Make telegram scheme more light-theme friendly
-- bat config
-- somehow with firefox?? (thunderbird??? change to neomutt?)
-- Add hooks for reloading everything neovim (impossible)
-- Fix Spotify light theme (some icons don't change color)
-
-### Polybar
-- Power (on/off/sleep/restart) menu
-- I'd like to maybe fit in music info and a volume _bar_, but it won't fit nicely in my current main bar, would need to think of a different design ( widgets? )
-
-### Dunst
-- Add a notification sound
+- Look for a better spotify theme
