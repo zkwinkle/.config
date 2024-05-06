@@ -249,7 +249,7 @@ assign [class="TelegramDesktop"] $ws9
 exec firefox
 exec thunderbird
 exec telegram-desktop
-exec discocss || discord
+exec discord
 #exec obsidian
 exec spicetify apply --no-restart; spotify
 for_window [class="Spotify"] move to workspace $ws10
