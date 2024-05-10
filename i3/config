@@ -270,6 +270,6 @@ exec_always $HOME/.fehbg # reload last wallpaper
 bindsym $mod+n exec xdotool mousedown 1
 
 # Dunst keybinds
-bindsym $Alt+Escape exec dunstctl close-all
-bindsym $Alt+Tab exec dunstctl history-pop
-bindsym $Alt+A exec dunstctl action
+bindsym $mod+Escape exec dunstctl close-all
+bindsym $mod+Tab exec dunstctl history-pop
+bindsym $mod+A exec dunstctl action
