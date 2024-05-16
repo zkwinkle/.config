@@ -47,7 +47,8 @@
 										"percent": 0.714285714285714,
 										"swallows": [
 											{
-												"instance": "^(vesktop|discord)$"
+												"instance": "^discord$",
+												"title": "^.+\\ \\-\\ Discord$"
 											}
 										],
 										"type": "con"
