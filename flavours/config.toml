@@ -86,7 +86,7 @@ file = "~/.config/spicetify/Themes/Ziro/color.ini"
 template = "spicetify"
 subtemplate = "Ziro"
 rewrite = true
-hook = "spicetify apply --quiet $(ps -x | grep -i spotify | grep -v grep >/dev/null || echo '--no-restart')"
+hook = "CLOSE_SPOTIFY=$(pkill spotify; echo $?); spicetify apply --quiet --no-restart && [ $CLOSE_SPOTIFY = 0 ] && spotify &"
 light = false
 
 [[items]]
