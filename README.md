@@ -52,7 +52,7 @@
 - noto-fonts-cjk
 - noto-fonts-emoji
 - ttf-dejavu (polybar emoji)
-- conda
+- tree-sitter-cli (auto install treesitter langs)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
