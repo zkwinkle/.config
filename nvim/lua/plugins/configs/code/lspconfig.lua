@@ -60,6 +60,8 @@ local setup = function()
 			},
 		},
 		['tsserver'] = {},
+		['wgsl_analyzer'] = {},
+		['sourcekit'] = {},
 	}
 
 	local default_on_attach = function(_, bufnr)

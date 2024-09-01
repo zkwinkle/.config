@@ -73,8 +73,8 @@ return {
 				['--layout']     = 'reverse',
 				['--border']     = 'none',
 				['--info']       = 'inline',
-				['--pointer']    = '"->"',
-				['--marker']     = '"<>"',
+				['--pointer']    = '->',
+				['--marker']     = '<>',
 				['--tabstop']    = '2',
 			},
 
