@@ -201,7 +201,7 @@ exec_always --no-startup-id "PATH=$SCRIPTS:$PATH; reload-polybar.sh"
 
 # Set keyboard language keybind
 exec setxkbmap us altgr-intl
-bindsym $mod+Control+l exec setxkbmap us altgr-intl; exec xmodmap $HOME/.config/.Xmodmap
+bindsym $mod+Control+l exec "setxkbmap us altgr-intl; xmodmap $HOME/.config/.Xmodmap"
 
 # Brightness controls
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
