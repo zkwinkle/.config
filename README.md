@@ -5,7 +5,7 @@
 - status bar: polybar
 - Shell: zsh
 - Terminal: kitty
-- Cholor schemes: (flavours)[https://github.com/Misterio77/flavours] (read below)
+- Cholor schemes: [flavours](https://github.com/Misterio77/flavours) (read below)
 - Text editor: Neovim
 - Screenshots: shotgun + hacksaw
 - rofi:
@@ -14,7 +14,7 @@
 - fetches:
   - neofetch
   - bunnyfetch
-- preferred login manager: (lightdm-mini-greeter](https://github.com/prikhi/lightdm-mini-greeter] (needs lightdm, accountsservice, and some config)
+- preferred login manager: [lightdm-mini-greeter](https://github.com/prikhi/lightdm-mini-greeter) (needs lightdm, accountsservice, and some config)
 - notifications: dunst
 - fuzzy search: fzf
 	- For preview: exa, bat, timg
