@@ -227,6 +227,8 @@ git update-index --skip-worktree i3/client-properties kitty/colors.conf nvim/lua
 
 TF2 is borked on Arch Linux, to get it working correctly do 2 things:
 
+Note: I think this isn't necessary anymore since TF2 got a 64bit update. Remove if I ever test it out.
+
 1. Install `lib32-gperftools` from AUR and set `LD_PRELOAD=/usr/lib32/libtcmalloc_minimal.so:$LD_PRELOAD %command% -novid -windowed` in the TF2 launch options.
 2. Check the `Force the use of a specific Steam Play compatibility tool` option and set it to `Steam Linux Runtime 1.0 (scout)`.
 
