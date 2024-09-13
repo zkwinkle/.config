@@ -248,7 +248,7 @@ exec dunst
 
 # Floating windows
 for_window [class="Thunar"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="pavucontrol"] floating enable
 for_window [class="airshipper"] floating enable
 for_window [class="Lutris"] floating enable
 
