@@ -59,7 +59,7 @@ local setup = function()
 				}
 			},
 		},
-		['tsserver'] = {},
+		['ts_ls'] = {},
 		['wgsl_analyzer'] = {},
 		['sourcekit'] = {},
 	}
