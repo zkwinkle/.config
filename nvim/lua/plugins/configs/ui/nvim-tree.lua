@@ -118,7 +118,7 @@ local setup = function()
 			custom = {
 				'.git',
 				'node_modules',
-				'.cache'
+				'\\.cache'
 			}
 		},
 		actions = {
