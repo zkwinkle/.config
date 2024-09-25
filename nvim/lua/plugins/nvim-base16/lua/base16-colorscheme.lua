@@ -82,6 +82,15 @@ M.highlight = setmetatable({}, {
 			end
 		end
 		vim.api.nvim_set_hl(0, hlgroup, val)
+
+		-- Setiembre 2024: No debería ser necesario usar :hi, pero por alguna razón
+		-- que no entiendo `nvim_set_hl` no está funcionando bien en el startup`
+		local cmd = { 'hi', hlgroup }
+		if guifg then table.insert(cmd, 'guifg=' .. guifg) end
+		if guibg then table.insert(cmd, 'guibg=' .. guibg) end
+		if gui then table.insert(cmd, 'gui=' .. gui) end
+		if guisp then table.insert(cmd, 'guisp=' .. guisp) end
+		vim.cmd(table.concat(cmd, ' '))
 	end
 })
 
