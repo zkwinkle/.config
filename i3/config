@@ -237,7 +237,7 @@ assign [class="thunderbird"] $ws8
 assign [class="discord"] $ws9
 assign [class="TelegramDesktop"] $ws9
 
-exec firefox-nightly
+exec firefox
 exec thunderbird
 exec telegram-desktop
 exec discord
