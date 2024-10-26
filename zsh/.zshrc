@@ -57,7 +57,8 @@ alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' # Part o
 alias deploy='ssh website-server -t update-website'
 alias test='cargo nextest run -p'
 alias wtec='nmcli connection down wTEC && nmcli connection up wTEC'
-alias timer='timer_func() { termdown $1 && dunstify -u critical "Timer over" $2 || dunstify "Timer aborted" $2; }; timer_func'
+alias timer='timer_func() { ~/.config/dunst/dunst_timer.sh $1 &; disown &>/dev/null }; timer_func'
+alias sqlxup='sqlx migrate revert --database-url "postgres://postgres@localhost/uwgpu-local" --target-version 0 && sqlx migrate run --database-url "postgres://postgres@localhost/uwgpu-local"'
 
 # Path
 PATH=${ZDOTDIR}/bin:$PATH
@@ -158,7 +159,7 @@ function fzg(){
 	mkfifo $FIFO;
 	(fd . ~ --type=d -E AUR -x check-for-git.sh > $FIFO &);
 	_GIT_DIR=$(fzf --preview-window=wrap +m < $FIFO);
-	[ -n "$_GIT_DIR" ] && cd "$_GIT_DIR" && nvim .
+	[ -n "$_GIT_DIR" ] && cd "$_GIT_DIR" && nvim
 	rm $FIFO
 }
 
