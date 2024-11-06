@@ -42,9 +42,6 @@ M.base = {
 		-- Format
 		["<leader>=="] = { map = "gg<S-v>G=<C-o>" },
 
-		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
-		["gx"]         = { map = function() utils.open(vim.fn.expand('<cfile>')) end },
-
 		-- wrap current line
 		["gq"]         = { map = "g$lgEa<CR><Esc>" },
 	},
@@ -55,9 +52,6 @@ M.base = {
 		-- Don't copy the replaced text after pasting in visual mode
 		-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 		["p"] = { map = 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
-
-		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
-		["gx"] = { map = function() utils.open(utils.get_visual_selection()) end },
 	},
 
 	t = {
