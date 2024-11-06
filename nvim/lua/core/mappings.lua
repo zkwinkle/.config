@@ -44,6 +44,9 @@ M.base = {
 
 		-- manual gx (TODO: Remove when nvim upgrades to 0.10 )
 		["gx"]         = { map = function() utils.open(vim.fn.expand('<cfile>')) end },
+
+		-- wrap current line
+		["gq"]         = { map = "g$lgEa<CR><Esc>" },
 	},
 
 	v = {
