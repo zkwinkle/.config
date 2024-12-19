@@ -53,6 +53,7 @@
 - noto-fonts-emoji
 - ttf-dejavu (polybar emoji)
 - tree-sitter-cli (auto install treesitter langs)
+- keyd (key remaps)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
@@ -132,6 +133,7 @@ to `flavours apply <scheme>`) and the name of a wallpaper image that's inside
 ```
 ln -s ~/.config/.Xresources ~/.Xresources
 ln -s ~/.config/.Xmodmap ~/.Xmodmap
+ln -s ~/.config/keyd/default.conf /etc/keyd/default.conf
 ln -s ~/.config/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
 mkdir -p ~/.themes
 ln -s ~/.config/FlatColor ~/.themes/FlatColor
@@ -147,7 +149,7 @@ sudo cp ~/.config/udev/backlight.rules /etc/udev/rules.d/
 ### Groups
 Add yourself to the necessary groups (this is for user `igna`):
 ```
-sudo usermod -aG video igna
+sudo usermod -aG video,keyd igna
 ```
 
 ### DPI / Resolution / Scaling
@@ -158,6 +160,11 @@ DPIs, the following is done:
 - If connecting an external display that has a larger resolution that 1920 then the DPI is set accordingly inside `display_toggle.sh`
 - The screens that are a different res get xrandr scaling to look normal.
 - You should restart apps to get them to adjust to new DPI.
+
+### Key mappings
+I use `keyd` specifically for remapping stuff for WoW.
+
+The rest is mapped inside Xmodmap, Win+Ctrl+l should set it. (see i3 config)
 
 ### Framework Config
 Because framework is HiDPI with a weird resolution, for simplicity to keep the
