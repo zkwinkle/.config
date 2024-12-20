@@ -125,6 +125,7 @@ set $ws10 "10"
 
 # For double monitors
 bindsym $mod+m exec	--no-startup-id "PATH=$SCRIPTS:$PATH; display_toggle.sh"
+bindsym Shift+$mod+m exec	--no-startup-id "PATH=$SCRIPTS:$PATH; display_toggle.sh -D"
 
 bindsym $mod+greater move workspace to output right; move workspace to output up
 bindsym $mod+less move workspace to output left; move workspace to output down
