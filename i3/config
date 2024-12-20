@@ -204,7 +204,7 @@ exec setxkbmap us altgr-intl
 bindsym $mod+Control+l exec "setxkbmap us altgr-intl; xmodmap $HOME/.config/.Xmodmap"
 
 # Start keyd application-specific daemon
-keyd-application-mapper -d
+exec keyd-application-mapper -d
 
 # Brightness controls
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
