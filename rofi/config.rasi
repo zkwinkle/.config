@@ -1,2 +1,6 @@
 @import "dpi"
 @import "theme"
+
+configuration {
+  kb-secondary-copy: "";
+}
