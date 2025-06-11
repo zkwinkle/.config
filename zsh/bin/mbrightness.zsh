@@ -1,13 +1,12 @@
 #!/bin/zsh
 
-MON=$1 # Discover monitor name with: xrandr | grep " connected"
-ACTION=$2
-STEP=$3 # Step Up/Down brightnes by: 5 = ".05", 10 = ".10", etc.
+# Usage: ./mbrightness.zsh <inc|dec|+|-> <step> (0-100)
 
-STEP=$(bc <<< "scale = 2; ${STEP}/100")
+BUS=13 # Check i2c bus with 'ddcutil detect'
+ACTION=$1
+STEP=$2
 
-CurrBright=$( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 )
-CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
+CurrBright=$(ddcutil --bus $BUS getvcp 10 | grep -o 'current value = \+[0-9]\+' | awk '{print $4}')
 
 case $ACTION in
 	[iI][nN][cC] | +)
@@ -17,11 +16,20 @@ case $ACTION in
 		NewBright=$((CurrBright - STEP))
 		;;
 	*)
-		echo Wrong usage of brightness.sh
+		echo "Wrong usage: ./brightness.sh <inc|dec|+|-> <step>"
 		exit 1
 esac
 
-NewBright=$( [[ $NewBright -gt 1.0 ]] && echo 1.0 || echo $NewBright )
-NewBright=$( [[ $NewBright -lt 0.0 ]] && echo 0.0 || echo $NewBright )
+# Clamp between 0 and 100
+(( NewBright > 100 )) && NewBright=100
+(( NewBright < 0 )) && NewBright=0
 
-xrandr --output "$MON" --brightness $NewBright
+# Set brightness on external display
+# Use brightnessctl first because it's faster and it works with polybar, but
+# if it fails for whatever reason we default to ddcutil
+if brightnessctl -d "ddcci${BUS}" set "$NewBright%" >/dev/null 2>&1; then
+	echo "Monitor brightness set to $NewBright% using brightnessctl"
+else
+	ddcutil --bus $BUS --sleep-multiplier 0.1 setvcp 10 "$NewBright"
+	echo "Monitor brightness set to $NewBright% using ddcutil"
+fi
