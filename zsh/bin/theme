@@ -26,7 +26,7 @@ get_image(){
 		exit 1
 	fi
 
-	IMG="${WALLPAPERS}/${IMG_NAME}" 
+	IMG="${WALLPAPERS}/${IMG_NAME}"
 
 	if [ ! -e "$IMG" ]; then
 		echo "Couldn't locate image at '$IMG'"
@@ -38,6 +38,26 @@ uncomment(){
  sed 's/#.*$//g' < "$1"
 }
 
+# Checks if the theme is a light or dark theme by checking it's BG color
+theme_is_light_or_dark(){
+  BG_COLOR=$(flavours info $1 | grep -o '#[0-9a-fA-F]\{6\}' | head -n 1)
+
+  R=$((16#${BG_COLOR:1:2}))
+  G=$((16#${BG_COLOR:3:2}))
+  B=$((16#${BG_COLOR:5:2}))
+
+  MAX_RGB=$(printf "%d\n%d\n%d" "$R" "$G" "$B" | sort -n | tail -n 1)
+  MIN_RGB=$(printf "%d\n%d\n%d" "$R" "$G" "$B" | sort -n | head -n 1)
+
+  LIGHTNESS=$(( (MAX_RGB + MIN_RGB) / 2 ))
+
+  if [ "$LIGHTNESS" -gt 128 ]; then
+    echo "light"
+  else
+    echo "dark"
+  fi
+}
+
 usage(){
 	echo "Usage: ${CMD_NAME} [THEME]"
 }
@@ -46,7 +66,7 @@ help(){
 	usage
 	echo "Set a predetermined theme (with bg and lock img)."
 	echo "Example: theme blue-evening"
-	echo "To add new options, add them to the $THEMES_FILE file."	
+	echo "To add new options, add them to the $THEMES_FILE file."
 }
 
 case $1 in
@@ -58,7 +78,7 @@ case $1 in
 
 	*)
 		IMG=''
-		
+
 		for THEME in $(uncomment "$THEMES_FILE" | sed 's/\([^:]*\):.*/\1/')
 		do
 			if [ "$1" = "$THEME" ]; then
@@ -79,6 +99,12 @@ case $1 in
 esac
 
 flavours apply "$1"
+
+if [ "$(theme_is_light_or_dark $1)"  == "light" ]; then
+    dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+else
+    dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+fi
 
 # Script to set bg + i3lock
 "${ZDOTDIR}/bin/post-theme.sh" "$IMG"
