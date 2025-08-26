@@ -237,13 +237,13 @@ bindsym $mod+$Alt+l exec $HOME/.config/i3-layout-manager/layout_manager.sh
 # Execute default apps and workspace assignment
 assign [class="firefox"] $ws1
 assign [class="zoom"] $ws4
-assign [class="thunderbird"] $ws8
+assign [class="betterbird"] $ws8
 assign [class="discord"] $ws9
-assign [class="TelegramDesktop"] $ws9
+assign [class="Telegram"] $ws9
 
 exec firefox
-exec thunderbird
-exec telegram-desktop
+exec betterbird
+exec Telegram
 exec discord
 #exec obsidian
 exec spicetify apply --no-restart; spotify
