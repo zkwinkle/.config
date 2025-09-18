@@ -51,8 +51,8 @@ local function my_on_attach(bufnr)
 end
 
 local setup = function()
-	local tree_api = require("nvim-tree")
-	local tree_view = require("nvim-tree.view")
+	local nvim_tree = require("nvim-tree")
+	local tree = require("nvim-tree.api").tree
 
 	vim.api.nvim_create_augroup("NvimTreeResize", {
 		clear = true,
@@ -61,13 +61,13 @@ local setup = function()
 	vim.api.nvim_create_autocmd({ "VimResized" }, {
 		group = "NvimTreeResize",
 		callback = function()
-			if tree_view.is_visible() then
-				tree_view.close()
+			if tree.is_visible() then
+				tree.close()
 			end
 		end
 	})
 
-	tree_api.setup({
+	nvim_tree.setup({
 		sort_by = "case_sensitive",
 		on_attach = my_on_attach,
 		view = {
