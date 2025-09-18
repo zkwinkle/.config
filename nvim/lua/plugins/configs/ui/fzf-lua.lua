@@ -26,7 +26,7 @@ return {
 					-- neovim `:tmap` mappings for the fzf win
 					["<F1>"]  = "toggle-help",
 					["<F2>"]  = "toggle-fullscreen",
-					["<A-h>"] = "preview-page-reset",
+					["<F4>"]  = "toggle-preview",
 					["<A-j>"] = "preview-page-down",
 					["<A-k>"] = "preview-page-up",
 
@@ -194,8 +194,8 @@ return {
 					--preview_pager = "delta --width=$FZF_PREVIEW_COLUMNS",
 					actions     = {
 						-- actions inherit from 'actions.files' and merge
-						["right"] = { actions.git_unstage, actions.resume },
-						["left"]  = { actions.git_stage, actions.resume },
+						["right"] = { fn = actions.git_unstage, reload = true },
+						["left"]  = { fn = actions.git_stage, reload = true },
 					},
 				},
 				commits = {
@@ -242,7 +242,7 @@ return {
 					preview  = "git --no-pager stash show --patch --color {1}",
 					actions  = {
 						["default"] = actions.git_stash_apply,
-						["ctrl-x"]  = { actions.git_stash_drop, actions.resume },
+						["ctrl-x"]  = { fn = actions.git_stash_drop, reload = true },
 					},
 					fzf_opts = {
 						["--no-multi"]  = '',
@@ -303,7 +303,7 @@ return {
 				prompt     = 'Args❯ ',
 				files_only = true,
 				-- actions inherit from 'actions.files' and merge
-				actions    = { ["ctrl-x"] = { actions.arg_del, actions.resume } }
+				actions    = { ["ctrl-x"] = { fn = actions.arg_del, reload = true } }
 			},
 			oldfiles = {
 				prompt                  = 'History❯ ',
@@ -322,7 +322,7 @@ return {
 					-- fzf-lua to not close the fzf window, this way we
 					-- can resume the buffers picker on the same window
 					-- eliminating an otherwise unaesthetic win "flash"
-					["ctrl-x"] = { actions.buf_del, actions.resume },
+					["ctrl-x"] = { fn = actions.buf_del, reload = true },
 				}
 			},
 			tabs = {
@@ -334,7 +334,7 @@ return {
 				actions     = {
 					-- actions inherit from 'actions.buffers' and merge
 					["default"] = actions.buf_switch,
-					["ctrl-x"]  = { actions.buf_del, actions.resume },
+					["ctrl-x"]  = { fn = actions.buf_del, reload = true },
 				},
 				fzf_opts    = {
 					-- hide tabnr
