@@ -1,8 +1,6 @@
 local utils = require "core.utils"
 
 local setup = function()
-  local lspconfig = require 'lspconfig'
-
   local snippet_support_capabilities = vim.lsp.protocol.make_client_capabilities()
   snippet_support_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -93,7 +91,8 @@ local setup = function()
     -- Get capabilities
     settings['capabilities'] = settings['capabilities'] or default_capabilities
 
-    lspconfig[s].setup(settings)
+    vim.lsp.enable(s)
+    vim.lsp.config(s, settings)
   end
 end
 
