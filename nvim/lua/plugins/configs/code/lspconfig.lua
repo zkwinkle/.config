@@ -57,7 +57,7 @@ local setup = function()
         },
       },
     },
-    ['ruff'] =  {},
+    ['ruff'] = {},
     ['rust_analyzer'] = {
       settings = {
         ['rust-analyzer'] = {
@@ -90,6 +90,14 @@ local setup = function()
 
     -- Get capabilities
     settings['capabilities'] = settings['capabilities'] or default_capabilities
+
+    -- To use nvim LSP as the provider for nvim-ufo folds. We need to set the
+    -- foldingRange capability here.
+    -- See `lua/plugins/configs/editor/nvim-ufo.lua` for more details.
+    settings['capabilities'].textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
 
     vim.lsp.enable(s)
     vim.lsp.config(s, settings)

@@ -81,7 +81,7 @@ M.Lazy = {
 	n = { ["<leader>L"] = { map = ":Lazy<CR>" } }
 }
 
-M.nvimtree = {
+M.nvim_tree = {
 	n = {
 		["<C-f>"] = { map = ":NvimTreeToggle<CR>" },
 		["<leader><leader>f"] = { map = ":NvimTreeFindFile<CR>" },
@@ -165,6 +165,14 @@ M.duck = {
 	n = {
 		["<leader>dd"] = { map = function() require("duck").hatch() end },
 		["<leader>dc"] = { map = function() require("duck").cook() end },
+	}
+}
+
+M.nvim_ufo = {
+	n = {
+    -- Using ufo provider need remap `zR` and `zM`.
+		["zR"] = { map = function() require("ufo").openAllFolds() end },
+		["zM"] = { map = function() require("ufo").closeAllFolds() end },
 	}
 }
 

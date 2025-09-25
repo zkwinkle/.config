@@ -1,5 +1,5 @@
 local utils = require "core.utils"
-local mappings = require('core.mappings').nvimtree
+local mappings = require('core.mappings').nvim_tree
 
 -- floating window aspect ratio
 local HEIGHT_RATIO = 0.9
