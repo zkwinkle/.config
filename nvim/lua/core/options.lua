@@ -35,6 +35,9 @@ opt.mouse = "a" -- Mouse support
 opt.splitbelow = true
 opt.splitright = true
 
+-- Default window borders
+opt.winborder = "rounded"
+
 -- disable some builtin vim plugins
 local default_plugins = {
 	"2html_plugin",
