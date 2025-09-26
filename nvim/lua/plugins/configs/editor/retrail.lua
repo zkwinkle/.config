@@ -1,5 +1,5 @@
 return {
   "kaplanz/retrail.nvim",
-  opts = {}, -- calls `setup` using provided `opts`
+  opts = {},
 	event = "VeryLazy",
 }
