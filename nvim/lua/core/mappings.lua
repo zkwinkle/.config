@@ -166,25 +166,4 @@ M.duck = {
   }
 }
 
-M.nvim_ufo = {
-  n = {
-    -- Using ufo provider need remap `z[rR]` and `z[mM]`.
-    ["zR"] = { map = function() require("ufo").openAllFolds() end },
-    ["zM"] = { map = function() require("ufo").closeAllFolds() end },
-
-    ["zm"] = { map = function() require("ufo").closeFoldsWith() end },
-    -- Peek fold
-    ["K"] = {
-      map = function()
-        local winid = require('ufo').peekFoldedLinesUnderCursor()
-        if not winid then
-          -- choose one of coc.nvim and nvim lsp
-          vim.fn.CocActionAsync('definitionHover') -- coc.nvim
-          vim.lsp.buf.hover()
-        end
-      end
-    },
-  }
-}
-
 return M
