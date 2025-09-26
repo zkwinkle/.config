@@ -16,6 +16,7 @@ return {
       -- See: https://github.com/chrisgrieser/nvim-origami/blob/eba1fb2662fac78dc65f6182f68e82830a3d4ecf/lua/origami/features/foldtext.lua#L71
       gitsignsCount = false,
     },
+    autofold = { enabled = false },
   },
 
   -- recommended by plugin: disable vim's auto-folding
