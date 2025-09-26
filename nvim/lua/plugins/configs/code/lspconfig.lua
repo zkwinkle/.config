@@ -102,6 +102,19 @@ local setup = function()
     vim.lsp.enable(s)
     vim.lsp.config(s, settings)
   end
+
+  --- Vim global settings related to LSP and diagnostics
+  vim.diagnostic.config({
+    jump = { float = true },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = ' ',
+        [vim.diagnostic.severity.WARN] = ' ',
+        [vim.diagnostic.severity.INFO] = ' ',
+        [vim.diagnostic.severity.HINT] = '󰌶'
+      }
+    }
+  }) -- open diagnostic upon jumping
 end
 
 return {
