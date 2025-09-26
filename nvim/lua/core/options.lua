@@ -73,6 +73,6 @@ for _, plugin in pairs(default_plugins) do
 end
 
 -- For folds, meant for use with nvim-ufo plugin
-opt.foldlevel = 99   -- Using ufo providers need a large value
+opt.foldlevel = 99 -- Using ufo providers need a large value
 opt.foldlevelstart = 99
 opt.foldenable = true
