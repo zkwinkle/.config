@@ -142,23 +142,6 @@ M.fzf_lua = {
   }
 }
 
-M.luasnip = {
-  i = {
-    ["<tab>"] = {
-      map = function()
-        return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-      end,
-      opts = { expr = true, silent = true,
-      }
-    },
-    ["<s-tab>"] = { map = function() require("luasnip").jump(-1) end },
-  },
-  s = {
-    ["<tab>"] = { map = function() require("luasnip").jump(1) end },
-    ["<s-tab>"] = { map = function() require("luasnip").jump(-1) end },
-  }
-}
-
 M.duck = {
   n = {
     ["<leader>dd"] = { map = function() require("duck").hatch() end },
