@@ -1,0 +1,10 @@
+[Unit]
+Description=ghostmirror timer, auto select archlinux mirror
+
+[Timer]
+OnCalendar=2025-10-2 
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

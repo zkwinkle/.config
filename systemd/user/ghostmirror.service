@@ -1,0 +1,13 @@
+[Unit]
+Description=Execute ghost mirror
+After=network-online.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ghostmirror -Duml /home/igna/.config/ghostmirror/mirrorlist /home/igna/.config/ghostmirror/mirrorlist -s light -S state,outofdate,morerecent,speed
+Environment="RESTART_COUNT=0"
+Environment="SERVICE_VERSION=0.16.99"
+Type=oneshot
+Restart=on-failure
+RestartSec=30m
+

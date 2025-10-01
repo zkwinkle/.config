@@ -1,0 +1,10 @@
+[Unit]
+Description=Desktop alert warning of low remaining battery
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/home/igna/.config/dunst/low_battery_alert.sh
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target
