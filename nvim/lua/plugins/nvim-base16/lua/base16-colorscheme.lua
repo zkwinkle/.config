@@ -196,8 +196,7 @@ function M.setup(colors)
   hi.PmenuMatch                         = { guifg = M.colors.base05, guibg = M.colors.base01, gui = 'bold', guisp = nil, ctermfg = M.colors.cterm05, ctermbg = M.colors.cterm01 }
   hi.PmenuMatchSel                      = { guifg = M.colors.base05, guibg = M.colors.base01, gui = 'bold,reverse', guisp = nil, ctermfg = M.colors.cterm05, ctermbg = M.colors.cterm01 }
   hi.PmenuSbar                          = { guifg = nil, guibg = M.colors.base02, gui = nil, guisp = nil, ctermfg = nil, ctermbg = M.colors.cterm02 }
-  hi.PmenuSel                           = { guifg = M.colors.base05, guibg = M.colors.base01, gui = 'reverse', guisp = nil, ctermfg = M.colors.cterm05, ctermbg = M.colors.cterm01 }
-  hi.PmenuThumb                         = { guifg = nil, guibg = M.colors.base07, gui = nil, guisp = nil, ctermfg = nil, ctermbg = M.colors.cterm07 }
+  hi.PmenuThumb                         = { guifg = nil, guibg = M.colors.base03, gui = nil, guisp = nil, ctermfg = nil, ctermbg = M.colors.cterm03 }
 
 	hi.TabLine                            = { guifg = M.colors.base03, guibg = M.colors.base01, gui = 'none', guisp = nil, ctermfg = M.colors.cterm03, ctermbg = M.colors.cterm01 }
 	hi.TabLineFill                        = { guifg = M.colors.base03, guibg = M.colors.base01, gui = 'none', guisp = nil, ctermfg = M.colors.cterm03, ctermbg = M.colors.cterm01 }
@@ -701,9 +700,17 @@ function M.setup(colors)
 	if M.config.blink then
     hi.BlinkCmpMenu = "NormalFloat"
 		hi.BlinkCmpMenuBorder = "FloatBorder"
-		hi.BlinkCmpMenuSelection = { guifg = M.colors.base06, guibg = M.colors.base02, gui = nil, guisp = nil, ctermfg = M.colors.cterm02, ctermbg = nil}
+		hi.BlinkCmpMenuSelection = { guifg = nil, guibg = M.colors.base01, gui = nil, guisp = nil, ctermfg = nil, ctermbg = M.colors.cterm01 }
 
-    hi.BlinkCmpKind = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil, ctermfg = M.colors.cterm02, ctermbg = nil}
+    hi.BlinkCmpLabelDetail = { guifg = M.colors.base03, guibg = M.colors.base00, gui = nil, guisp = nil}
+    hi.BlinkCmpLabelDescription = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil, ctermfg = M.colors.cterm01, ctermbg = M.colors.cterm05 }
+
+    hi.BlinkCmpDoc = "NormalFloat"
+    hi.BlinkCmpDocBorder = { guifg = M.colors.base04, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm04, ctermbg = nil }
+    hi.BlinkCmpDocSeparator = { guifg = M.colors.base04, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm04, ctermbg = nil }
+    hi.BlinkCmpDocSeparator = "FloatBorder"
+
+    hi.BlinkCmpKind = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil, ctermfg = M.colors.cterm02, ctermbg = M.colors.cterm00 }
 		hi.BlinkCmpKindMethod = { guifg = M.colors.base0D, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm0D, ctermbg = nil }
 		hi.BlinkCmpKindFunction = { guifg = M.colors.base0D, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm0D, ctermbg = nil }
 		hi.BlinkCmpKindConstructor = { guifg = M.colors.base0D, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm0D, ctermbg = nil }
