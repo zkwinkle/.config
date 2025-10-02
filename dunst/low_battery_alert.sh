@@ -45,7 +45,7 @@ while true; do
   STATUS=$(cat "$STATUS_FILE")
   CAPACITY=$(cat "$CAPACITY_FILE")
 
-  if [ "$STATUS" = "Discharging" ] && [ "$CAPACITY" -lt 10 ]; then
+  if [ "$STATUS" = "Discharging" ] && [ "$CAPACITY" -le 10 ]; then
     if [ -z "$FIRST_TIME" ]; then
       PLAY_SOUND="true"
       FIRST_TIME="done"
