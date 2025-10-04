@@ -58,15 +58,17 @@ local setup = function()
       },
     },
     ['ruff'] = {},
-    ['rust_analyzer'] = {
-      settings = {
-        ['rust-analyzer'] = {
-          check = {
-            workspace = false,
-          },
-        }
-      },
-    },
+    -- Replaced by rustaceanvim
+    --
+    -- ['rust_analyzer'] = {
+    --   settings = {
+    --     ['rust-analyzer'] = {
+    --       check = {
+    --         workspace = false,
+    --       },
+    --     }
+    --   },
+    -- },
     ['ts_ls'] = {},
     ['wgsl_analyzer'] = {},
     ['sourcekit'] = {},
