@@ -702,6 +702,7 @@ function M.setup(colors)
 		hi.BlinkCmpMenuBorder = "FloatBorder"
 		hi.BlinkCmpMenuSelection = { guifg = nil, guibg = M.colors.base01, gui = nil, guisp = nil, ctermfg = nil, ctermbg = M.colors.cterm01 }
 
+		hi.BlinkCmpLabelDeprecated = { guifg = M.colors.base03, guibg = nil, gui = nil, guisp = nil, ctermfg = M.colors.cterm03, ctermbg = nil }
     hi.BlinkCmpLabelDetail = { guifg = M.colors.base03, guibg = M.colors.base00, gui = nil, guisp = nil}
     hi.BlinkCmpLabelDescription = { guifg = M.colors.base05, guibg = M.colors.base00, gui = nil, guisp = nil, ctermfg = M.colors.cterm01, ctermbg = M.colors.cterm05 }
 
