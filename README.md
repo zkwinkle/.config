@@ -266,6 +266,19 @@ echo 'ddcci 0x37' | sudo tee /sys/bus/i2c/devices/i2c-13/new_device
 
 will do.
 
+## Better battery life TLP
+
+Installing the `tlp` package can help improve battery life.
+
+Instructions from [Arch Wiki page](https://wiki.archlinux.org/title/TLP):
+
+```sh
+sudo systemctl start tlp.service
+sudo systemctl enable tlp.service
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket
+```
+
 ## Hibernation
 
 In order to make hibernation on arch there's a few tweaks to be done.
