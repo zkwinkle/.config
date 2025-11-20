@@ -239,6 +239,73 @@ Note: I think this isn't necessary anymore since TF2 got a 64bit update. Remove 
 1. Install `lib32-gperftools` from AUR and set `LD_PRELOAD=/usr/lib32/libtcmalloc_minimal.so:$LD_PRELOAD %command% -novid -windowed` in the TF2 launch options.
 2. Check the `Force the use of a specific Steam Play compatibility tool` option and set it to `Steam Linux Runtime 1.0 (scout)`.
 
+## Hibernation
+
+In order to make hibernation on arch there's a few tweaks to be done.
+
+1. Create a swapfile, see [arch wiki](https://wiki.archlinux.org/title/Swap#Swap_file_creation). I like a swapfile to not have to create a separate partition. Generally I don't use swap for the usual RAM depletion reason, so I need to set it up for hibernation.
+2. In order to keep the swapfile small (I do 16GB) in the face of a bigger RAM (I have 64GB), we can [tweak the `image_size` variable](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#About_swap_partition/file_size) to make the hibernation image as small as possible. I set it to try to limit it to 2GB. To do this create `/etc/tmpfiles.d/hibernation_image_size.conf` with the following contents:
+
+```
+#    Path                   Mode UID  GID  Age Argument
+w    /sys/power/image_size  -    -    -    -   2000000000
+```
+
+3. Add the `resume` hook to `/etc/mkinitcpio.conf`
+Example:
+
+```
+HOOKS=(base udev autodetect keyboard keymap modconf block filesystems **resume** fsck)
+```
+
+Then regenerate initramfs: `sudo mkinitcpio -P`
+
+### Laptop lid
+
+To use `suspend-then-hibernate` when the laptop lid is closed, edit `/etc/systemd/logind.conf` and make sure `HandleLidSwitch` is set to `suspend-then-hibernate`. Beneficial to hibernate if I accidentally leave my system sleeping for too long.
+
+```
+HandleLidSwitch=suspend-then-hibernate
+```
+
+We like `suspend-then-hibernate` for this because if I (theoretically) run low on battery, or a set amount of time passes, the laptop goes into hibernation saving battery.
+
+To set the amount of time the system waits to hibernate, we set [HibernateDelaySec](https://man.archlinux.org/man/systemd-sleep.conf.5) in `/etc/systemd/sleep.conf`.
+The default is 2 hours, but I like setting it to 5 minutes.
+
+```
+HibernateDelaySec=300
+```
+
+### Low battery
+
+Add the following to `/etc/udev/rules.d/99-lowbat.rules` in order to automatically hibernate when system is about to discharge:
+
+```
+# Suspend the system when battery level drops to 5% or lower
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]", RUN+="/usr/bin/systemctl hybrid-sleep"
+```
+
+We use `hybrid-sleep` because if I connect the laptop before power runs out, waking up will be faster, but if battery runs out, system will be hibernated.
+
+In order to enable low battery notifications, I've added the user systemd
+service [./systemd/user/alert-battery.service] which automatically executes
+[./dunst/low_battery_alert.sh] for low battery notifications.
+Need to set the correct battery device in that script (BAT1 by default).
+Enable it with:
+
+```sh
+systemctl --user enable alert-battery
+```
+
+#### graphical-session.target
+
+(_Short section documenting this target_)
+
+The low battery alert relies on the `graphical-session.target`, it's started by
+i3 somewhere in the config because I couldn't figure out a more appropiate file
+to put it in that would always run when starting a graphical session.
+
 ## TODO
 
 Stuff I'd like to add/upgrade but haven't had the time to:
