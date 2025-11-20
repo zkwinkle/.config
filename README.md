@@ -239,6 +239,33 @@ Note: I think this isn't necessary anymore since TF2 got a 64bit update. Remove 
 1. Install `lib32-gperftools` from AUR and set `LD_PRELOAD=/usr/lib32/libtcmalloc_minimal.so:$LD_PRELOAD %command% -novid -windowed` in the TF2 launch options.
 2. Check the `Force the use of a specific Steam Play compatibility tool` option and set it to `Steam Linux Runtime 1.0 (scout)`.
 
+## External monitor brightness
+
+The [mbrightness](./zsh/bin/mbrightness.zsh) script can adjust the brightness
+of an external monitor.
+
+It requires the `ddcutil` program and for faster execution and polybar
+compatibility one can install the `ddcci-driver-linux-dkms-git` driver.
+
+It assumes the external monitor uses the i2c bus 13, which has held true for
+my framework laptop when connecting monitors through HDMI in the same slot. But
+if it breaks in the future this could be a likely cause.
+
+As of June 2025 the ddcci driver is broken, it doesn't automatically create the
+device. I tried using the last solution posted in
+https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/issues/7, with only
+a udev rule. It sort of works but if I start my laptop with the HDMI already
+connected it won't work. Get the same [device busy error as this
+guy](https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux/-/issues/7#note_2562610485).
+
+For now just manually executing
+
+```sh
+echo 'ddcci 0x37' | sudo tee /sys/bus/i2c/devices/i2c-13/new_device
+```
+
+will do.
+
 ## Hibernation
 
 In order to make hibernation on arch there's a few tweaks to be done.
