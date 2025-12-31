@@ -10,6 +10,7 @@ opt.visualbell = false
 opt.hidden = true
 opt.signcolumn = "yes:1"
 opt.termguicolors = true
+opt.smoothscroll = true
 
 -- Numbers
 opt.number = true
