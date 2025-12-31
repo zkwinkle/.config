@@ -9,6 +9,37 @@ local nvim_web_dev_highlights = function(ctx)
   return hl
 end
 
+-- Does a regular <tab> character if there's nothing or whitespace behind it.
+-- If there's any non-whitespace character behind the cursor it opens the
+-- auto-complete menu
+local function superload_tab(cmp)
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+  if col == 0 then
+    -- Default action for Tab (schedule needed because else I get a weird
+    -- error about cmp not having permission to edit buffer):
+    -- E565 Not allowed to change text or change window
+    vim.schedule(function()
+      vim.api.nvim_paste('\t', false, -1)
+    end)
+    return true
+  end
+
+  -- 0-indexed
+  row = row - 1;
+  local char_behind = vim.api.nvim_buf_get_text(0, row, col - 1, row, col, {})[1]
+  local has_whitespace_behind = char_behind.match(char_behind, "%s")
+
+  if has_whitespace_behind then
+    vim.schedule(function()
+      vim.api.nvim_paste('\t', false, -1)
+    end)
+    return true
+  else
+    return cmp.show_and_insert()
+  end
+end
+
 return {
   "saghen/blink.cmp",
   dependencies = { --[[ 'rafamadriz/friendly-snippets' /*stopped using snippets because I think they're mostly annoying*/ ,]] 'nvim-web-devicons', 'onsails/lspkind.nvim', 'xzbdmw/colorful-menu.nvim' },
@@ -33,10 +64,12 @@ return {
       ['<C-u>'] = { function(cmp) cmp.select_prev({ count = 5 }) end },
       ['<C-d>'] = { function(cmp) cmp.select_next({ count = 5 }) end, 'fallback_to_mappings' },
 
-      ['<Tab>'] = { 'snippet_forward', 'show_and_insert', 'select_next', 'fallback' },
+      ['<Tab>'] = { superload_tab, 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
 
       ['<CR>'] = { 'accept', 'fallback' },
+
+      ['<C-n>'] = { 'select_next', function(cmp) return cmp.show_and_insert({ providers = { "buffer" } }) end },
     },
 
     appearance = {
@@ -94,6 +127,15 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'buffer' },
+      providers = {
+        -- custom buffer source that grabs from *all* buffers,
+        -- not just visible ones
+        buffer = {
+          opts = {
+            get_bufnrs = vim.api.nvim_list_bufs,
+          }
+        }
+      }
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
