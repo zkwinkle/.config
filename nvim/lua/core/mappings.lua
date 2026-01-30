@@ -149,4 +149,31 @@ M.duck = {
   }
 }
 
+M.leap = {
+  n = {
+    ["s"] = { map = "<Plug>(leap)" },
+    ["S"] = { map = "<Plug>(leap-from-window)" }
+  },
+  x = {
+    ["s"] = { map = "<Plug>(leap)" },
+    ["R"] = {
+      map = function()
+        require('leap.treesitter').select {
+          opts = require('leap.user').with_traversal_keys('R', 'r')
+        }
+      end
+    },
+  },
+  o = {
+    ["s"] = { map = "<Plug>(leap)" },
+    ["R"] = {
+      map = function()
+        require('leap.treesitter').select {
+          opts = require('leap.user').with_traversal_keys('R', 'r')
+        }
+      end
+    },
+  }
+}
+
 return M
