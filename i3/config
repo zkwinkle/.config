@@ -25,6 +25,9 @@ set $SCRIPTS $HOME/.config/zsh/bin
 # Start xsettingsd daemon
 exec xsettingsd
 
+# Start graphical-session systemd unit
+exec systemctl --user start graphical-session.target
+
 font pango:JetBrains Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
