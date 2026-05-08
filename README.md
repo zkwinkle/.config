@@ -54,6 +54,10 @@
 - ttf-dejavu (polybar emoji)
 - tree-sitter-cli (auto install treesitter langs)
 - keyd (key remaps)
+- ddcutil (for external monitor brightness)
+- tlp ([better battery life](https://wiki.archlinux.org/title/TLP))
+- ghostmirror (mirror manager)
+- delta (git diff tool)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
@@ -277,6 +281,27 @@ sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
+```
+
+## Automatic mirror management
+
+I use ghostmirror to automatically manage my Arch mirrors. Automatically periodically ranks them based on status, speed, up to date.
+
+For setup need to run the following commands.
+
+```sh
+mkdir ~/.config/ghostmirror
+ghostmirror -Po -c "United States,Canada,Mexico,Colombia,Chile" -l ~/.config/ghostmirror/mirrorlist -L 30 -S state,outofdate,morerecent,ping
+ghostmirror -DPo -mul ~/.config/ghostmirror/mirrorlist ~/.config/ghostmirror/mirrorlist -s light -S state,outofdate,speed
+```
+
+Then edit file `/etc/pacman.conf`, search and replace this line and change <username> with your username.
+```
+[core]
+Include = /home/<username>/.config/ghostmirror/mirrorlist
+
+[extra]
+Include = /home/<username>/.config/ghostmirror/mirrorlist
 ```
 
 ## Hibernation
