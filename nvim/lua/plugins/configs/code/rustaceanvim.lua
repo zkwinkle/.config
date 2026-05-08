@@ -1,5 +1,32 @@
 local utils = require "core.utils"
 
+local function load_project_ra_settings()
+  local root = vim.fn.getcwd()
+  local path = root .. '/.rustaceanvim/rust-analyzer.json'
+  if vim.fn.filereadable(path) == 0 then
+    return nil
+  end
+  local raw = table.concat(vim.fn.readfile(path), '\n')
+  local ok, decoded = pcall(vim.fn.json_decode, raw)
+  if not ok or type(decoded) ~= 'table' then
+    return nil
+  end
+  return decoded
+end
+
+local project_ra = load_project_ra_settings()
+
+local ra_settings = {
+  -- global/default RA settings
+  check = {
+    workspace = false,
+  },
+}
+
+if project_ra then
+  ra_settings = vim.tbl_deep_extend("force", ra_settings, project_ra)
+end
+
 vim.g.rustaceanvim = {
   -- Plugin configuration
   -- tools = {
@@ -20,11 +47,7 @@ vim.g.rustaceanvim = {
     end,
     default_settings = {
       -- rust-analyzer language server configuration
-      ['rust-analyzer'] = {
-        check = {
-          workspace = false,
-        },
-      }
+      ['rust-analyzer'] = ra_settings
     },
   },
 }
