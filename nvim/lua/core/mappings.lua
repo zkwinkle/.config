@@ -95,6 +95,8 @@ M.lspconfig = {
     ["<leader>gd"] = { map = vim.lsp.buf.definition },
     ["<leader>gr"] = { map = vim.lsp.buf.references },
     ["<leader>gi"] = { map = vim.lsp.buf.implementation },
+    ["<leader>gci"] = { map = vim.lsp.buf.incoming_calls },
+    ["<leader>gco"] = { map = vim.lsp.buf.outgoing_calls },
     --["<leader>D"] =  { map = vim.lsp.buf.type_definition  },
     ["<leader>ca"] = { map = vim.lsp.buf.code_action },
     ["d["] = { map = function() vim.diagnostic.jump { count = -1 } end },
@@ -104,6 +106,15 @@ M.lspconfig = {
     ["<leader>=="] = { map = function() vim.lsp.buf.format { async = true } end },
     ["<leader>r"] = { map = vim.lsp.buf.rename },
   },
+}
+
+M.rustaceanvim = {
+  n = {
+    ["<leader>ca"] = { map = function() vim.cmd.RustLsp('codeAction') end },
+    ["<leader>gp"] = { map = function() vim.cmd.RustLsp('parentModule') end },
+    ["<leader>d\\"] = { map = function() vim.cmd.RustLsp('relatedDiagnostics') end },
+    ["<leader>K"] = { map = function() vim.cmd.RustLsp { 'hover', 'actions' } end },
+  }
 }
 
 M.gitsigns = {
