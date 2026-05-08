@@ -68,7 +68,7 @@
 										"percent": 0.285714285714286,
 										"swallows": [
 											{
-												"instance": "^telegram-desktop$"
+												"instance": "^Telegram$"
 											}
 										],
 										"type": "con"
