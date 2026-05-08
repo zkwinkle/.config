@@ -92,7 +92,9 @@ if [ "$EXTERNAL_CONNECTED" -eq 0 ]; then
 
     echo "scaling $laptop by $LAPTOP_SCALING"
 
-    xrandr --output "$laptop" --scale "$LAPTOP_SCALING" --auto --output "$external" --scale 1x1 --mode $MONITOR_RES --pos $(calc "$LAPTOP_RES * $LAPTOP_SCALING_FACTOR")x0
+    monitor_offset=$(echo "($LAPTOP_RES * $LAPTOP_SCALING_FACTOR + 0.5)/1" | bc) # The +0.5 and integer division by 1 is a rounding trick
+
+    xrandr --output "$laptop" --scale "$LAPTOP_SCALING" --auto --output "$external" --scale 1x1 --mode $MONITOR_RES --pos ${monitor_offset}x0
   fi
 else
   xrandr --output "$laptop" --scale 1x1 --auto
