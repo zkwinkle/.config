@@ -207,9 +207,6 @@ exec_always --no-startup-id "PATH=$SCRIPTS:$PATH; reload-polybar.sh"
 exec setxkbmap us altgr-intl
 bindsym $mod+Control+l exec "setxkbmap us altgr-intl; xmodmap $HOME/.config/.Xmodmap"
 
-# Start keyd application-specific daemon
-exec keyd-application-mapper -d
-
 # Brightness controls
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
