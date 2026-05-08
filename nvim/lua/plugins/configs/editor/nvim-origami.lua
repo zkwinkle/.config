@@ -17,6 +17,10 @@ return {
       gitsignsCount = false,
     },
     autoFold = { enabled = false, },
+    foldKeymaps = {
+      -- avoid modifying h, l, $
+      setup = false,
+    },
   },
 
   -- recommended by plugin: disable vim's auto-folding
