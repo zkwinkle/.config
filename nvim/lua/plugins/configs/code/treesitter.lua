@@ -1,33 +1,15 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
+	"arborist-ts/arborist.nvim",
 	event = "VeryLazy",
-	cmd = {
-		"TSInstall",
-		"TSBufEnable",
-		"TSBufDisable",
-		"TSEnable",
-		"TSDisable",
-		"TSModuleInfo",
-	},
-	build = ":TSUpdate",
+	build = ":ArboristUpdate",
 	config = function()
-		local configs = require("nvim-treesitter.configs")
-
-		configs.setup({
+		require("arborist").setup({
 			ensure_installed = {
 				"lua",
 				"rust",
 				"python",
 				"c",
 			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				use_languagetree = true,
-			},
-			indent = {
-				enable = true
-			}
 		})
 	end
 }
