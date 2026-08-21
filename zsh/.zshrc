@@ -155,12 +155,11 @@ alias fzh='fd . ~ --hidden -E .git | fzf'
 
 # cd into a git repo
 function fzg(){
-	FIFO=/tmp/fzg_fifo;
-	mkfifo $FIFO;
-	(fd . ~ --type=d -E AUR -x check-for-git.sh > $FIFO &);
-	_GIT_DIR=$(fzf --preview-window=wrap +m < $FIFO);
+	local _GIT_DIR
+	_GIT_DIR=$(fd '^\.git$' ~ --hidden --type=d -E AUR 2>/dev/null \
+		| sed 's|/\.git/*$||' \
+		| fzf --preview-window=wrap +m) || return
 	[ -n "$_GIT_DIR" ] && cd "$_GIT_DIR" && nvim
-	rm $FIFO
 }
 
 # Install/Remove packages using paru/fzf
