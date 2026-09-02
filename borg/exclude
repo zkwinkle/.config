@@ -10,6 +10,7 @@
 /home/igna/Videos/Movies
 
 # Reinstallable toolchains and app data
+/home/igna/AUR
 /home/igna/.rustup
 /home/igna/.cargo
 /home/igna/.npm

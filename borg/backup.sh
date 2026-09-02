@@ -14,7 +14,7 @@ borg create \
   --compression auto,zstd,3 \
   --exclude-from "$CONF/exclude" \
   --one-file-system \
-  ::'{hostname}-{now:%Y-%m-%dT%H:%M:%S}' \
+  ::'{hostname}-{now:%Y-%m-%d}' \
   "$HOME"
 create_rc=$?
 
