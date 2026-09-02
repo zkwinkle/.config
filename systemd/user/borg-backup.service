@@ -1,0 +1,12 @@
+[Unit]
+Description=Back up $HOME to rsync.net with borg
+ConditionACPower=true
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/.config/borg/env
+ExecStart=%h/.config/borg/backup.sh
+# Stay out of the way of interactive work.
+Nice=19
+IOSchedulingClass=idle

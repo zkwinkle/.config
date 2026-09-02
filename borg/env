@@ -1,0 +1,4 @@
+# Read by the systemd unit via EnvironmentFile.
+BORG_REPO=rsync:borg/waterfall
+BORG_PASSCOMMAND="cat /home/igna/.config/borg/passphrase"
+BORG_REMOTE_PATH=borg14

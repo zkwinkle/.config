@@ -58,6 +58,7 @@
 - tlp ([better battery life](https://wiki.archlinux.org/title/TLP))
 - ghostmirror (mirror manager)
 - delta (git diff tool)
+- borg (backups)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
@@ -370,6 +371,18 @@ systemctl --user enable alert-battery
 The low battery alert relies on the `graphical-session.target`, it's started by
 i3 somewhere in the config because I couldn't figure out a more appropiate file
 to put it in that would always run when starting a graphical session.
+
+## Backups
+
+I'm backing up my files with `borg` and [rsync.net](rsync.net).
+
+The borg repository must be correctly initialized and the `./borg/env` file must have the correct values.
+
+Then simply `systemctl --user enable --now borg-backup.timer`.
+
+The service file is `./systemd/user/borg-backup.service`.
+
+It relies on `~/.ssh/config` specifying an `rsync` host.
 
 ## TODO
 

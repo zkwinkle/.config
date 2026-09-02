@@ -1,0 +1,30 @@
+# Excluded from the offsite backup. Everything here is either re-downloadable,
+# regenerable, or a cache.
+# backup to ~123 G.
+
+/home/igna/.local
+
+/home/igna/.cache
+
+# Leaving out because they're so heavy
+/home/igna/Videos/Movies
+
+# Reinstallable toolchains and app data
+/home/igna/.rustup
+/home/igna/.cargo
+/home/igna/.npm
+/home/igna/.var
+/home/igna/.minecraft
+/home/igna/.nuget
+/home/igna/.debug
+/home/igna/zephyrproject
+/home/igna/zephyr-sdk-*
+
+# Build output
+**/target
+**/node_modules
+**/.venv
+**/__pycache__
+
+# GTKWave simulation dumps
+**/*.vcd
