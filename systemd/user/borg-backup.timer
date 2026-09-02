@@ -2,7 +2,7 @@
 Description=Daily borg backup of $HOME
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*-*-* 04:00:00
 # The laptop is often asleep at the scheduled time; run at next opportunity
 # instead of skipping the day.
 Persistent=true
