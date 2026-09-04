@@ -384,6 +384,13 @@ The service file is `./systemd/user/borg-backup.service`.
 
 It relies on `~/.ssh/config` specifying an `rsync` host.
 
+To see archives
+
+```
+set -a; . ~/.config/borg/env; set +a
+borg list rsync:borg/waterfall
+```
+
 ## TODO
 
 Stuff I'd like to add/upgrade but haven't had the time to:
