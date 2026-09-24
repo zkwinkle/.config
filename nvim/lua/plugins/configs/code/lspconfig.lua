@@ -5,7 +5,9 @@ local setup = function()
   snippet_support_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   local language_servers = {
+    ['astro'] = {},
     ['clangd'] = {},
+    ['roslyn_ls'] = {},
     ['cssls'] = {
       capabilities = snippet_support_capabilities
     },
@@ -109,6 +111,9 @@ local setup = function()
       }
     }
   }) -- open diagnostic upon jumping
+
+  -- Wraps vim.lsp.buf.format so `.cs` (C#) buffers go through clang-format.
+  require("plugins.configs.code.lspconfig.csharp_format").setup()
 end
 
 return {
