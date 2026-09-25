@@ -37,9 +37,6 @@ M.base = {
     ["<leader>9"]  = { map = "9gt" },
     ["<leader>0"]  = { map = ":tablast<cr>" },
 
-    -- Format
-    ["<leader>=="] = { map = "gg<S-v>G=<C-o>" },
-
     -- wrap current line
     ["gq"]         = { map = "g$lgEa<CR><Esc>" },
   },
@@ -103,9 +100,17 @@ M.lspconfig = {
     ["d]"] = { map = function() vim.diagnostic.jump { count = 1 } end },
     ["d\\"] = { map = vim.diagnostic.open_float },
     --["<leader>q"] =  { map = vim.diagnostic.setloclist  },
-    ["<leader>=="] = { map = function() vim.lsp.buf.format { async = true } end },
     ["<leader>r"] = { map = vim.lsp.buf.rename },
   },
+}
+
+M.conform = {
+  n = {
+    -- Auto-formatting.
+    -- conform doesn't necessarily need a language server attached which is
+    -- why this is separate from lspconfig block.
+    ["<leader>=="] = { map = function() require("conform").format { async = true } end },
+  }
 }
 
 M.rustaceanvim = {

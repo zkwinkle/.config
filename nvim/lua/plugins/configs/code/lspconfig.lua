@@ -76,10 +76,14 @@ local setup = function()
     ['sourcekit'] = {},
   }
 
-  local default_on_attach = function(_, bufnr)
-    local lsp_mappings = require('core.mappings').lspconfig
-    utils.load_mapping(lsp_mappings, { noremap = true, buffer = bufnr })
-  end
+  -- Set LSP keymaps on attachment
+  vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('lsp_mappings', { clear = true }),
+    callback = function(args)
+      utils.load_mapping(require('core.mappings').lspconfig,
+        { noremap = true, buffer = args.buf })
+    end,
+  })
 
 
   local default_capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -89,14 +93,11 @@ local setup = function()
   }
 
   for s, settings in pairs(language_servers) do
-    -- Get on_attach
-    settings['on_attach'] = settings['on_attach'] or default_on_attach
-
     -- Get capabilities
     settings['capabilities'] = settings['capabilities'] or default_capabilities
 
-    vim.lsp.enable(s)
     vim.lsp.config(s, settings)
+    vim.lsp.enable(s)
   end
 
   --- Vim global settings related to LSP and diagnostics
@@ -112,8 +113,6 @@ local setup = function()
     }
   }) -- open diagnostic upon jumping
 
-  -- Wraps vim.lsp.buf.format so `.cs` (C#) buffers go through clang-format.
-  require("plugins.configs.code.lspconfig.csharp_format").setup()
 end
 
 return {
