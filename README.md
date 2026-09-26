@@ -59,6 +59,8 @@
 - ghostmirror (mirror manager)
 - delta (git diff tool)
 - borg (backups)
+- loupe (image viewer)
+- gthumb (for raw images)
 
 #### Stuff i3 execs while starting up (remove from config or install)
 - firefox
