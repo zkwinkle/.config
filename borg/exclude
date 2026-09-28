@@ -29,3 +29,7 @@
 
 # GTKWave simulation dumps
 **/*.vcd
+
+# Live digiKam DBs; backup.sh snapshots them into digikam-db/backup/.
+# sh: so * doesn't reach into backup/.
+sh:/home/igna/.config/digikam-db/*.db

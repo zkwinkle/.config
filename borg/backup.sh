@@ -9,6 +9,19 @@ set -uo pipefail
 
 CONF="$HOME/.config/borg"
 
+# digiKam's DBs are live SQLite, so borg gets a consistent copy instead of
+# the files themselves (excluded). The thumbnail DB is regenerable, skip it.
+DK="$HOME/.config/digikam-db"
+if [ -d "$DK" ]; then
+  mkdir -p "$DK/backup"
+  for db in "$DK"/*.db; do
+    [ -e "$db" ] || continue
+    case "$(basename "$db")" in thumbnails-*) continue ;; esac
+    sqlite3 "$db" ".backup '$DK/backup/$(basename "$db")'" ||
+      echo "digiKam DB snapshot failed: $db" >&2
+  done
+fi
+
 borg create \
   --verbose --stats --show-rc \
   --compression auto,zstd,3 \

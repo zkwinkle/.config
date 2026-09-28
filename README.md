@@ -374,6 +374,39 @@ The low battery alert relies on the `graphical-session.target`, it's started by
 i3 somewhere in the config because I couldn't figure out a more appropiate file
 to put it in that would always run when starting a graphical session.
 
+## Photography
+
+digiKam manages the library, darktable edits RAWs one at a time. The archive
+lives on the homelab at `/mnt/photographs` (NFS, fstab line in the homelab
+README). Tags, labels and edits all live in `FILE.EXT.xmp` sidecars next to
+each photo.
+
+Packages: `digikam darktable perl-image-exiftool lua54-socket nfs-utils`
+
+DT and Digikam configs aren't ocmmitted because they grow large, so need to
+restore those from a backup.
+
+Main important settings:
+- Photos at `~/Pictures/inbox`.
+- Local DB at `~/.config/digikam-db`. (expected by `backup.sh`)
+- Settings → Configure digiKam → Metadata
+  - -> Sidecars tab
+    - ✓ Read from sidecar files
+    - ✓ Write to sidecar files, and pick "Write to XMP sidecar only" from its dropdown
+    - commercial-compatible sidecar filenames off (`FILE.EXT.xmp`, like darktable).
+  - -> Behavior tab -> Rescan file when files are modified
+
+For more info see the homelab's docs.
+
+### Workflow
+
+1. Import the SD card into Inbox as `YYYY-MM-DD_event-name`.
+2. Right-click → Open With → darktable. Edit, lighttable (so it writes
+   thumbnail), close darktable. Album → Reread metadata if the thumbnail
+   is stale.
+3. Export from darktable; its export path mirrors the album into `exports/`.
+4. Move the album from Inbox to Archive when done working.
+
 ## Backups
 
 I'm backing up my files with `borg` and [rsync.net](rsync.net).
@@ -392,6 +425,9 @@ To see archives
 set -a; . ~/.config/borg/env; set +a
 borg list rsync:borg/waterfall
 ```
+
+`backup.sh` snapshots digiKam's DBs with `sqlite3 .backup` into
+`~/.config/digikam-db/backup/` before each run; the live DBs are excluded.
 
 ## TODO
 
