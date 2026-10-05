@@ -238,13 +238,13 @@ bindsym $mod+$Alt+l exec $HOME/.config/i3-layout-manager/layout_manager.sh
 assign [class="firefox"] $ws1
 assign [class="zoom"] $ws4
 assign [class="betterbird"] $ws8
-assign [class="vesktop"] $ws9
+assign [class="discord"] $ws9
 assign [class="Telegram"] $ws9
 
 exec firefox
 exec betterbird
 exec Telegram
-exec vesktop
+exec discord
 #exec obsidian
 exec spicetify apply --no-restart; spotify
 for_window [class="Spotify"] move to workspace $ws10
