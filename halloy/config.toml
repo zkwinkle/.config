@@ -1,0 +1,25 @@
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.chat/configuration.html
+
+# soju on the homelab, see the homelab README's "IRC (soju)" section. Every
+# network configured in soju shows up on its own through the bouncer-networks
+# extension, so networks are added with BouncerServ, not here.
+[servers.soju]
+nickname = "igna"
+server = "irc.igna.cloud"
+
+[servers.soju.sasl.plain]
+username = "igna"
+password_command = "rbw get soju"
+
+# Per-network overrides go under [servers.soju.networks.<soju network name>],
+# e.g.:
+#
+# [servers.soju.networks.libera.filters]
+# ignore = ["SomeNick"]
+
+# Load older messages from soju when scrolling up.
+[buffer.chathistory]
+infinite_scroll = true
