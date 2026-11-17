@@ -96,3 +96,8 @@ rewrite = false
 start= "## Start flavours ##"
 end = "## End flavours ##"
 hook = "pkill -x dunst && dunst &"
+
+[[items]]
+file = "~/.config/halloy/themes/base16.toml"
+template = "halloy"
+rewrite = true
