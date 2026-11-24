@@ -101,3 +101,10 @@ hook = "pkill -x dunst && dunst &"
 file = "~/.config/halloy/themes/base16.toml"
 template = "halloy"
 rewrite = true
+
+[[items]]
+file = "~/.config/feishin/Themes/base16.json"
+template = "feishin"
+rewrite = true
+hook = "python3 -I ~/.config/flavours/hooks/feishin-mode.py ~/.config/feishin/Themes/base16.json"
+light = false
